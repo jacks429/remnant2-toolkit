@@ -1,12 +1,18 @@
 'use client'
 
 import { Disclosure } from '@headlessui/react'
-import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import { ChevronRightIcon, FunnelIcon } from '@heroicons/react/24/solid'
 import isEqual from 'lodash.isequal'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
+import { BaseButton } from '@/app/(components)/_base/button'
 import { Link } from '@/app/(components)/_base/link'
+import {
+  BaseListbox,
+  BaseListboxLabel,
+  BaseListboxOption,
+} from '@/app/(components)/_base/listbox'
 import { parseSearchFilters } from '@/app/world-save-archive/(lib)/parseSearchFilters'
 import {
   BOSS_AFFIXES,
@@ -129,27 +135,24 @@ export function SaveLookupFilters({}: Props) {
             )}
           >
             <div className="flex w-full items-center justify-start">
-              <SelectMenu
-                label="Boss Name"
-                showLabel={false}
-                value={unappliedFilters.bossName}
-                onChange={(e) =>
-                  handleBossNameChange(e.target.value as BossName | 'Choose')
-                }
-                options={bossNames.map((name) => ({
-                  label: name,
-                  value: name,
-                }))}
-              />
+              <BaseListbox
+                name="bossName"
+                placeholder="Select boss name&hellip;"
+                onChange={(e) => {
+                  console.info('e', e)
+                  handleBossNameChange(e as BossName)
+                }}
+              >
+                {bossNames.map((name) => (
+                  <BaseListboxOption key={name} value={name}>
+                    <BaseListboxLabel>{name}</BaseListboxLabel>
+                  </BaseListboxOption>
+                ))}
+              </BaseListbox>
             </div>
-            <Disclosure.Button className="text-md flex flex-row items-center justify-center rounded-md border-2 border-secondary-500 bg-secondary-700 px-2 py-1 hover:bg-secondary-500">
+            <Disclosure.Button as={BaseButton}>
+              <FunnelIcon className="h-4 w-4" />
               {open ? 'Hide' : 'Show'}
-              <ChevronRightIcon
-                className={cn(
-                  'ml-1 h-5 w-5',
-                  open ? 'rotate-90 transform' : '',
-                )}
-              />
             </Disclosure.Button>
           </div>
           <Disclosure.Panel className="w-full">
