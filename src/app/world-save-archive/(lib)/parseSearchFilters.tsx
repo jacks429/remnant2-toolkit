@@ -32,6 +32,9 @@ export function parseSearchFilters(
     affixes: affixes
       ? (affixes.split(',') as BossAffixName[])
       : DEFAULT_SEARCH_FILTERS['affixes'],
-    bossName: (bossName as BossName) || DEFAULT_SEARCH_FILTERS['bossName'],
+    bossName:
+      bossName === null
+        ? DEFAULT_SEARCH_FILTERS['bossName']
+        : (bossName as BossName),
   }
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { Disclosure } from '@headlessui/react'
-import { ChevronRightIcon, FunnelIcon } from '@heroicons/react/24/solid'
+import { FunnelIcon } from '@heroicons/react/24/solid'
 import isEqual from 'lodash.isequal'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
@@ -14,11 +14,7 @@ import {
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
 import { parseSearchFilters } from '@/app/world-save-archive/(lib)/parseSearchFilters'
-import {
-  BOSS_AFFIXES,
-  BOSSES,
-  MAX_BOSS_AFFIXES,
-} from '@/app/world-save-archive/constants'
+import { BOSS_AFFIXES, BOSSES } from '@/app/world-save-archive/constants'
 import {
   BossAffixName,
   BossName,
@@ -26,17 +22,16 @@ import {
 } from '@/app/world-save-archive/types'
 import { Checkbox } from '@/features/ui/Checkbox'
 import { FiltersContainer } from '@/features/ui/filters/FiltersContainer'
-import { SelectMenu } from '@/features/ui/SelectMenu'
 import { cn } from '@/lib/classnames'
 
-let bossNames = BOSSES.map((b) => b.name as BossName | 'Choose')
-bossNames.unshift('Choose')
+let bossNames = BOSSES.map((b) => b.name as BossName | 'Choose...')
+bossNames.unshift('Choose...')
 
 export const defaultBossAffixes = BOSS_AFFIXES.map((affix) => affix.name)
 
 export const DEFAULT_SEARCH_FILTERS: SearchFilters = {
   affixes: [],
-  bossName: 'Choose',
+  bossName: 'Choose...',
 }
 
 interface Props {}
@@ -110,7 +105,7 @@ export function SaveLookupFilters({}: Props) {
     }
   }
 
-  function handleBossNameChange(bossName: BossName | 'Choose') {
+  function handleBossNameChange(bossName: BossName | 'Choose...') {
     const newFilters = {
       ...unappliedFilters,
       bossName,
@@ -136,8 +131,10 @@ export function SaveLookupFilters({}: Props) {
           >
             <div className="flex w-full items-center justify-start">
               <BaseListbox
+                key={filters.bossName}
                 name="bossName"
                 placeholder="Select boss name&hellip;"
+                defaultValue={filters.bossName}
                 onChange={(e) => {
                   console.info('e', e)
                   handleBossNameChange(e as BossName)

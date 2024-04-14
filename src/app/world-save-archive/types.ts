@@ -14,7 +14,7 @@ export interface WorldSave {
 
 export interface SearchFilters {
   affixes: BossAffixName[]
-  bossName: BossName | 'Choose'
+  bossName: BossName | 'Choose...'
 }
 
 export type FilteredSave = WorldSave & { imagePath: string }
