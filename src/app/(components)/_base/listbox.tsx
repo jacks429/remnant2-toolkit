@@ -17,6 +17,7 @@ export function BaseListbox<T>({
   className,
   placeholder,
   autoFocus,
+  multiple = false,
   'aria-label': ariaLabel,
   children: options,
   ...props
@@ -26,9 +27,10 @@ export function BaseListbox<T>({
   autoFocus?: boolean
   'aria-label'?: string
   children?: React.ReactNode
+  multiple?: boolean
 } & Omit<HeadlessListboxProps<typeof Fragment, T>, 'multiple'>) {
   return (
-    <HeadlessListbox {...props} multiple={false}>
+    <HeadlessListbox {...props} multiple={multiple}>
       <HeadlessListboxButton
         autoFocus={autoFocus}
         data-slot="control"
