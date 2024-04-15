@@ -28,6 +28,7 @@ export function ChangeLoadoutSlotButton({
     const newSlotNumber = parseInt(newSlot)
     if (isNaN(newSlotNumber) || newSlotNumber < 1 || newSlotNumber > 8) {
       if (callback) callback(false, null)
+      setAlertOpen(false)
       toast.error('Invalid slot number')
       return
     }
