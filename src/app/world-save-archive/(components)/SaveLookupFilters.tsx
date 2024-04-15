@@ -135,10 +135,7 @@ export function SaveLookupFilters({}: Props) {
                 name="bossName"
                 placeholder="Select boss name&hellip;"
                 defaultValue={filters.bossName}
-                onChange={(e) => {
-                  console.info('e', e)
-                  handleBossNameChange(e as BossName)
-                }}
+                onChange={(e) => handleBossNameChange(e as BossName)}
               >
                 {bossNames.map((name) => (
                   <BaseListboxOption key={name} value={name}>
