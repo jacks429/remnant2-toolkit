@@ -3,12 +3,12 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { BuildVisibilityFilter } from '@/app/(components)/form-fields/filters/build-visibility-filter'
-import { useBuildVisibilityFilter } from '@/app/(components)/form-fields/filters/build-visibility-filter/use-build-visibility-filter'
-import { OrderByFilter } from '@/app/(components)/form-fields/filters/order-by-filter'
-import { useOrderByFilter } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
-import { TimeRangeFilter } from '@/app/(components)/form-fields/filters/time-range-filter'
-import { useTimeRangeFilter } from '@/app/(components)/form-fields/filters/time-range-filter/use-time-range-filter'
+import { BuildVisibilityFilter } from '@/app/(components)/form-fields/selects/build-visibility-filter'
+import { useBuildVisibilityFilter } from '@/app/(components)/form-fields/selects/build-visibility-filter/use-build-visibility-filter'
+import { OrderByFilter } from '@/app/(components)/form-fields/selects/order-by-filter'
+import { useOrderByFilter } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
+import { TimeRangeFilter } from '@/app/(components)/form-fields/selects/time-range-filter'
+import { useTimeRangeFilter } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
 import { CreatedBuildCardActions } from '@/app/profile/[userId]/(components)/CreatedBuildCardActions'
 import { getCreatedBuilds } from '@/app/profile/[userId]/created-builds/getCreatedBuilds'
 import { BuildCard } from '@/features/build/components/build-card/BuildCard'
@@ -17,7 +17,6 @@ import { BuildList } from '@/features/build/components/BuildList'
 import { parseBuildListFilters } from '@/features/build/filters/lib/parseBuildListFilters'
 import { useBuildListState } from '@/features/build/hooks/useBuildListState'
 import { usePagination } from '@/features/pagination/usePagination'
-import { SelectMenu } from '@/features/ui/SelectMenu'
 
 interface Props {
   isEditable: boolean

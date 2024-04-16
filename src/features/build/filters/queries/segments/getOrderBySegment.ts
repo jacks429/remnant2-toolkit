@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client'
 
-import { OrderBy } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
+import { OrderBy } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
 
 export function getOrderBySegment(
   orderBy: OrderBy,

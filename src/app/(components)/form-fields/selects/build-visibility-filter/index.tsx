@@ -3,7 +3,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { useBuildVisibilityFilter } from '@/app/(components)/form-fields/filters/build-visibility-filter/use-build-visibility-filter'
+import { useBuildVisibilityFilter } from '@/app/(components)/form-fields/selects/build-visibility-filter/use-build-visibility-filter'
 
 interface Props {
   value: string

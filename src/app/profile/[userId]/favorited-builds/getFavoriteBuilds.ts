@@ -2,8 +2,8 @@
 
 import { Prisma } from '@prisma/client'
 
-import { OrderBy } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
-import { TimeRange } from '@/app/(components)/form-fields/filters/time-range-filter/use-time-range-filter'
+import { OrderBy } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
+import { TimeRange } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
 import { BuildListFilters } from '@/app/(types)/build-list-filters'
 import { getServerSession } from '@/features/auth/lib'
 import {

@@ -1,26 +1,12 @@
-import { weaponItems } from '@/app/(data)/items/weaponItems'
-import { SelectMenu } from '@/features/ui/SelectMenu'
+import { HandGunFilter } from '@/app/(components)/form-fields/selects/hand-gun-filter'
+import { LongGunFilter } from '@/app/(components)/form-fields/selects/long-gun-filter'
+import { MeleeFilter } from '@/app/(components)/form-fields/selects/melee-filter'
 
 export const DEFAULT_WEAPON_FILTERS = {
   longGun: 'All',
   handGun: 'All',
   melee: 'All',
 }
-
-const allLongGuns: string[] = weaponItems
-  .filter((item) => item.type === 'long gun')
-  .map((item) => item.name)
-allLongGuns.unshift(DEFAULT_WEAPON_FILTERS.longGun)
-
-const allHandGuns: string[] = weaponItems
-  .filter((item) => item.type === 'hand gun')
-  .map((item) => item.name)
-allHandGuns.unshift(DEFAULT_WEAPON_FILTERS.handGun)
-
-const allMelee: string[] = weaponItems
-  .filter((item) => item.type === 'melee')
-  .map((item) => item.name)
-allMelee.unshift(DEFAULT_WEAPON_FILTERS.melee)
 
 interface Props {
   selectedLongGun: string
@@ -38,35 +24,17 @@ export function WeaponFilters({
   return (
     <div className="flex w-full flex-col items-start justify-start">
       <div className="grid w-full grid-cols-1 gap-x-8 gap-y-4 text-left sm:grid-cols-3 sm:gap-y-0">
-        <SelectMenu
-          name="longGun"
-          label="By Long Gun"
+        <LongGunFilter
           value={selectedLongGun}
-          options={allLongGuns.map((weapon) => ({
-            label: weapon,
-            value: weapon,
-          }))}
-          onChange={(e) => onChange(e.target.value, 'longGun')}
+          onChange={(e) => onChange(e, 'longGun')}
         />
-        <SelectMenu
-          name="melee"
-          label="By Melee"
+        <MeleeFilter
           value={selectedMelee}
-          options={allMelee.map((weapon) => ({
-            label: weapon,
-            value: weapon,
-          }))}
-          onChange={(e) => onChange(e.target.value, 'melee')}
+          onChange={(e) => onChange(e, 'melee')}
         />
-        <SelectMenu
-          name="handGun"
-          label="By Hand Gun"
+        <HandGunFilter
           value={selectedHandGun}
-          options={allHandGuns.map((weapon) => ({
-            label: weapon,
-            value: weapon,
-          }))}
-          onChange={(e) => onChange(e.target.value, 'handGun')}
+          onChange={(e) => onChange(e, 'handGun')}
         />
       </div>
     </div>

@@ -3,8 +3,8 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { useOrderByFilter } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
-import { useTimeRangeFilter } from '@/app/(components)/form-fields/filters/time-range-filter/use-time-range-filter'
+import { useOrderByFilter } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
+import { useTimeRangeFilter } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
 import { CreatedBuildCardActions } from '@/app/profile/[userId]/(components)/CreatedBuildCardActions'
 import { getCreatedBuilds } from '@/app/profile/[userId]/created-builds/getCreatedBuilds'
 import { BuildCard } from '@/features/build/components/build-card/BuildCard'
