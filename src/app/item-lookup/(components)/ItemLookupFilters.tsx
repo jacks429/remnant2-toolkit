@@ -1,5 +1,9 @@
 import { Disclosure } from '@headlessui/react'
-import { ChevronRightIcon, TrashIcon } from '@heroicons/react/24/solid'
+import {
+  ChevronRightIcon,
+  FunnelIcon,
+  TrashIcon,
+} from '@heroicons/react/24/solid'
 import isEqual from 'lodash.isequal'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useRef, useState } from 'react'
@@ -263,14 +267,9 @@ export function ItemLookupFilters({}: Props) {
                 <div className="w-[45px]" />
               )}
             </div>
-            <Disclosure.Button className="text-md flex items-end justify-end rounded-md border-2 border-secondary-500 bg-secondary-700 p-1.5 hover:bg-secondary-500">
+            <Disclosure.Button as={BaseButton}>
+              <FunnelIcon className="h-4 w-4" />
               {open ? 'Hide' : 'Show'}
-              <ChevronRightIcon
-                className={cn(
-                  'ml-1 h-5 w-5',
-                  open ? 'rotate-90 transform' : '',
-                )}
-              />
             </Disclosure.Button>
           </div>
           <Disclosure.Panel className="w-full">

@@ -1,11 +1,12 @@
 'use client'
 
 import { Disclosure } from '@headlessui/react'
-import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import { ChevronRightIcon, FunnelIcon } from '@heroicons/react/24/solid'
 import isEqual from 'lodash/isEqual'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
+import { BaseButton } from '@/app/(components)/_base/button'
 import { parseBuildListFilters } from '@/features/build/filters/lib/parseBuildListFilters'
 import { BuildListFilterFields } from '@/features/build/filters/types'
 import { Archetype, ReleaseKey } from '@/features/items/types'
@@ -299,14 +300,9 @@ export function BuildListFilters() {
             <h2 className="flex w-full items-center justify-start text-xl">
               Build Filters
             </h2>
-            <Disclosure.Button className="flex flex-row items-center justify-center rounded-md border-2 border-secondary-500 bg-secondary-700 p-2 text-sm hover:bg-secondary-500">
+            <Disclosure.Button as={BaseButton}>
+              <FunnelIcon className="h-4 w-4" />
               {open ? 'Hide' : 'Show'}
-              <ChevronRightIcon
-                className={cn(
-                  'ml-1 h-5 w-5',
-                  open ? 'rotate-90 transform' : '',
-                )}
-              />
             </Disclosure.Button>
           </div>
           <Disclosure.Panel className="w-full">
