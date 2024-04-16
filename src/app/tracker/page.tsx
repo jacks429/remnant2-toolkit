@@ -7,10 +7,10 @@ import { toast } from 'react-toastify'
 import { useIsClient, useLocalStorage } from 'usehooks-ts'
 
 import { BaseButton } from '@/app/(components)/_base/button'
+import { ImportCsvDialog } from '@/app/(components)/dialogs/import-csv-dialog'
 import { allItems } from '@/app/(data)/items/allItems'
 import { MutatorItem } from '@/app/(data)/items/types/MutatorItem'
 import { WeaponItem } from '@/app/(data)/items/types/WeaponItem'
-import { ImportCSVDialog } from '@/app/tracker/(components)/ImportCSVDialog'
 import { ImportSaveDialog } from '@/app/tracker/(components)/ImportSaveDialog'
 import { ItemTrackerFilters } from '@/app/tracker/(components)/ItemTrackerFilters'
 import { getProgressLabel } from '@/app/tracker/(lib)/getProgressLabel'
@@ -276,8 +276,8 @@ export default function Page() {
         onSubmit={saveFileFormAction}
         fileInputRef={saveFileInputRef}
       />
-      <ImportCSVDialog
-        csvItems={csvItems}
+      <ImportCsvDialog
+        items={csvItems}
         open={importCSVDialogOpen}
         onClose={() => setImportCSVDialogOpen(false)}
         onSubmit={handleCsvFileSubmit}
