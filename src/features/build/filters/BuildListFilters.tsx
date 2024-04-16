@@ -1,14 +1,14 @@
 'use client'
 
 import { Disclosure } from '@headlessui/react'
-import { ChevronRightIcon, FunnelIcon } from '@heroicons/react/24/solid'
+import { FunnelIcon } from '@heroicons/react/24/solid'
 import isEqual from 'lodash/isEqual'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
+import { BuildListFilters as Filters } from '@/app/(types)/build-list-filters'
 import { parseBuildListFilters } from '@/features/build/filters/lib/parseBuildListFilters'
-import { BuildListFilterFields } from '@/features/build/filters/types'
 import { Archetype, ReleaseKey } from '@/features/items/types'
 import { Checkbox } from '@/features/ui/Checkbox'
 import { FiltersContainer } from '@/features/ui/filters/FiltersContainer'
@@ -28,7 +28,7 @@ import { DEFAULT_RELEASE_FILTERS, ReleaseFilters } from './parts/ReleaseFilters'
 import { SearchBuildsFilter } from './parts/SearchBuildsFilter'
 import { DEFAULT_WEAPON_FILTERS, WeaponFilters } from './parts/WeaponFilters'
 
-export const DEFAULT_BUILD_LIST_FILTERS: BuildListFilterFields = {
+export const DEFAULT_BUILD_LIST_FILTERS: Filters = {
   amulet: DEFAULT_JEWELRY_FILTERS.amulet,
   archetypes: [],
   buildTags: DEFAULT_BUILD_TAG_FILTERS,
@@ -55,8 +55,7 @@ export function BuildListFilters() {
 
   // Tracks the filter changes by the user that are not yet applied
   // via clicking the Apply Filters button
-  const [unappliedFilters, setUnappliedFilters] =
-    useState<BuildListFilterFields>(filters)
+  const [unappliedFilters, setUnappliedFilters] = useState<Filters>(filters)
 
   // This is used to check if the filters are applied
   // This is used to determine if the Apply Filters button should pulsate
@@ -169,7 +168,7 @@ export function BuildListFilters() {
 
   function handleRingChange(ring: string, ringIndex: number) {
     setUnappliedFilters({ ...unappliedFilters, [`ring${ringIndex}`]: ring })
-    if (ring !== filters[`ring${ringIndex}` as keyof BuildListFilterFields]) {
+    if (ring !== filters[`ring${ringIndex}` as keyof Filters]) {
       setAreFiltersApplied(false)
     }
   }
@@ -216,7 +215,7 @@ export function BuildListFilters() {
     setAreFiltersApplied(false)
   }
 
-  function handleApplyFilters(newFilters: BuildListFilterFields) {
+  function handleApplyFilters(newFilters: Filters) {
     let finalPath = `${pathname}?t=${Date.now()}&`
     if (
       newFilters.archetypes.length > 0 &&
@@ -306,7 +305,7 @@ export function BuildListFilters() {
             </Disclosure.Button>
           </div>
           <Disclosure.Panel className="w-full">
-            <FiltersContainer<BuildListFilterFields>
+            <FiltersContainer<Filters>
               areAnyFiltersActive={areAnyFiltersActive}
               areFiltersApplied={areFiltersApplied}
               filters={unappliedFilters}

@@ -1,10 +1,8 @@
 'use client'
 
-import isEqual from 'lodash.isequal'
 import { useSearchParams } from 'next/navigation'
 
 import { SaveCard } from '@/app/world-save-archive/(components)/SaveCard'
-import { DEFAULT_SEARCH_FILTERS } from '@/app/world-save-archive/(components)/SaveLookupFilters'
 import { worldSaves } from '@/app/world-save-archive/(data)/worldSaves'
 import { parseSearchFilters } from '@/app/world-save-archive/(lib)/parseSearchFilters'
 import { BOSS_AFFIXES, BOSSES } from '@/app/world-save-archive/constants'
@@ -19,7 +17,7 @@ function getFilteredSaves(filters: SearchFilters): FilteredSave[] {
     }
   })
 
-  if (filters.bossName && filters.bossName !== 'Choose') {
+  if (filters.bossName && filters.bossName !== 'Choose...') {
     filteredSaves = filteredSaves.filter(
       (save) => save.bossName === filters.bossName,
     )

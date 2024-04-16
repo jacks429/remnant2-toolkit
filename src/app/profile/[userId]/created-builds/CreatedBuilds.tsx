@@ -3,13 +3,17 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
+import { BuildVisibilityFilter } from '@/app/(components)/form-fields/filters/build-visibility-filter'
+import { useBuildVisibilityFilter } from '@/app/(components)/form-fields/filters/build-visibility-filter/use-build-visibility-filter'
+import { OrderByFilter } from '@/app/(components)/form-fields/filters/order-by-filter'
+import { useOrderByFilter } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
+import { TimeRangeFilter } from '@/app/(components)/form-fields/filters/time-range-filter'
+import { useTimeRangeFilter } from '@/app/(components)/form-fields/filters/time-range-filter/use-time-range-filter'
 import { CreatedBuildCardActions } from '@/app/profile/[userId]/(components)/CreatedBuildCardActions'
 import { getCreatedBuilds } from '@/app/profile/[userId]/created-builds/getCreatedBuilds'
 import { BuildCard } from '@/features/build/components/build-card/BuildCard'
 import { CreateBuildCard } from '@/features/build/components/build-card/CreateBuildCard'
 import { BuildList } from '@/features/build/components/BuildList'
-import { BuildListSecondaryFilters } from '@/features/build/filters/BuildListSecondaryFilters'
-import { useBuildListSecondaryFilters } from '@/features/build/filters/hooks/useBuildListSecondaryFilters'
 import { parseBuildListFilters } from '@/features/build/filters/lib/parseBuildListFilters'
 import { useBuildListState } from '@/features/build/hooks/useBuildListState'
 import { usePagination } from '@/features/pagination/usePagination'
@@ -34,18 +38,10 @@ export function CreatedBuilds({ isEditable, userId }: Props) {
 
   const itemsPerPage = isEditable ? 15 : 16
 
-  const {
-    orderBy,
-    orderByOptions,
-    timeRange,
-    timeRangeOptions,
-    handleOrderByChange,
-    handleTimeRangeChange,
-  } = useBuildListSecondaryFilters('newest')
-
-  const [buildVisibility, setBuildVisibility] = useState<
-    'All' | 'Public' | 'Private'
-  >('All')
+  const { orderBy, handleOrderByChange } = useOrderByFilter('newest')
+  const { timeRange, handleTimeRangeChange } = useTimeRangeFilter('all-time')
+  const { buildVisibility, handleBuildVisibilityChange } =
+    useBuildVisibilityFilter('all')
 
   const {
     currentPage,
@@ -112,38 +108,19 @@ export function CreatedBuilds({ isEditable, userId }: Props) {
         headerActions={
           <div className="flex w-full flex-col items-end justify-end gap-x-2 gap-y-1 sm:flex-row sm:gap-y-0">
             <div className="w-full max-w-[250px]">
-              <SelectMenu
-                label="Time Range"
-                showLabel={false}
-                name="timeRange"
+              <TimeRangeFilter
                 value={timeRange}
-                options={timeRangeOptions}
-                onChange={(e) => handleTimeRangeChange(e.target.value)}
+                onChange={handleTimeRangeChange}
               />
             </div>
             <div className="w-full max-w-[250px]">
-              <SelectMenu
-                label="Order By"
-                showLabel={false}
-                name="orderBy"
-                value={orderBy}
-                options={orderByOptions}
-                onChange={(e) => handleOrderByChange(e.target.value)}
-              />
+              <OrderByFilter value={orderBy} onChange={handleOrderByChange} />
             </div>
             {isEditable ? (
               <div className="w-full max-w-[250px]">
-                <SelectMenu
-                  label="Build Visibility"
-                  showLabel={false}
-                  name="buildVisibility"
+                <BuildVisibilityFilter
                   value={buildVisibility}
-                  options={[
-                    { label: 'all builds', value: 'All' },
-                    { label: 'public', value: 'Public' },
-                    { label: 'private', value: 'Private' },
-                  ]}
-                  onChange={(e) => setBuildVisibility(e.target.value as any)}
+                  onChange={handleBuildVisibilityChange}
                 />
               </div>
             ) : null}

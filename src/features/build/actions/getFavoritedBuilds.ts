@@ -2,6 +2,9 @@
 
 import { Prisma } from '@prisma/client'
 
+import { OrderBy } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
+import { TimeRange } from '@/app/(components)/form-fields/filters/time-range-filter/use-time-range-filter'
+import { BuildListFilters } from '@/app/(types)/build-list-filters'
 import { getServerSession } from '@/features/auth/lib'
 import {
   communityBuildsCountQuery,
@@ -34,11 +37,6 @@ import {
 } from '@/features/build/filters/queries/segments/limitByWeapons'
 import { limitToBuildsWithReferenceLink } from '@/features/build/filters/queries/segments/limitToBuildsWithReferenceLink'
 import { limitToBuildsWithVideo } from '@/features/build/filters/queries/segments/limitToBuildsWithVideo'
-import {
-  BuildListFilterFields,
-  OrderBy,
-  TimeRange,
-} from '@/features/build/filters/types'
 import { DBBuild } from '@/features/build/types'
 import { prisma } from '@/features/db'
 import { PaginationResponse } from '@/features/pagination/usePagination'
@@ -51,7 +49,7 @@ export async function getFavoritedBuilds({
   pageNumber,
   timeRange,
 }: {
-  buildListFilters: BuildListFilterFields
+  buildListFilters: BuildListFilters
   itemsPerPage: number
   orderBy: OrderBy
   pageNumber: number

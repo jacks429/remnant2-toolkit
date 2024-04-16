@@ -2,7 +2,10 @@
 
 import { Prisma } from '@prisma/client'
 
-import { getServerSession } from '@/features/auth/lib'
+import { BuildVisibility } from '@/app/(components)/form-fields/filters/build-visibility-filter/use-build-visibility-filter'
+import { OrderBy } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
+import { TimeRange } from '@/app/(components)/form-fields/filters/time-range-filter/use-time-range-filter'
+import { BuildListFilters } from '@/app/(types)/build-list-filters'
 import {
   communityBuildsCountQuery,
   communityBuildsQuery,
@@ -34,11 +37,6 @@ import {
 } from '@/features/build/filters/queries/segments/limitByWeapons'
 import { limitToBuildsWithReferenceLink } from '@/features/build/filters/queries/segments/limitToBuildsWithReferenceLink'
 import { limitToBuildsWithVideo } from '@/features/build/filters/queries/segments/limitToBuildsWithVideo'
-import {
-  BuildListFilterFields,
-  OrderBy,
-  TimeRange,
-} from '@/features/build/filters/types'
 import { DBBuild } from '@/features/build/types'
 import { prisma } from '@/features/db'
 import { PaginationResponse } from '@/features/pagination/usePagination'
@@ -48,7 +46,7 @@ export type CreatedBuildsFilter = 'date created' | 'upvotes'
 
 export async function getCreatedBuilds({
   buildListFilters,
-  buildVisibility = 'Public',
+  buildVisibility = 'public',
   featuredBuildsOnly,
   isEditable,
   itemsPerPage,
@@ -57,8 +55,8 @@ export async function getCreatedBuilds({
   timeRange,
   userId,
 }: {
-  buildListFilters: BuildListFilterFields
-  buildVisibility?: 'All' | 'Public' | 'Private'
+  buildListFilters: BuildListFilters
+  buildVisibility?: BuildVisibility
   featuredBuildsOnly: boolean
   isEditable: boolean
   itemsPerPage: number
@@ -104,9 +102,9 @@ export async function getCreatedBuilds({
   if (!isEditable) {
     isPublicSegment = Prisma.sql`AND Build.isPublic = true`
   } else {
-    if (buildVisibility === 'Public') {
+    if (buildVisibility === 'public') {
       isPublicSegment = Prisma.sql`AND Build.isPublic = true`
-    } else if (buildVisibility === 'Private') {
+    } else if (buildVisibility === 'private') {
       isPublicSegment = Prisma.sql`AND Build.isPublic = false`
     } else {
       isPublicSegment = Prisma.empty

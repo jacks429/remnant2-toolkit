@@ -5,16 +5,16 @@ import { amuletItems } from '@/app/(data)/items/amuletItems'
 import { archetypeItems } from '@/app/(data)/items/archetypeItems'
 import { ringItems } from '@/app/(data)/items/ringItems'
 import { weaponItems } from '@/app/(data)/items/weaponItems'
+import { BuildListFilters } from '@/app/(types)/build-list-filters'
 import { ALL_BUILD_TAGS } from '@/features/build/build-tags/constants'
 import { RELEASE_TO_NAME } from '@/features/items/constants'
 import { Archetype, ReleaseKey } from '@/features/items/types'
 
 import { DEFAULT_BUILD_LIST_FILTERS } from '../BuildListFilters'
-import { BuildListFilterFields } from '../types'
 
 export function parseBuildListFilters(
   searchParams: ReadonlyURLSearchParams,
-): BuildListFilterFields {
+): BuildListFilters {
   const params = new URLSearchParams(searchParams)
   let archetypes = params.get('archetypes')
   let buildTags = params.get('buildTags')
@@ -160,5 +160,5 @@ export function parseBuildListFilters(
     includePatchAffectedBuilds: Boolean(includePatchAffectedBuilds),
     limitToBuildsWithVideo: Boolean(limitToBuildsWithVideo),
     limitToBuildsWithReferenceLink: Boolean(limitToBuildsWithReferenceLink),
-  } satisfies BuildListFilterFields
+  } satisfies BuildListFilters
 }

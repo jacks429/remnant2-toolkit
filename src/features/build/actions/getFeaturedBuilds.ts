@@ -2,6 +2,9 @@
 
 import { Prisma } from '@prisma/client'
 
+import { OrderBy } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
+import { TimeRange } from '@/app/(components)/form-fields/filters/time-range-filter/use-time-range-filter'
+import { BuildListFilters } from '@/app/(types)/build-list-filters'
 import { getServerSession } from '@/features/auth/lib'
 import { limitToBuildsWithReferenceLink } from '@/features/build/filters/queries/segments/limitToBuildsWithReferenceLink'
 import { limitToBuildsWithVideo } from '@/features/build/filters/queries/segments/limitToBuildsWithVideo'
@@ -37,7 +40,6 @@ import {
   limitByWeaponsSegment,
   weaponFiltersToIds,
 } from '../filters/queries/segments/limitByWeapons'
-import { BuildListFilterFields, OrderBy, TimeRange } from '../filters/types'
 import { DBBuild } from '../types'
 
 export async function getFeaturedBuilds({
@@ -47,7 +49,7 @@ export async function getFeaturedBuilds({
   pageNumber,
   timeRange,
 }: {
-  buildListFilters: BuildListFilterFields
+  buildListFilters: BuildListFilters
   itemsPerPage: number
   orderBy: OrderBy
   pageNumber: number

@@ -5,11 +5,12 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { Link } from '@/app/(components)/_base/link'
+import { useOrderByFilter } from '@/app/(components)/form-fields/filters/order-by-filter/use-order-by-filter'
+import { useTimeRangeFilter } from '@/app/(components)/form-fields/filters/time-range-filter/use-time-range-filter'
 import { getFeaturedBuilds } from '@/features/build/actions/getFeaturedBuilds'
 import { BuildCard } from '@/features/build/components/build-card/BuildCard'
 import { BuildList } from '@/features/build/components/BuildList'
 import { BuildListSecondaryFilters } from '@/features/build/filters/BuildListSecondaryFilters'
-import { useBuildListSecondaryFilters } from '@/features/build/filters/hooks/useBuildListSecondaryFilters'
 import { parseBuildListFilters } from '@/features/build/filters/lib/parseBuildListFilters'
 import { useBuildListState } from '@/features/build/hooks/useBuildListState'
 import { usePagination } from '@/features/pagination/usePagination'
@@ -32,14 +33,8 @@ export function FeaturedBuilds({ itemsPerPage = 8 }: Props) {
   const { buildListState, setBuildListState } = useBuildListState()
   const { builds, totalBuildCount, isLoading } = buildListState
 
-  const {
-    orderBy,
-    orderByOptions,
-    timeRange,
-    timeRangeOptions,
-    handleOrderByChange,
-    handleTimeRangeChange,
-  } = useBuildListSecondaryFilters('newest')
+  const { orderBy, handleOrderByChange } = useOrderByFilter('newest')
+  const { timeRange, handleTimeRangeChange } = useTimeRangeFilter('all-time')
 
   const {
     currentPage,
@@ -103,10 +98,8 @@ export function FeaturedBuilds({ itemsPerPage = 8 }: Props) {
         headerActions={
           <BuildListSecondaryFilters
             orderBy={orderBy}
-            orderByOptions={orderByOptions}
             onOrderByChange={handleOrderByChange}
             timeRange={timeRange}
-            timeRangeOptions={timeRangeOptions}
             onTimeRangeChange={handleTimeRangeChange}
           />
         }

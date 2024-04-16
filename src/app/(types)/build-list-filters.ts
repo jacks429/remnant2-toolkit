@@ -1,8 +1,7 @@
+import { BuildTagFilterItem } from '@/features/build/filters/parts/BuildTagFilters'
 import { Archetype, ReleaseKey } from '@/features/items/types'
 
-import { BuildTagFilterItem } from './parts/BuildTagFilters'
-
-export interface BuildListFilterFields {
+export interface BuildListFilters {
   amulet: string
   archetypes: Archetype[]
   buildTags: BuildTagFilterItem[]
@@ -19,6 +18,3 @@ export interface BuildListFilterFields {
   limitToBuildsWithVideo: boolean
   limitToBuildsWithReferenceLink: boolean
 }
-
-export type TimeRange = 'day' | 'week' | 'month' | 'all-time'
-export type OrderBy = 'alphabetical' | 'most favorited' | 'newest'
