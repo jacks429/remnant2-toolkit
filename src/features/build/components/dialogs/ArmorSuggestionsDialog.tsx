@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
+import { WeightClassSelect } from '@/app/(components)/form-fields/selects/weight-class-select'
 import { ArmorSuggestionCard } from '@/features/armor-calculator/components/ArmorSuggestionCard'
 import { getArmorSuggestions } from '@/features/armor-calculator/lib/getArmorSuggestions'
 import {
@@ -13,7 +14,6 @@ import { Item } from '@/features/items/types'
 import { Pagination } from '@/features/pagination/Pagination'
 import { usePagination } from '@/features/pagination/usePagination'
 import { Dialog } from '@/features/ui/Dialog'
-import { SelectMenu } from '@/features/ui/SelectMenu'
 
 const ITEMS_PER_PAGE = 8
 
@@ -131,9 +131,9 @@ export function ArmorSuggestionsDialog({
     <ArmorInfoContainer {...armorInfoProps}>
       <div className="flex w-full flex-row items-end justify-center gap-x-2 text-left">
         <div className="flex w-full max-w-md items-end justify-center gap-x-2">
-          <SelectMenu
-            label="Desired Weight Class"
-            name="desired_weight_class"
+          <WeightClassSelect
+            value={desiredWeightClass}
+            onChange={handleWeightClassChange}
             options={[
               { label: 'Choose', value: 'CHOOSE' },
               { label: 'Light', value: 'LIGHT' },
@@ -141,13 +141,8 @@ export function ArmorSuggestionsDialog({
               { label: 'Heavy', value: 'HEAVY' },
               { label: 'Ultra', value: 'ULTRA' },
             ]}
-            onChange={(e) =>
-              handleWeightClassChange(
-                e.target.value as WeightClassKeysWithDefault,
-              )
-            }
-            value={desiredWeightClass}
           />
+
           <BaseButton
             color="red"
             className="mt-4"
@@ -260,6 +255,7 @@ function ArmorInfoContainer({
       maxWidthClass="max-w-7xl"
       open={isDialogOpen}
       onClose={onDialogClose}
+      zIndex="z-5"
     >
       <ItemInfoDialog
         item={itemInfo}

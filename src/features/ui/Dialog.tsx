@@ -27,7 +27,7 @@ interface DialogProps {
   title: React.ReactNode
   subtitle?: React.ReactNode
   onClose: () => void
-  zIndex?: 'z-10' | 'z-20' | 'z-30' | 'z-40' | 'z-50'
+  zIndex?: 'z-5' | 'z-10' | 'z-20' | 'z-30' | 'z-40' | 'z-50'
 }
 
 export function Dialog({
@@ -57,7 +57,7 @@ export function Dialog({
         <div
           className={cn(
             maxWidthClass,
-            'fixed inset-0 z-10 mx-auto w-full overflow-y-auto',
+            'fixed inset-0 mx-auto w-full overflow-y-auto',
           )}
         >
           <div className="flex min-h-full w-full items-center justify-center p-4 text-center sm:items-center sm:p-0">

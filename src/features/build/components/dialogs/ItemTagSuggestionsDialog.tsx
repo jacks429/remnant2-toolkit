@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
+import { ItemTagSelect } from '@/app/(components)/form-fields/selects/item-tag-select'
 import { allItems } from '@/app/(data)/items/allItems'
 import { archetypeItems } from '@/app/(data)/items/archetypeItems'
 import { ConcoctionItem } from '@/app/(data)/items/types/ConcoctionItem'
@@ -16,7 +17,6 @@ import { ITEM_TAGS } from '@/features/items/constants'
 import { itemMatchesSearchText } from '@/features/items/lib/itemMatchesSearchText'
 import { Item, ItemTag } from '@/features/items/types'
 import { Dialog } from '@/features/ui/Dialog'
-import { SelectMenu } from '@/features/ui/SelectMenu'
 
 import { cleanUpBuildState } from '../../lib/cleanUpBuildState'
 
@@ -127,7 +127,7 @@ function getItemSuggestions(
   return suggestions
 }
 
-type ItemTagWithDefault = ItemTag | 'Choose'
+export type ItemTagWithDefault = ItemTag | 'Choose'
 const DEFAULT_TAG = { label: 'Choose', value: 'Choose' } satisfies {
   label: string
   value: ItemTagWithDefault
@@ -756,6 +756,7 @@ export function ItemTagSuggestionsDialog({
       maxWidthClass="max-w-lg"
       open={open}
       onClose={onClose}
+      zIndex="z-5"
     >
       <ItemInfoDialog
         item={itemInfo}
@@ -764,18 +765,16 @@ export function ItemTagSuggestionsDialog({
       />
       <ItemTagContainer>
         <div className="flex w-full flex-row items-end justify-center gap-x-2 text-left">
-          <SelectMenu
-            label="Tags"
-            options={allTagOptions}
+          <ItemTagSelect
             value={selectedTag?.value}
+            options={allTagOptions}
             onChange={(e) => {
-              const newTag = allTagOptions.find(
-                (tag) => tag.value === e.target.value,
-              )
+              const newTag = allTagOptions.find((tag) => tag.value === e)
               if (!newTag) return
               handleItemTagChange(newTag)
             }}
           />
+
           <BaseButton
             color="red"
             className="mt-4"
