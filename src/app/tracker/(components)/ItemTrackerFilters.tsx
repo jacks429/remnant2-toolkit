@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useDebounceValue, useLocalStorage } from 'usehooks-ts'
 
 import { ClearFiltersButton } from '@/app/(components)/buttons/filter-buttons/clear-filters-button'
+import { TrackerCategoryFilter } from '@/app/(components)/form-fields/filters/tracker-category-filter'
 import { Input } from '@/app/(components)/form-fields/input'
 import { MutatorItem } from '@/app/(data)/items/types/MutatorItem'
 import { WeaponItem } from '@/app/(data)/items/types/WeaponItem'
@@ -9,7 +10,6 @@ import { FilteredItem } from '@/app/tracker/(lib)/useFilteredItems'
 import { RELEASE_TO_NAME } from '@/features/items/constants'
 import { ReleaseKey } from '@/features/items/types'
 import { Checkbox } from '@/features/ui/Checkbox'
-import { SelectMenu } from '@/features/ui/SelectMenu'
 import { cn } from '@/lib/classnames'
 
 import { ItemTrackerCategory, LocalStorage } from '../(lib)/types'
@@ -251,10 +251,8 @@ export function ItemTrackerFilters({
 
         <div className="col-span-full border border-transparent border-b-primary-800 pb-2 sm:col-span-2">
           <div className="flex w-full flex-col items-start justify-start gap-x-4">
-            <SelectMenu
-              label="Category"
-              showLabel={false}
-              value={selectedItemCategory as string}
+            <TrackerCategoryFilter
+              value={selectedItemCategory}
               options={itemCategoryOptions.map((option) =>
                 option.value === 'relicfragment'
                   ? {
@@ -266,11 +264,7 @@ export function ItemTrackerFilters({
                     }
                   : option,
               )}
-              onChange={(e) =>
-                handleItemCategoryFilterChange(
-                  e.target.value as ItemTrackerCategory,
-                )
-              }
+              onChange={handleItemCategoryFilterChange}
             />
           </div>
         </div>
