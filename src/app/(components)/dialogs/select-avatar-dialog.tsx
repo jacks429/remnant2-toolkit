@@ -1,7 +1,12 @@
 import { BaseButton } from '@/app/(components)/_base/button'
+import {
+  BaseDialog,
+  BaseDialogBody,
+  BaseDialogDescription,
+  BaseDialogTitle,
+} from '@/app/(components)/_base/dialog'
 import { AvatarBox } from '@/app/profile/[userId]/(components)/AvatarBox'
 import { AVATARS } from '@/app/profile/[userId]/(lib)/constants'
-import { Dialog } from '@/features/ui/Dialog'
 
 interface Props {
   open: boolean
@@ -9,15 +14,14 @@ interface Props {
   onSelect: (avatarId: string) => void
 }
 
-export function AvatarSelectDialog({ open, onClose, onSelect }: Props) {
+export function SelectAvatarDialog({ open, onClose, onSelect }: Props) {
   return (
-    <Dialog
-      title="Select Avatar"
-      maxWidthClass="max-w-4xl"
-      open={open}
-      onClose={onClose}
-    >
-      <div className="grid w-full grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-6">
+    <BaseDialog open={open} onClose={onClose} size="4xl">
+      <BaseDialogTitle>Select Avatar</BaseDialogTitle>
+      <BaseDialogDescription>
+        Select a new avatar to display on your public profile.
+      </BaseDialogDescription>
+      <BaseDialogBody>
         {AVATARS.map((avatar) => (
           <BaseButton
             plain
@@ -28,7 +32,7 @@ export function AvatarSelectDialog({ open, onClose, onSelect }: Props) {
             <AvatarBox key={avatar.id} avatar={avatar} showLabel={true} />
           </BaseButton>
         ))}
-      </div>
-    </Dialog>
+      </BaseDialogBody>
+    </BaseDialog>
   )
 }

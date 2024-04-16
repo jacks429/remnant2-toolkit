@@ -6,8 +6,8 @@ import { toast } from 'react-toastify'
 
 import { BaseButton } from '@/app/(components)/_base/button'
 import { Input } from '@/app/(components)/_base/input'
+import { SelectAvatarDialog } from '@/app/(components)/dialogs/select-avatar-dialog'
 import { AvatarBox } from '@/app/profile/[userId]/(components)/AvatarBox'
-import { AvatarSelectDialog } from '@/app/profile/[userId]/(components)/AvatarSelectDialog'
 import { getAvatarById } from '@/app/profile/[userId]/(lib)/getAvatarById'
 import { saveProfile } from '@/app/profile/[userId]/saveProfile'
 import { Textarea } from '@/features/ui/Textarea'
@@ -46,7 +46,7 @@ export function ProfileHeader({
 
   return (
     <>
-      <AvatarSelectDialog
+      <SelectAvatarDialog
         open={isAvatarSelectDialogOpen}
         onClose={() => setIsAvatarSelectDialogOpen(false)}
         onSelect={(avatarId) => {
