@@ -1,38 +1,39 @@
+'use client'
+
 import { useState } from 'react'
 
+import {
+  BaseDialog,
+  BaseDialogBody,
+  BaseDialogTitle,
+} from '@/app/(components)/_base/dialog'
+import { ItemInfoDialog } from '@/app/(components)/dialogs/item-info-dialog'
+import { buildStateToMasonryItems } from '@/features/build/lib/buildStateToMasonryItems'
+import { BuildState } from '@/features/build/types'
 import { ItemCard } from '@/features/items/components/ItemCard'
-import { ItemInfoDialog } from '@/features/items/components/ItemInfoDialog'
 import { Item } from '@/features/items/types'
-import { Dialog } from '@/features/ui/Dialog'
-
-import { buildStateToMasonryItems } from '../../lib/buildStateToMasonryItems'
-import { BuildState } from '../../types'
 
 interface Props {
-  buildState: BuildState
   open: boolean
+  buildState: BuildState
   onClose: () => void
 }
 
-export function DetailedBuildDialog({ buildState, open, onClose }: Props) {
+export function DetailedBuildDialog({ open, buildState, onClose }: Props) {
   const masonryItems = buildStateToMasonryItems(buildState)
 
   const [selectedItem, setSelectedItem] = useState<Item | null>(null)
   const isItemInfoOpen = Boolean(selectedItem)
 
   return (
-    <>
-      <Dialog
-        title="Detailed Build View"
-        maxWidthClass="max-w-7xl"
-        open={open}
-        onClose={onClose}
-      >
-        <ItemInfoDialog
-          open={isItemInfoOpen}
-          onClose={() => setSelectedItem(null)}
-          item={selectedItem}
-        />
+    <BaseDialog open={open} onClose={onClose} size="7xl">
+      <ItemInfoDialog
+        open={isItemInfoOpen}
+        onClose={() => setSelectedItem(null)}
+        item={selectedItem}
+      />
+      <BaseDialogTitle>Detailed Build View</BaseDialogTitle>
+      <BaseDialogBody>
         <div className="mt-12 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {masonryItems.map((item, index) => (
             <ItemCard
@@ -44,7 +45,7 @@ export function DetailedBuildDialog({ buildState, open, onClose }: Props) {
             />
           ))}
         </div>
-      </Dialog>
-    </>
+      </BaseDialogBody>
+    </BaseDialog>
   )
 }

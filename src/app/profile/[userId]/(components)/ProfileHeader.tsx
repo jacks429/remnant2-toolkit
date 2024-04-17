@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 import { BaseButton } from '@/app/(components)/_base/button'
-import { Input } from '@/app/(components)/_base/input'
+import { BaseInput } from '@/app/(components)/_base/input'
 import { SelectAvatarDialog } from '@/app/(components)/dialogs/select-avatar-dialog'
 import { AvatarBox } from '@/app/profile/[userId]/(components)/AvatarBox'
 import { getAvatarById } from '@/app/profile/[userId]/(lib)/getAvatarById'
@@ -70,7 +70,7 @@ export function ProfileHeader({
       <div className="w-full">
         <div className="flex max-w-md items-center gap-x-3">
           {isEditable && isEditing ? (
-            <Input
+            <BaseInput
               onChange={(e) => setNewDisplayName(e.target.value)}
               value={newDisplayName}
             />

@@ -105,7 +105,7 @@ export function ItemButton({
         >
           <button
             className={cn(
-              'absolute right-0 top-0 z-[5]',
+              'absolute right-0 top-0 z-[1]',
               size === 'sm' && 'right-[-20px]',
             )}
             onClick={() =>
@@ -126,7 +126,7 @@ export function ItemButton({
       <button
         onClick={onClick}
         className={cn(
-          'relative flex items-center justify-center overflow-hidden border-2 border-gray-700',
+          'relative z-0 flex items-center justify-center overflow-hidden border-2 border-gray-700',
           `bg-[url('https://d2sqltdcj8czo5.cloudfront.net/card-body-bg.jpg')]`,
           isEditable && 'border-gray-700 hover:border-secondary-500',
           size === 'sm' && 'h-[22px] w-[22px]',
@@ -156,7 +156,7 @@ export function ItemButton({
       {item?.name && (
         <div
           className={cn(
-            'z-[5] flex items-center justify-center bg-secondary-900 px-1 py-0.5 text-center text-[10px] text-gray-100',
+            'flex items-center justify-center bg-secondary-900 px-1 py-0.5 text-center text-[10px] text-gray-100',
             MANUAL_ITEM_NAME_TEXT_TRANSFORMS.some(
               (i) => i.name === item.name,
             ) && 'text-[9px]',

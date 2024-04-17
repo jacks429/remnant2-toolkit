@@ -2,23 +2,28 @@ import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 import { BaseButton } from '@/app/(components)/_base/button'
+import {
+  BaseDialog,
+  BaseDialogBody,
+  BaseDialogDescription,
+  BaseDialogTitle,
+} from '@/app/(components)/_base/dialog'
 import { getArrayOfLength } from '@/features/build/lib/getArrayOfLength'
 import { DBBuild } from '@/features/build/types'
 import { addBuildToLoadout } from '@/features/loadouts/actions/addBuildToLoadout'
 import { getLoadoutList } from '@/features/loadouts/actions/getLoadoutList'
 import { EmptyLoadoutCard } from '@/features/loadouts/components/EmptyLoadoutCard'
 import { LoadoutCard } from '@/features/loadouts/components/LoadoutCard'
-import { Dialog } from '@/features/ui/Dialog'
 import { Skeleton } from '@/features/ui/Skeleton'
 
 interface Props {
+  open: boolean
   buildId: string | null
   isEditable: boolean
-  open: boolean
   onClose: () => void
 }
 
-export function LoadoutDialog({ buildId, isEditable, open, onClose }: Props) {
+export function LoadoutDialog({ open, buildId, isEditable, onClose }: Props) {
   const [loading, setLoading] = useState(true)
   const [loadoutList, setLoadoutList] = useState<
     Array<DBBuild & { slot: number }>
@@ -81,59 +86,60 @@ export function LoadoutDialog({ buildId, isEditable, open, onClose }: Props) {
   }
 
   return (
-    <Dialog
-      title="Loadouts"
-      subtitle="Builds added to a loadout will be favorited. Unfavoriting a build will remove it from the loadout."
-      maxWidthClass="max-w-6xl"
-      open={open}
-      onClose={onClose}
-    >
-      <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {getArrayOfLength(8).map((_, index) => {
-          if (loading) {
+    <BaseDialog open={open} onClose={onClose} size="6xl">
+      <BaseDialogTitle>Loadouts</BaseDialogTitle>
+      <BaseDialogDescription>
+        Builds added to a loadout will be favorited. Unfavoriting a build will
+        remove it from the loadout.
+      </BaseDialogDescription>
+      <BaseDialogBody>
+        <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {getArrayOfLength(8).map((_, index) => {
+            if (loading) {
+              return (
+                <Skeleton
+                  key={index}
+                  className="col-span-1 flex h-full min-h-[350px] flex-col items-center justify-start rounded-lg border-4 border-dashed border-gray-500 bg-black text-center shadow"
+                />
+              )
+            }
+
+            const userLoadoutBuild = loadoutList.find(
+              (build) => build.slot - 1 === index,
+            )
+
+            if (!userLoadoutBuild) {
+              return (
+                <BaseButton
+                  plain
+                  key={index}
+                  onClick={() => addToLoadout(index + 1)}
+                >
+                  <EmptyLoadoutCard
+                    key={index}
+                    showHover={true}
+                    label="Click to add build to this loadout slot."
+                  />
+                </BaseButton>
+              )
+            }
+
             return (
-              <Skeleton
-                key={index}
-                className="col-span-1 flex h-full min-h-[350px] flex-col items-center justify-start rounded-lg border-4 border-dashed border-gray-500 bg-black text-center shadow"
+              <LoadoutCard
+                key={`${userLoadoutBuild.id}-${index}`}
+                build={userLoadoutBuild}
+                isEditable={isEditable}
+                onRemove={() => removeFromLoadout(userLoadoutBuild.slot)}
+                onSlotChange={(success, newLoadouts) => {
+                  if (success && newLoadouts) {
+                    swapLoadoutSlot(newLoadouts)
+                  }
+                }}
               />
             )
-          }
-
-          const userLoadoutBuild = loadoutList.find(
-            (build) => build.slot - 1 === index,
-          )
-
-          if (!userLoadoutBuild) {
-            return (
-              <BaseButton
-                plain
-                key={index}
-                onClick={() => addToLoadout(index + 1)}
-              >
-                <EmptyLoadoutCard
-                  key={index}
-                  showHover={true}
-                  label="Click to add build to this loadout slot."
-                />
-              </BaseButton>
-            )
-          }
-
-          return (
-            <LoadoutCard
-              key={`${userLoadoutBuild.id}-${index}`}
-              build={userLoadoutBuild}
-              isEditable={isEditable}
-              onRemove={() => removeFromLoadout(userLoadoutBuild.slot)}
-              onSlotChange={(success, newLoadouts) => {
-                if (success && newLoadouts) {
-                  swapLoadoutSlot(newLoadouts)
-                }
-              }}
-            />
-          )
-        })}
-      </div>
-    </Dialog>
+          })}
+        </div>
+      </BaseDialogBody>
+    </BaseDialog>
   )
 }

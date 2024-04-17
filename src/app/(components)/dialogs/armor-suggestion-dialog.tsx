@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
+import {
+  BaseDialog,
+  BaseDialogBody,
+  BaseDialogDescription,
+  BaseDialogTitle,
+} from '@/app/(components)/_base/dialog'
+import { ItemInfoDialog } from '@/app/(components)/dialogs/item-info-dialog'
 import { WeightClassSelect } from '@/app/(components)/form-fields/selects/weight-class-select'
 import { ArmorSuggestionCard } from '@/features/armor-calculator/components/ArmorSuggestionCard'
 import { getArmorSuggestions } from '@/features/armor-calculator/lib/getArmorSuggestions'
@@ -9,13 +16,49 @@ import {
   WeightClassKeysWithDefault,
 } from '@/features/armor-calculator/types'
 import { BuildState } from '@/features/build/types'
-import { ItemInfoDialog } from '@/features/items/components/ItemInfoDialog'
 import { Item } from '@/features/items/types'
 import { Pagination } from '@/features/pagination/Pagination'
 import { usePagination } from '@/features/pagination/usePagination'
-import { Dialog } from '@/features/ui/Dialog'
 
 const ITEMS_PER_PAGE = 8
+
+function ArmorInfoContainer({
+  children,
+  isDialogOpen,
+  itemInfo,
+  isItemInfoOpen,
+  onDialogClose,
+  onInfoClose,
+}: {
+  children: React.ReactNode
+  isDialogOpen: boolean
+  itemInfo: Item | null
+  isItemInfoOpen: boolean
+  onDialogClose: () => void
+  onInfoClose: () => void
+}) {
+  return (
+    <BaseDialog open={isDialogOpen} onClose={onDialogClose} size="7xl">
+      <ItemInfoDialog
+        item={itemInfo}
+        open={isItemInfoOpen}
+        onClose={onInfoClose}
+      />
+      <BaseDialogTitle>Armor Calculator</BaseDialogTitle>
+      <BaseDialogDescription>
+        Get optimal armor values for the current build.
+      </BaseDialogDescription>
+      <BaseDialogBody>
+        <div className="flex flex-col items-center justify-start sm:pr-4">
+          <h2 className="mb-4 text-2xl font-semibold text-secondary-500">
+            Armor Suggestions
+          </h2>
+          {children}
+        </div>
+      </BaseDialogBody>
+    </BaseDialog>
+  )
+}
 
 interface Props {
   buildState: BuildState
@@ -24,7 +67,7 @@ interface Props {
   onApplySuggestions: (newBuildState: BuildState) => void
 }
 
-export function ArmorSuggestionsDialog({
+export function ArmorSuggestionDialog({
   buildState,
   open,
   onClose,
@@ -230,44 +273,5 @@ export function ArmorSuggestionsDialog({
         </div>
       )}
     </ArmorInfoContainer>
-  )
-}
-
-function ArmorInfoContainer({
-  children,
-  isDialogOpen,
-  itemInfo,
-  isItemInfoOpen,
-  onDialogClose,
-  onInfoClose,
-}: {
-  children: React.ReactNode
-  isDialogOpen: boolean
-  itemInfo: Item | null
-  isItemInfoOpen: boolean
-  onDialogClose: () => void
-  onInfoClose: () => void
-}) {
-  return (
-    <Dialog
-      title="Armor Calculator"
-      subtitle="Get optimal armor values for this build."
-      maxWidthClass="max-w-7xl"
-      open={isDialogOpen}
-      onClose={onDialogClose}
-      zIndex="z-5"
-    >
-      <ItemInfoDialog
-        item={itemInfo}
-        open={isItemInfoOpen}
-        onClose={onInfoClose}
-      />
-      <div className="flex flex-col items-center justify-start sm:pr-4">
-        <h2 className="mb-4 text-2xl font-semibold text-secondary-500">
-          Armor Suggestions
-        </h2>
-        {children}
-      </div>
-    </Dialog>
   )
 }

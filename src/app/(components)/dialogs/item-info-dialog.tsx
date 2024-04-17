@@ -10,7 +10,7 @@ import {
   BaseDialogTitle,
 } from '@/app/(components)/_base/dialog'
 import { Link } from '@/app/(components)/_base/link'
-import { BaseText, BaseTextLink } from '@/app/(components)/_base/text'
+import { BaseTextLink } from '@/app/(components)/_base/text'
 import { ArchetypeItem } from '@/app/(data)/items/types/ArchetypeItem'
 import { ArmorItem } from '@/app/(data)/items/types/ArmorItem'
 import { ModItem } from '@/app/(data)/items/types/ModItem'
@@ -25,7 +25,6 @@ import { cleanItemName } from '@/features/items/lib/cleanItemName'
 import { Item } from '@/features/items/types'
 import { DescriptionWithTags } from '@/features/ui/DescriptionWithTags'
 import { capitalize } from '@/lib/capitalize'
-import { cn } from '@/lib/classnames'
 
 interface Props {
   open: boolean
@@ -54,11 +53,11 @@ export function ItemInfoDialog({ open, item, onClose }: Props) {
       <BaseDialogTitle>
         {item.name}
         <br />
-        <BaseText>{subtitle}</BaseText>
+        <span>{subtitle}</span>
       </BaseDialogTitle>
       <BaseDialogDescription>
         <span className="flex w-full flex-col items-center justify-center gap-x-2">
-          <BaseText className="flex w-full items-center justify-center gap-x-4 border-b border-t border-b-gray-800 border-t-gray-800 py-2 text-sm">
+          <span className="flex w-full items-center justify-center gap-x-4 border-b border-t border-b-gray-800 border-t-gray-800 py-2 text-sm">
             {item.wikiLinks?.map((link) => (
               <BaseTextLink
                 key={link}
@@ -82,7 +81,7 @@ export function ItemInfoDialog({ open, item, onClose }: Props) {
             >
               Share
             </BaseButton>
-          </BaseText>
+          </span>
         </span>
       </BaseDialogDescription>
       <BaseDialogBody>
@@ -99,39 +98,39 @@ export function ItemInfoDialog({ open, item, onClose }: Props) {
       </BaseDialogBody>
       <BaseDialogTitle>Description</BaseDialogTitle>
       <BaseDialogBody>
-        <BaseText>
+        <span>
           <DescriptionWithTags
             description={item.description || 'No description available.'}
             highlightBuildTags={false}
             highlightItems={false}
           />
-        </BaseText>
+        </span>
       </BaseDialogBody>
       {(MutatorItem.isMutatorItem(item) || TraitItem.isTraitItem(item)) && (
         <div className="flex flex-col items-start justify-start">
           <h4 className="mt-4 text-left text-sm text-white">At Max Level</h4>
-          <BaseText>
+          <span>
             <DescriptionWithTags
               description={item.maxLevelBonus || 'No max level bonus found.'}
               highlightBuildTags={false}
               highlightItems={false}
             />
-          </BaseText>
+          </span>
         </div>
       )}
 
       {item.cooldown && (
         <div className="flex flex-col items-start justify-start">
           <h4 className="mt-4 text-left text-sm text-white">Cooldown</h4>
-          <BaseText>{item.cooldown}s</BaseText>
+          <span>{item.cooldown}s</span>
         </div>
       )}
 
       {item.linkedItems && (
         <div className="mt-6">
-          <BaseDialogTitle>LinkedItems</BaseDialogTitle>
+          <BaseDialogTitle>Linked Items</BaseDialogTitle>
           <BaseDialogBody className="flex w-full flex-col items-start justify-start">
-            <ul className="w-full p-2">
+            <ul className="w-full">
               {(SkillItem.isSkillItem(item) ||
                 TraitItem.isTraitItem(item) ||
                 PerkItem.isPerkItem(item)) &&

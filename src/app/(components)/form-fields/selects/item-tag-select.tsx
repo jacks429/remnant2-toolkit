@@ -3,7 +3,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { ItemTagWithDefault } from '@/features/build/components/dialogs/ItemTagSuggestionsDialog'
+import { ItemTagWithDefault } from '@/app/(components)/dialogs/item-tag-suggestion-dialog'
 
 interface Props {
   value: ItemTagWithDefault
