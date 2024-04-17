@@ -1,10 +1,7 @@
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
 import { BaseButton } from '@/app/(components)/_base/button'
-import {
-  type BaseInputProps,
-  Input as BaseInput,
-} from '@/app/(components)/_base/input'
+import { BaseInput, type BaseInputProps } from '@/app/(components)/_base/input'
 
 export function Input({
   onChange,

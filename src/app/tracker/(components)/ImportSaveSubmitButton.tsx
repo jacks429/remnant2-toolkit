@@ -18,7 +18,6 @@ export function ImportSaveSubmitButton({
 
   return (
     <BaseButton
-      color="cyan"
       type="submit"
       aria-label="Submit Form"
       aria-disabled={pending || disabled}

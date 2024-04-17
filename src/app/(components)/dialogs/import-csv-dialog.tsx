@@ -38,17 +38,24 @@ export function ImportCsvDialog({
           <BaseLabel>Select CSV File</BaseLabel>
           <BaseInput type="file" ref={fileInputRef} />
         </BaseField>
-        <BaseText>
-          Export the following data, fill in the discovered column, then import
-          it here.
-        </BaseText>
-        <ToCsvButton data={items} filename="remnant2toolkit_itemtracker" />
       </BaseDialogBody>
       <BaseDialogActions>
         <BaseButton plain onClick={onClose}>
           Cancel
         </BaseButton>
         <BaseButton onClick={onSubmit}>Import CSV</BaseButton>
+      </BaseDialogActions>
+      <BaseDialogTitle>Export CSV</BaseDialogTitle>
+      <BaseDialogDescription>
+        Click the button below to download the item tracker data as a CSV, fill
+        in the discovered column with true/false, then import it above.
+      </BaseDialogDescription>
+      <BaseDialogActions>
+        <ToCsvButton
+          label="Get CSV Template"
+          data={items}
+          filename="remnant2toolkit_itemtracker"
+        />
       </BaseDialogActions>
     </BaseDialog>
   )
