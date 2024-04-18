@@ -294,7 +294,14 @@ export function BuildFilters({}: Props) {
                         type="text"
                         value={unappliedFilters.searchText}
                         placeholder="Build name, description, or creator"
-                        onClear={() => handleSearchTextChange('')}
+                        onClear={() => {
+                          const newFilters = {
+                            ...unappliedFilters,
+                            searchText: '',
+                          }
+                          setUnappliedFilters(newFilters)
+                          applyUrlFilters(newFilters)
+                        }}
                         onChange={(e) => handleSearchTextChange(e.target.value)}
                         onKeyDown={(e) => {
                           // If the user presses enter, apply the filters

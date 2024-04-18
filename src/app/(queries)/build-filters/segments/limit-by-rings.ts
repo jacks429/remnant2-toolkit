@@ -4,9 +4,9 @@ import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
 import { ringItems } from '@/app/(data)/items/ringItems'
 
 export function limitByRingsSegment(ringIds: string[]) {
-  return ringIds.length === 0
-    ? Prisma.empty
-    : Prisma.sql`AND (
+  if (ringIds.length === 0) return Prisma.empty
+
+  return Prisma.sql`AND (
 SELECT COUNT(*)
 FROM BuildItems
 WHERE BuildItems.buildId = Build.id
@@ -16,7 +16,7 @@ AND BuildItems.itemId IN (${Prisma.join(ringIds)})
 
 export function ringsFilterToIds({ rings }: { rings: string[] }): string[] {
   const nonDefaultValues = rings.filter((ring) => ring !== DEFAULT_FILTER)
-  
+
   const ringIds: string[] = []
   nonDefaultValues.forEach((ring) => {
     const item = ringItems.find(

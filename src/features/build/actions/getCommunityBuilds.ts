@@ -86,15 +86,6 @@ export async function getCommunityBuilds({
   const tagValues = buildTagsFilterToValues(buildTags)
   const trimmedSearchText = searchText.trim()
 
-  // const whereConditions = Prisma.sql`
-  // WHERE Build.isPublic = true
-  // ${limitByPatchAffected(patchAffected)}
-  // ${limitToBuildsWithVideo(withVideo)}
-  // ${limitByReferenceLink(withReference)}
-  // ${limitByWeaponsSegment(weaponIds)}
-  //${limitByTimeConditionSegment(timeRange)}
-  // `
-
   const whereConditions = Prisma.sql`
   WHERE Build.isPublic = true
   ${limitByAmuletSegment(amuletId)}
@@ -102,6 +93,11 @@ export async function getCommunityBuilds({
   ${limitByBuildTagsSegment(tagValues)}
   ${limitByReleasesSegment(releases)}
   ${limitByRingsSegment(ringIds)}
+  ${limitByTimeConditionSegment(timeRange)}
+  ${limitByWeaponsSegment(weaponIds)}
+  ${limitByReferenceLink(withReference)}
+  ${limitToBuildsWithVideo(withVideo)}
+  ${limitByPatchAffected(patchAffected)}
   `
 
   const orderBySegment = getOrderBySegment(orderBy)

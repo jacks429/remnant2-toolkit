@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client'
 
 export function limitByFeatured(limit?: boolean) {
-  return !limit ? Prisma.empty : Prisma.sql`AND Build.isFeaturedBuild = true`
+  if (!limit) return Prisma.empty
+  return Prisma.sql`AND Build.isFeaturedBuild = true`
 }

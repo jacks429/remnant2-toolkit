@@ -3,9 +3,9 @@ import { Prisma } from '@prisma/client'
 import { weaponItems } from '@/app/(data)/items/weaponItems'
 
 export function limitByWeaponsSegment(weaponIds: string[]) {
-  return weaponIds.length === 0
-    ? Prisma.empty
-    : Prisma.sql`AND (
+  if (weaponIds.length === 0) return Prisma.empty
+
+  return Prisma.sql`AND (
 SELECT COUNT(*)
 FROM BuildItems
 WHERE BuildItems.buildId = Build.id
