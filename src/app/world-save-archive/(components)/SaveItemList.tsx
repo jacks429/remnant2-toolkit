@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { SaveCard } from '@/app/world-save-archive/(components)/SaveCard'
 import { worldSaves } from '@/app/world-save-archive/(data)/worldSaves'
 import { parseSearchFilters } from '@/app/world-save-archive/(lib)/parseSearchFilters'
-import { BOSS_AFFIXES, BOSSES } from '@/app/world-save-archive/constants'
+import { BOSSES } from '@/app/world-save-archive/constants'
 import { FilteredSave, SearchFilters } from '@/app/world-save-archive/types'
 
 function getFilteredSaves(filters: SearchFilters): FilteredSave[] {
@@ -24,10 +24,6 @@ function getFilteredSaves(filters: SearchFilters): FilteredSave[] {
   }
 
   if (filters.affixes.length > 0) {
-    const excludedAffixes = BOSS_AFFIXES.filter(
-      (affix) => !filters.affixes.includes(affix.name),
-    )
-
     // Need to only get saves that have at least two of the affixes
     // If only one affix is in the filters.affixes, show all saves that have that affix
     filteredSaves = filteredSaves.filter((save) => {
