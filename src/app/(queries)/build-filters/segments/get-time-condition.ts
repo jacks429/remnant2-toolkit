@@ -38,7 +38,7 @@ function getTimeCondition(timeRange: TimeRange) {
   return timeCondition
 }
 
-export function limitByTimeConditionSegment(timeRange: TimeRange) {
+export function getTimeConditionSegment(timeRange: TimeRange) {
   const timeCondition = getTimeCondition(timeRange)
   return Prisma.sql`AND Build.createdAt > ${timeCondition}`
 }

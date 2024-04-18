@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client'
 
 import { getServerSession } from '@/features/auth/lib'
 import { BuildCard } from '@/features/build/components/build-card/BuildCard'
-import { communityBuildsQuery } from '@/features/build/filters/queries/community-builds'
+import { communityBuildsQuery } from '@/app/(queries)/build-filters/community-builds'
 import { prisma } from '@/features/db'
 import { bigIntFix } from '@/lib/bigIntFix'
 

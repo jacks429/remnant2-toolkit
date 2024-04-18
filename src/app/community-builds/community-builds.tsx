@@ -5,13 +5,13 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { Link } from '@/app/(components)/_base/link'
-import { useOrderByFilter } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
-import { useTimeRangeFilter } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
+import { useOrderByFilter } from '@/app/(components)/filters/build-filters/order-by-filter/use-order-by-filter'
+import { useTimeRangeFilter } from '@/app/(components)/filters/build-filters/time-range-filter/use-time-range-filter'
+import { parseUrlFilters } from '@/app/(components)/filters/build-filters/utils'
 import { getCommunityBuilds } from '@/features/build/actions/getCommunityBuilds'
 import { BuildCard } from '@/features/build/components/build-card/BuildCard'
 import { BuildList } from '@/features/build/components/BuildList'
 import { BuildListSecondaryFilters } from '@/features/build/filters/BuildListSecondaryFilters'
-import { parseBuildListFilters } from '@/features/build/filters/lib/parseBuildListFilters'
 import { useBuildListState } from '@/features/build/hooks/useBuildListState'
 import { usePagination } from '@/features/pagination/usePagination'
 import { Skeleton } from '@/features/ui/Skeleton'
@@ -24,10 +24,10 @@ interface Props {
 export function CommunityBuilds({ itemsPerPage = 8 }: Props) {
   const searchParams = useSearchParams()
   const [buildListFilters, setBuildListFilters] = useState(
-    parseBuildListFilters(searchParams),
+    parseUrlFilters(searchParams),
   )
   useEffect(() => {
-    setBuildListFilters(parseBuildListFilters(searchParams))
+    setBuildListFilters(parseUrlFilters(searchParams))
   }, [searchParams])
 
   const { buildListState, setBuildListState } = useBuildListState()
@@ -61,6 +61,7 @@ export function CommunityBuilds({ itemsPerPage = 8 }: Props) {
         orderBy,
         buildListFilters,
       })
+      console.info('response', response)
       setBuildListState((prevState) => ({
         ...prevState,
         isLoading: false,

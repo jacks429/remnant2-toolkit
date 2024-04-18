@@ -47,14 +47,14 @@ export function archetypeFiltersToIds({
 }: {
   archetypes: string[]
 }): string[] {
-  const archtypeIds: string[] = []
+  const archetypeIds: string[] = []
 
   for (const archetype of archetypes) {
     const item = archetypeItems.find(
-      (item) => item.name.toLowerCase() === archetype,
+      (item) => item.name.toLowerCase() === archetype.toLowerCase(),
     )?.id
-    if (item) archtypeIds.push(item)
+    if (item) archetypeIds.push(item)
   }
 
-  return archtypeIds
+  return archetypeIds
 }

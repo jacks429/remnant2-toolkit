@@ -4,10 +4,10 @@ import { Prisma } from '@prisma/client'
 
 import { OrderBy } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
 import { TimeRange } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
+import { limitToBuildsWithReferenceLink } from '@/app/(queries)/build-filters/limitToBuildsWithReferenceLink'
+import { limitToBuildsWithVideo } from '@/app/(queries)/build-filters/limitToBuildsWithVideo'
 import { BuildListFilters } from '@/app/(types)/build-list-filters'
 import { getServerSession } from '@/features/auth/lib'
-import { limitToBuildsWithReferenceLink } from '@/features/build/filters/queries/segments/limitToBuildsWithReferenceLink'
-import { limitToBuildsWithVideo } from '@/features/build/filters/queries/segments/limitToBuildsWithVideo'
 import { prisma } from '@/features/db'
 import { PaginationResponse } from '@/features/pagination/usePagination'
 import { bigIntFix } from '@/lib/bigIntFix'
@@ -15,31 +15,31 @@ import { bigIntFix } from '@/lib/bigIntFix'
 import {
   communityBuildsCountQuery,
   communityBuildsQuery,
-} from '../filters/queries/community-builds'
-import { getOrderBySegment } from '../filters/queries/segments/getOrderBySegment'
+} from '../../../app/(queries)/build-filters/community-builds'
+import { getOrderBySegment } from '../../../app/(queries)/build-filters/segments/get-order-by'
+import { limitByTimeConditionSegment } from '../../../app/(queries)/build-filters/segments/get-time-condition'
 import {
   amuletFilterToId,
   limitByAmuletSegment,
-} from '../filters/queries/segments/limitByAmulet'
+} from '../../../app/(queries)/build-filters/segments/limit-by-amulet'
 import {
   archetypeFiltersToIds,
   limitByArchetypesSegment,
-} from '../filters/queries/segments/limitByArchtypes'
+} from '../../../app/(queries)/build-filters/segments/limit-by-archetypes'
 import {
   buildTagsFilterToValues,
   limitByBuildTagsSegment,
-} from '../filters/queries/segments/limitByBuildTags'
-import { limitByPatchAffected } from '../filters/queries/segments/limitByPatchAffected'
-import { limitByReleasesSegment } from '../filters/queries/segments/limitByRelease'
+} from '../../../app/(queries)/build-filters/segments/limit-by-build-tags'
+import { limitByPatchAffected } from '../../../app/(queries)/build-filters/segments/limit-by-patch-affected'
+import { limitByReleasesSegment } from '../../../app/(queries)/build-filters/segments/limit-by-release'
 import {
   limitByRingsSegment,
   ringsFilterToIds,
-} from '../filters/queries/segments/limitByRings'
-import { limitByTimeConditionSegment } from '../filters/queries/segments/limitByTimeCondition'
+} from '../../../app/(queries)/build-filters/segments/limit-by-rings'
 import {
   limitByWeaponsSegment,
   weaponFiltersToIds,
-} from '../filters/queries/segments/limitByWeapons'
+} from '../../../app/(queries)/build-filters/segments/limit-by-weapons'
 import { DBBuild } from '../types'
 
 export async function getFeaturedBuilds({

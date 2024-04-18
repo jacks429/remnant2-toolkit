@@ -6,37 +6,37 @@ import { BuildListFilters } from '@/app/(components)/filters/build-filters/types
 import { BuildVisibility } from '@/app/(components)/form-fields/selects/build-visibility-filter/use-build-visibility-filter'
 import { OrderBy } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
 import { TimeRange } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
-import {
-  communityBuildsCountQuery,
-  communityBuildsQuery,
-} from '@/features/build/filters/queries/community-builds'
-import { getOrderBySegment } from '@/features/build/filters/queries/segments/getOrderBySegment'
+import { getOrderBySegment } from '@/app/(queries)/build-filters/getOrderBySegment'
 import {
   amuletFilterToId,
   limitByAmuletSegment,
-} from '@/features/build/filters/queries/segments/limitByAmulet'
+} from '@/app/(queries)/build-filters/limitByAmulet'
 import {
   archetypeFiltersToIds,
   limitByArchetypesSegment,
-} from '@/features/build/filters/queries/segments/limitByArchtypes'
+} from '@/app/(queries)/build-filters/limitByArchtypes'
 import {
   buildTagsFilterToValues,
   limitByBuildTagsSegment,
-} from '@/features/build/filters/queries/segments/limitByBuildTags'
-import { limitByFeatured } from '@/features/build/filters/queries/segments/limitByFeatured'
-import { limitByPatchAffected } from '@/features/build/filters/queries/segments/limitByPatchAffected'
-import { limitByReleasesSegment } from '@/features/build/filters/queries/segments/limitByRelease'
+} from '@/app/(queries)/build-filters/limitByBuildTags'
+import { limitByFeatured } from '@/app/(queries)/build-filters/limitByFeatured'
+import { limitByPatchAffected } from '@/app/(queries)/build-filters/limitByPatchAffected'
+import { limitByReleasesSegment } from '@/app/(queries)/build-filters/limitByRelease'
 import {
   limitByRingsSegment,
   ringsFilterToIds,
-} from '@/features/build/filters/queries/segments/limitByRings'
-import { limitByTimeConditionSegment } from '@/features/build/filters/queries/segments/limitByTimeCondition'
+} from '@/app/(queries)/build-filters/limitByRings'
+import { limitByTimeConditionSegment } from '@/app/(queries)/build-filters/limitByTimeCondition'
 import {
   limitByWeaponsSegment,
   weaponFiltersToIds,
-} from '@/features/build/filters/queries/segments/limitByWeapons'
-import { limitToBuildsWithReferenceLink } from '@/features/build/filters/queries/segments/limitToBuildsWithReferenceLink'
-import { limitToBuildsWithVideo } from '@/features/build/filters/queries/segments/limitToBuildsWithVideo'
+} from '@/app/(queries)/build-filters/limitByWeapons'
+import { limitToBuildsWithReferenceLink } from '@/app/(queries)/build-filters/limitToBuildsWithReferenceLink'
+import { limitToBuildsWithVideo } from '@/app/(queries)/build-filters/limitToBuildsWithVideo'
+import {
+  communityBuildsCountQuery,
+  communityBuildsQuery,
+} from '@/app/(queries)/build-filters/community-builds'
 import { DBBuild } from '@/features/build/types'
 import { prisma } from '@/features/db'
 import { PaginationResponse } from '@/features/pagination/usePagination'

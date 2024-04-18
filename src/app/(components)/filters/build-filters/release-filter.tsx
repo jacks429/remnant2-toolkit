@@ -16,15 +16,11 @@ interface Props {
 }
 
 export function ReleaseFilter({ value, onChange }: Props) {
-  const allReleases: string[] = ALL_RELEASE_KEYS.map(
-    (release) => RELEASE_TO_NAME[release as ReleaseKey],
-  )
-  allReleases.unshift('All')
-
-  const options = allReleases.map((release) => ({
-    label: release,
+  const options = ALL_RELEASE_KEYS.map((release) => ({
+    label: RELEASE_TO_NAME[release as ReleaseKey] as string,
     value: release,
   }))
+  options.unshift({ label: 'All', value: 'all' })
 
   return (
     <BaseField>

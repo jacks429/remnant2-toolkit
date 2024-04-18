@@ -1,8 +1,7 @@
 import { Prisma } from '@prisma/client'
 
+import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
 import { ringItems } from '@/app/(data)/items/ringItems'
-
-import { DEFAULT_JEWELRY_FILTERS } from '../../parts/JewelryFilters'
 
 export function limitByRingsSegment(ringIds: string[]) {
   return ringIds.length === 0
@@ -16,9 +15,8 @@ AND BuildItems.itemId IN (${Prisma.join(ringIds)})
 }
 
 export function ringsFilterToIds({ rings }: { rings: string[] }): string[] {
-  const nonDefaultValues = rings.filter(
-    (ring) => ring !== DEFAULT_JEWELRY_FILTERS['ring'],
-  )
+  const nonDefaultValues = rings.filter((ring) => ring !== DEFAULT_FILTER)
+  
   const ringIds: string[] = []
   nonDefaultValues.forEach((ring) => {
     const item = ringItems.find(

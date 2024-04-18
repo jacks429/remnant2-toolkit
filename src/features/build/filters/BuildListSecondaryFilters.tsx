@@ -1,7 +1,7 @@
-import { OrderByFilter } from '@/app/(components)/form-fields/selects/order-by-filter'
-import { OrderBy } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
-import { TimeRangeFilter } from '@/app/(components)/form-fields/selects/time-range-filter'
-import { TimeRange } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
+import { OrderByFilter } from '@/app/(components)/filters/build-filters/order-by-filter'
+import { OrderBy } from '@/app/(components)/filters/build-filters/order-by-filter/use-order-by-filter'
+import { TimeRangeFilter } from '@/app/(components)/filters/build-filters/time-range-filter'
+import { TimeRange } from '@/app/(components)/filters/build-filters/time-range-filter/use-time-range-filter'
 
 interface Props {
   orderBy: OrderBy

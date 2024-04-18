@@ -3,7 +3,7 @@
 import { Disclosure } from '@headlessui/react'
 import { FunnelIcon } from '@heroicons/react/24/solid'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
 import {
@@ -11,9 +11,16 @@ import {
   BaseFieldGroup,
   BaseFieldset,
   BaseLabel,
-  BaseLegend,
 } from '@/app/(components)/_base/fieldset'
-import { BaseText } from '@/app/(components)/_base/text'
+import { AmuletFilter } from '@/app/(components)/filters/build-filters/amulet-filter'
+import { ArchetypeFilter } from '@/app/(components)/filters/build-filters/archetype-filter'
+import { BuildMiscFilter } from '@/app/(components)/filters/build-filters/build-misc-filter'
+import { BuildTagFilter } from '@/app/(components)/filters/build-filters/build-tag-filter'
+import { HandGunFilter } from '@/app/(components)/filters/build-filters/hand-gun-filter'
+import { LongGunFilter } from '@/app/(components)/filters/build-filters/long-gun-filter'
+import { MeleeFilter } from '@/app/(components)/filters/build-filters/melee-filter'
+import { ReleaseFilter } from '@/app/(components)/filters/build-filters/release-filter'
+import { RingFilter } from '@/app/(components)/filters/build-filters/ring-filter'
 import {
   BUILD_FILTER_KEYS,
   BuildListFilters,
@@ -22,15 +29,6 @@ import {
 } from '@/app/(components)/filters/build-filters/types'
 import { parseUrlFilters } from '@/app/(components)/filters/build-filters/utils'
 import { Input } from '@/app/(components)/form-fields/input'
-import { AmuletFilter } from '@/app/(components)/form-fields/selects/amulet-filter'
-import { ArchetypeFilter } from '@/app/(components)/form-fields/selects/archetype-filter'
-import { BuildMiscFilter } from '@/app/(components)/form-fields/selects/build-misc-filter'
-import { BuildTagFilter } from '@/app/(components)/form-fields/selects/build-tag-filter'
-import { HandGunFilter } from '@/app/(components)/form-fields/selects/hand-gun-filter'
-import { LongGunFilter } from '@/app/(components)/form-fields/selects/long-gun-filter'
-import { MeleeFilter } from '@/app/(components)/form-fields/selects/melee-filter'
-import { ReleaseFilter } from '@/app/(components)/form-fields/selects/release-filter'
-import { RingFilter } from '@/app/(components)/form-fields/selects/ring-filter'
 import { cn } from '@/lib/classnames'
 
 const DEFAULT_FILTERS = {

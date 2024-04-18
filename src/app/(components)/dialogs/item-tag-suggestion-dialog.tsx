@@ -8,7 +8,7 @@ import {
   BaseDialogTitle,
 } from '@/app/(components)/_base/dialog'
 import { ItemInfoDialog } from '@/app/(components)/dialogs/item-info-dialog'
-import { ItemTagSelect } from '@/app/(components)/form-fields/selects/item-tag-select'
+import { ItemTagSelect } from '@/app/(components)/filters/build-filters/item-tag-select'
 import { allItems } from '@/app/(data)/items/allItems'
 import { archetypeItems } from '@/app/(data)/items/archetypeItems'
 import { ConcoctionItem } from '@/app/(data)/items/types/ConcoctionItem'
