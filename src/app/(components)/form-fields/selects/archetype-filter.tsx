@@ -5,26 +5,26 @@ import {
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
 import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
-import { ringItems } from '@/app/(data)/items/ringItems'
+import { archetypeItems } from '@/app/(data)/items/archetypeItems'
 
 interface Props {
   value: string[]
   onChange: (value: string[]) => void
 }
 
-export function RingFilter({ value, onChange }: Props) {
-  const allRings: string[] = ringItems.map((item) => item.name)
-  allRings.unshift(DEFAULT_FILTER)
+export function ArchetypeFilter({ value, onChange }: Props) {
+  const allArchetypes: string[] = archetypeItems.map((item) => item.name)
+  allArchetypes.unshift(DEFAULT_FILTER)
 
-  const options = allRings.map((ring) => ({
-    label: ring,
-    value: ring,
+  const options = allArchetypes.map((archetype) => ({
+    label: archetype,
+    value: archetype,
   }))
 
   return (
     <BaseField>
-      <BaseLabel>Rings</BaseLabel>
-      <BaseListbox multiple name="ring" value={value} onChange={onChange}>
+      <BaseLabel>Archetype</BaseLabel>
+      <BaseListbox multiple name="archetype" value={value} onChange={onChange}>
         {options.map(({ label, value }) => (
           <BaseListboxOption key={value} value={value}>
             <BaseListboxLabel>{label}</BaseListboxLabel>

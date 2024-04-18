@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
-import { BuildListFilters as Filters } from '@/app/(types)/build-list-filters'
+import { BuildListFilters as Filters } from '@/app/(components)/filters/build-filters/types'
 import { parseBuildListFilters } from '@/features/build/filters/lib/parseBuildListFilters'
 import { Archetype, ReleaseKey } from '@/features/items/types'
 import { Checkbox } from '@/features/ui/Checkbox'
@@ -35,10 +35,7 @@ export const DEFAULT_BUILD_LIST_FILTERS: Filters = {
   handGun: DEFAULT_WEAPON_FILTERS.handGun,
   longGun: DEFAULT_WEAPON_FILTERS.longGun,
   melee: DEFAULT_WEAPON_FILTERS.melee,
-  ring1: DEFAULT_JEWELRY_FILTERS.ring,
-  ring2: DEFAULT_JEWELRY_FILTERS.ring,
-  ring3: DEFAULT_JEWELRY_FILTERS.ring,
-  ring4: DEFAULT_JEWELRY_FILTERS.ring,
+  rings: 'All',
   searchText: '',
   selectedReleases: DEFAULT_RELEASE_FILTERS,
   includePatchAffectedBuilds: false,

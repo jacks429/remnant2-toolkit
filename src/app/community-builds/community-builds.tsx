@@ -21,7 +21,7 @@ interface Props {
   itemsPerPage?: number
 }
 
-export function CommunityBuildList({ itemsPerPage = 8 }: Props) {
+export function CommunityBuilds({ itemsPerPage = 8 }: Props) {
   const searchParams = useSearchParams()
   const [buildListFilters, setBuildListFilters] = useState(
     parseBuildListFilters(searchParams),

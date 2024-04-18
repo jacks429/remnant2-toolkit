@@ -4,27 +4,32 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
-import { ringItems } from '@/app/(data)/items/ringItems'
 
 interface Props {
   value: string[]
   onChange: (value: string[]) => void
 }
 
-export function RingFilter({ value, onChange }: Props) {
-  const allRings: string[] = ringItems.map((item) => item.name)
-  allRings.unshift(DEFAULT_FILTER)
-
-  const options = allRings.map((ring) => ({
-    label: ring,
-    value: ring,
-  }))
+export function BuildMiscFilter({ value, onChange }: Props) {
+  const options = [
+    {
+      label: 'Patch Affected Builds',
+      value: 'patchAffected',
+    },
+    {
+      label: 'Builds with Video',
+      value: 'withVideo',
+    },
+    {
+      label: 'Builds with Reference Link',
+      value: 'withReference',
+    },
+  ]
 
   return (
     <BaseField>
-      <BaseLabel>Rings</BaseLabel>
-      <BaseListbox multiple name="ring" value={value} onChange={onChange}>
+      <BaseLabel>Include</BaseLabel>
+      <BaseListbox multiple name="misc" value={value} onChange={onChange}>
         {options.map(({ label, value }) => (
           <BaseListboxOption key={value} value={value}>
             <BaseListboxLabel>{label}</BaseListboxLabel>

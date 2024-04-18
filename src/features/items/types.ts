@@ -1,3 +1,4 @@
+import { ReleaseKey } from '@/app/(data)/releases/types'
 import { ItemCategory } from '@/features/build/types'
 
 import { AmuletItem } from '../../app/(data)/items/types/AmuletItem'
@@ -126,9 +127,6 @@ export type ItemTag =
   | 'Weakspot Damage'
   | 'Weakspot Hit'
   | 'Weapon Damage'
-
-export type ReleaseKey = keyof typeof RELEASE_TO_NAME
-export type ReleaseName = (typeof RELEASE_TO_NAME)[ReleaseKey]
 
 export type DescriptionTag = (typeof DESCRIPTION_TAGS)[number]
 

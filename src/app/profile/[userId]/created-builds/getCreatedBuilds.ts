@@ -2,10 +2,10 @@
 
 import { Prisma } from '@prisma/client'
 
+import { BuildListFilters } from '@/app/(components)/filters/build-filters/types'
 import { BuildVisibility } from '@/app/(components)/form-fields/selects/build-visibility-filter/use-build-visibility-filter'
 import { OrderBy } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
 import { TimeRange } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
-import { BuildListFilters } from '@/app/(types)/build-list-filters'
 import {
   communityBuildsCountQuery,
   communityBuildsQuery,
