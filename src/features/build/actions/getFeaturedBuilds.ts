@@ -17,7 +17,7 @@ import {
   communityBuildsQuery,
 } from '../../../app/(queries)/build-filters/community-builds'
 import { getOrderBySegment } from '../../../app/(queries)/build-filters/segments/get-order-by'
-import { limitByTimeConditionSegment } from '../../../app/(queries)/build-filters/segments/get-time-condition'
+import { limitByTimeConditionSegment } from '../../../app/(queries)/build-filters/segments/limit-by-time-condition'
 import {
   amuletFilterToId,
   limitByAmuletSegment,

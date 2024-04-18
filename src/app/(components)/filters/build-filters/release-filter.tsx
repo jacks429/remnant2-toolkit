@@ -4,6 +4,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
+import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
 import {
   ALL_RELEASE_KEYS,
   RELEASE_TO_NAME,
@@ -20,7 +21,7 @@ export function ReleaseFilter({ value, onChange }: Props) {
     label: RELEASE_TO_NAME[release as ReleaseKey] as string,
     value: release,
   }))
-  options.unshift({ label: 'All', value: 'all' })
+  options.unshift({ label: DEFAULT_FILTER, value: DEFAULT_FILTER })
 
   return (
     <BaseField>

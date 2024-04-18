@@ -1,6 +1,6 @@
 import { BUILD_TAG, Prisma } from '@prisma/client'
 
-import { BuildTagFilterItem } from '../../parts/BuildTagFilters'
+import { ALL_BUILD_TAGS } from '@/features/build/build-tags/constants'
 
 export function limitByBuildTagsSegment(tagValues: BUILD_TAG[]) {
   // ! Excluding this for now because it seems like we'd want to do this
@@ -50,8 +50,12 @@ export function limitByBuildTagsSegment(tagValues: BUILD_TAG[]) {
   }
 }
 
-export function buildTagsFilterToValues(
-  tags: BuildTagFilterItem[],
-): BUILD_TAG[] {
-  return tags.map((tag) => tag.value)
+export function buildTagsFilterToValues(buildTags: string[]): BUILD_TAG[] {
+  const validTags = buildTags.filter((tag) =>
+    ALL_BUILD_TAGS.some(
+      (validTag) => validTag.value.toLowerCase() === tag.toLowerCase(),
+    ),
+  )
+
+  return validTags as BUILD_TAG[]
 }

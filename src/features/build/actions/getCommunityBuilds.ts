@@ -10,7 +10,6 @@ import {
   communityBuildsQuery,
 } from '@/app/(queries)/build-filters/community-builds'
 import { getOrderBySegment } from '@/app/(queries)/build-filters/segments/get-order-by'
-import { getTimeConditionSegment } from '@/app/(queries)/build-filters/segments/get-time-condition'
 import {
   amuletFilterToId,
   limitByAmuletSegment,
@@ -30,6 +29,7 @@ import {
   limitByRingsSegment,
   ringsFilterToIds,
 } from '@/app/(queries)/build-filters/segments/limit-by-rings'
+import { limitByTimeConditionSegment } from '@/app/(queries)/build-filters/segments/limit-by-time-condition'
 import { limitToBuildsWithVideo } from '@/app/(queries)/build-filters/segments/limit-by-video'
 import {
   limitByWeaponsSegment,
@@ -80,6 +80,7 @@ export async function getCommunityBuilds({
     handGun,
     melee,
   })
+
   const amuletId = amuletFilterToId({ amulet })
   const ringIds = ringsFilterToIds({ rings })
   const tagValues = buildTagsFilterToValues(buildTags)
@@ -91,14 +92,14 @@ export async function getCommunityBuilds({
   // ${limitToBuildsWithVideo(withVideo)}
   // ${limitByReferenceLink(withReference)}
   // ${limitByWeaponsSegment(weaponIds)}
-  // ${limitByBuildTagsSegment(tagValues)}
-  // ${getTimeConditionSegment(timeRange)}
+  //${limitByTimeConditionSegment(timeRange)}
   // `
 
   const whereConditions = Prisma.sql`
   WHERE Build.isPublic = true
   ${limitByAmuletSegment(amuletId)}
   ${limitByArchetypesSegment(archetypeIds)}
+  ${limitByBuildTagsSegment(tagValues)}
   ${limitByReleasesSegment(releases)}
   ${limitByRingsSegment(ringIds)}
   `

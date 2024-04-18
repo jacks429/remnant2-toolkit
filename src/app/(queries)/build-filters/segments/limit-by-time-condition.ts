@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client'
 
-import { TimeRange } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
+import { TimeRange } from '@/app/(components)/filters/build-filters/time-range-filter/use-time-range-filter'
 
 function formatDateToMySQL(date: Date): string {
   return date.toISOString().slice(0, 19).replace('T', ' ')
@@ -38,7 +38,7 @@ function getTimeCondition(timeRange: TimeRange) {
   return timeCondition
 }
 
-export function getTimeConditionSegment(timeRange: TimeRange) {
+export function limitByTimeConditionSegment(timeRange: TimeRange) {
   const timeCondition = getTimeCondition(timeRange)
   return Prisma.sql`AND Build.createdAt > ${timeCondition}`
 }
