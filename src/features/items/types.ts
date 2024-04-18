@@ -43,6 +43,7 @@ export type Archetype =
   | 'handler'
   | 'hunter'
   | 'invader'
+  | 'invoker'
   | 'medic'
   | 'ritualist'
   | 'summoner'

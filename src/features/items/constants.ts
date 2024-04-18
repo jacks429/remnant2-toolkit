@@ -60,6 +60,10 @@ export const ARCHTYPE_COLORS = {
     bg: 'bg-[#362136]',
     text: 'text-[#eaa8ee]',
   },
+  INVOKER: {
+    bg: 'bg-[#2c1f21]', // TODO
+    text: 'text-[#d5b1b1]', // TODO
+  },
   MEDIC: {
     bg: 'bg-[#0f3021]',
     text: 'text-[#8bc0aa]',
@@ -144,6 +148,12 @@ export const DESCRIPTION_TAGS = [
       'This item is currently bugged and MAY not function as expected. Check wiki for more information.',
   },
   {
+    type: 'Brittle',
+    token: 'BRITTLE',
+    color: 'text-[#fff1bc]',
+    description: undefined,
+  },
+  {
     type: 'Burning',
     token: 'BURNING',
     color: 'text-[#b65d30]',
@@ -215,6 +225,12 @@ export const DESCRIPTION_TAGS = [
     description: 'Physical Damage.',
   },
   {
+    type: 'Drenched',
+    token: 'DRENCHED',
+    color: 'text-[#fff1bc]',
+    description: undefined,
+  },
+  {
     type: 'Engineer',
     token: 'ENGINEER',
     color: ARCHTYPE_COLORS.ENGINEER.text,
@@ -244,6 +260,12 @@ export const DESCRIPTION_TAGS = [
     color: ARCHTYPE_COLORS.ALCHEMIST.text,
     description:
       'Increases Fire Rate, Reload Speed, and Melee Speed by 20%, and Movement Speed by 15%. Lasts 15s.',
+  },
+  {
+    type: 'Gloom',
+    token: 'GLOOM',
+    color: 'text-[#fff1bc]',
+    description: undefined,
   },
   {
     type: 'Gunslinger',
