@@ -2,8 +2,9 @@
 
 import { Disclosure } from '@headlessui/react'
 import { FunnelIcon } from '@heroicons/react/24/solid'
+import isEqual from 'lodash.isequal'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
 import {
@@ -60,6 +61,16 @@ export function BuildFilters({}: Props) {
     setUnappliedFilters(DEFAULT_FILTERS)
     applyUrlFilters(DEFAULT_FILTERS)
   }
+
+  const areAnyFiltersActive = useMemo(() => {
+    if (isEqual(filters, DEFAULT_FILTERS)) return false
+    return true
+  }, [filters])
+
+  const areFiltersApplied = useMemo(() => {
+    if (isEqual(filters, unappliedFilters)) return true
+    return false
+  }, [filters, unappliedFilters])
 
   // #region Apply Filters Handler
 
@@ -329,7 +340,13 @@ export function BuildFilters({}: Props) {
               {open ? 'Hide' : 'Show'}
             </Disclosure.Button>
           </div>
-          <Disclosure.Panel className="w-full border border-cyan-500 bg-gray-950 p-4">
+          <Disclosure.Panel
+            className={cn(
+              'mt-2 w-full border border-cyan-500 bg-gray-950 p-4',
+              areAnyFiltersActive &&
+                'border-accent1-300 shadow-xl shadow-accent1-600',
+            )}
+          >
             <BaseFieldset>
               <BaseFieldGroup>
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-4">
@@ -425,6 +442,7 @@ export function BuildFilters({}: Props) {
                   <BaseButton
                     color="green"
                     onClick={() => applyUrlFilters(unappliedFilters)}
+                    className={cn(!areFiltersApplied && 'animate-pulse')}
                   >
                     Apply Filters
                   </BaseButton>

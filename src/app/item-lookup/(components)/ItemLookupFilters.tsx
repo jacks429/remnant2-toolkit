@@ -1,31 +1,20 @@
 import { Disclosure } from '@headlessui/react'
-import {
-  ChevronRightIcon,
-  FunnelIcon,
-  TrashIcon,
-} from '@heroicons/react/24/solid'
+import { FunnelIcon, TrashIcon } from '@heroicons/react/24/solid'
 import isEqual from 'lodash.isequal'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useRef, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
+import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
 import { allItems } from '@/app/(data)/items/allItems'
 import { parseItemLookupFilters } from '@/app/item-lookup/(lib)/parseItemLookupFilters'
-import {
-  CollectedItemFilters,
-  DEFAULT_COLLECTION_FILTERS,
-} from '@/features/build/filters/parts/CollectedItemFilters'
+import { CollectedItemFilters } from '@/features/build/filters/parts/CollectedItemFilters'
 import { ItemCategoryFilters } from '@/features/build/filters/parts/ItemCategoryFilters'
-import {
-  DEFAULT_RELEASE_FILTERS,
-  ReleaseFilters,
-} from '@/features/build/filters/parts/ReleaseFilters'
 import { SearchTextAutocomplete } from '@/features/build/filters/parts/SearchTextAutocomplete'
 import { ITEM_TAGS } from '@/features/items/constants'
 import {
   ItemLookupCategory,
   ItemLookupFilterFields,
-  ReleaseKey,
 } from '@/features/items/types'
 import { FiltersContainer } from '@/features/ui/filters/FiltersContainer'
 import { cn } from '@/lib/classnames'
@@ -77,11 +66,11 @@ export const defaultItemCategories: ItemLookupCategory[] = [
   'Consumable',
 ]
 
-export const DEFAULT_ITEM_LOOKUP_FILTERS: ItemLookupFilterFields = {
-  collectionKeys: DEFAULT_COLLECTION_FILTERS,
-  itemCategories: [],
+export const DEFAULT_FILTERS: ItemLookupFilterFields = {
+  categories: [],
+  collections: [DEFAULT_FILTER],
+  releases: [DEFAULT_FILTER],
   searchText: '',
-  selectedReleases: DEFAULT_RELEASE_FILTERS,
 }
 
 interface Props {}

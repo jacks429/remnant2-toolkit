@@ -1,21 +1,20 @@
-import { ReleaseKey } from '@/app/(data)/releases/types'
+import { DefaultFilter } from '@/app/(components)/filters/build-filters/types'
+import { AmuletItem } from '@/app/(data)/items/types/AmuletItem'
+import { ArchetypeItem } from '@/app/(data)/items/types/ArchetypeItem'
+import { ArmorItem } from '@/app/(data)/items/types/ArmorItem'
+import { ConcoctionItem } from '@/app/(data)/items/types/ConcoctionItem'
+import { ConsumableItem } from '@/app/(data)/items/types/ConsumableItem'
+import { ModItem } from '@/app/(data)/items/types/ModItem'
+import { MutatorItem } from '@/app/(data)/items/types/MutatorItem'
+import { PerkItem } from '@/app/(data)/items/types/PerkItem'
+import { RelicFragmentItem } from '@/app/(data)/items/types/RelicFragmentItem'
+import { RelicItem } from '@/app/(data)/items/types/RelicItem'
+import { RingItem } from '@/app/(data)/items/types/RingItem'
+import { SkillItem } from '@/app/(data)/items/types/SkillItem'
+import { TraitItem } from '@/app/(data)/items/types/TraitItem'
+import { WeaponItem } from '@/app/(data)/items/types/WeaponItem'
 import { ItemCategory } from '@/features/build/types'
-
-import { AmuletItem } from '../../app/(data)/items/types/AmuletItem'
-import { ArchetypeItem } from '../../app/(data)/items/types/ArchetypeItem'
-import { ArmorItem } from '../../app/(data)/items/types/ArmorItem'
-import { ConcoctionItem } from '../../app/(data)/items/types/ConcoctionItem'
-import { ConsumableItem } from '../../app/(data)/items/types/ConsumableItem'
-import { ModItem } from '../../app/(data)/items/types/ModItem'
-import { MutatorItem } from '../../app/(data)/items/types/MutatorItem'
-import { PerkItem } from '../../app/(data)/items/types/PerkItem'
-import { RelicFragmentItem } from '../../app/(data)/items/types/RelicFragmentItem'
-import { RelicItem } from '../../app/(data)/items/types/RelicItem'
-import { RingItem } from '../../app/(data)/items/types/RingItem'
-import { SkillItem } from '../../app/(data)/items/types/SkillItem'
-import { TraitItem } from '../../app/(data)/items/types/TraitItem'
-import { WeaponItem } from '../../app/(data)/items/types/WeaponItem'
-import { DESCRIPTION_TAGS, RELEASE_TO_NAME } from './constants'
+import { DESCRIPTION_TAGS } from '@/features/items/constants'
 
 export type Item =
   | AmuletItem
@@ -140,10 +139,10 @@ export type ItemLookupCategory =
   | 'Mutator (Melee)'
 
 export interface ItemLookupFilterFields {
-  collectionKeys: string[]
-  itemCategories: ItemLookupCategory[]
+  categories: string[] | [DefaultFilter]
+  collections: string[] | [DefaultFilter]
+  releases: string[] | [DefaultFilter]
   searchText: string
-  selectedReleases: ReleaseKey[]
 }
 
 export type WeightClass = {
