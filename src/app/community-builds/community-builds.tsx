@@ -61,7 +61,7 @@ export function CommunityBuilds({ itemsPerPage = 8 }: Props) {
         orderBy,
         buildListFilters,
       })
-      console.info('response', response)
+
       setBuildListState((prevState) => ({
         ...prevState,
         isLoading: false,
