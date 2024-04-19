@@ -110,7 +110,7 @@ export const skillItems: SkillItem[] = [
     name: 'Wellspring',
     imagePath: '/skill/wellspring.png',
     id: '7vtxrx',
-    description: `The MEDIC channels healing energy into their fist, punching a hole in the ground [E] to create a 3m [A] Healing Spring AOE which restores 10.5 Health per second and greatly increases Blight Decay Rate. Lasts 15s.`,
+    description: `The MEDIC channels healing energy into their fist, punching a hole in the ground [E] to create a 3m [A] Healing Spring AOE which restores 10 Health per second and greatly increases Blight Decay Rate. Lasts 15s.`,
     cooldown: 60,
     wikiLinks: [`https://remnant.wiki/Wellspring`],
     linkedItems: {
@@ -124,7 +124,7 @@ export const skillItems: SkillItem[] = [
     name: 'Healing Shield',
     imagePath: '/skill/healing_shield.png',
     id: '8pu6y2',
-    description: `The MEDIC Quickly expels healing energy to SHIELD all allies within 25m [A] for 100% of their Max Health for 10s. While shielded, allies regenerate 21% of their Max Health over the duration.`,
+    description: `The MEDIC Quickly expels healing energy to SHIELD all allies within 25m [A] for 100% of their Max Health for 10s. While shielded, allies regenerate 20% of their Max Health over the duration.`,
     cooldown: 100,
     wikiLinks: [`https://remnant.wiki/Healing_Shield`],
     linkedItems: {
@@ -138,7 +138,7 @@ export const skillItems: SkillItem[] = [
     name: 'Redemption',
     imagePath: '/skill/redemption.png',
     id: 'zs77cb',
-    description: `The MEDIC unleashes a 30m [A] shockwave that revives downed allies and restores 52.5% Max Health over 10s. For each additional 1s holding the SKILL button, the heal gains an additional 52.5% (up to 210% max)
+    description: `The MEDIC unleashes a 30m [A] shockwave that revives downed allies and restores 50% Max Health over 10s. For each additional 1s holding the SKILL button, the heal gains an additional 50% (up to 200% max)
     Revived allies will only receive 50% of the healing amount. If revived, allies cannot be revived again by Redemption for another 180s. Resets at Worldstone or on death.`,
     cooldown: 120,
     wikiLinks: [`https://remnant.wiki/Redemption`],
@@ -642,15 +642,15 @@ export const skillItems: SkillItem[] = [
   {
     category: 'skill',
     name: 'Way of Kaeula',
-    imagePath: '/skill/way-of-kaeula-placeholder1.png', // TODO
+    imagePath: '/skill/way-of-kaeula-placeholder2.png', // TODO
     id: 'h4B9dD',
     dlc: 'dlc2',
     tags: [],
-    description: `PRERELEASE Invoke Kaeula to cast a Tidal Wave, dealing 517.6 Elemental damage and conjuring a 30m Rainstorm for 19.5s. Allies inside Rainstorm gain HASTE. Enemies inside Rainstorm gain DRENCHED for 10s.
+    description: `PRERELEASE Invoke Kaeula to cast a Tidal Wave, dealing 517.6 Elemental Damage and conjuring a 30m Rainstorm for 19.5s. Allies inside Rainstorm gain HASTE. Enemies inside Rainstorm gain DRENCHED for 10s.
     
     DRENCHED: Reduces Movement Speed by 10%. Every few seconds, lightning strikes enemies dealing 1,035.3 base SHOCK damage split among DRENCHED targets.`,
     cooldown: 112.8,
-    wikiLinks: [],
+    wikiLinks: ['https://remnant.wiki/Way_of_Kaeula'],
     linkedItems: {
       archetype: {
         name: 'Invoker',
@@ -660,15 +660,15 @@ export const skillItems: SkillItem[] = [
   {
     category: 'skill',
     name: 'Way of Meidra',
-    imagePath: '/skill/way-of-meidra-placeholder1.png',
+    imagePath: '/skill/way-of-meidra-placeholder2.png',
     id: '7DnBmE',
     dlc: 'dlc2',
     tags: [],
     description: `PRERELEASE Invoke Meidra to heal all allies for 20% Max Health over 1.5s and conjure a 20m Forest Growth for 19.5s. After fully blooming, allies in the Forest Growth heal 2% Max Health per second and gain 3% of base damage dealt as Lifesteal. Enemies inside Forest Growth gain GLOOM for 10s.
     
-    GLOOM: Increases incoming Elemental damage by 15%.`,
+    GLOOM: Increases incoming Elemental Damage by 15%.`,
     cooldown: 112.8,
-    wikiLinks: [],
+    wikiLinks: ['https://remnant.wiki/Way_of_Meidra'],
     linkedItems: {
       archetype: {
         name: 'Invoker',
@@ -678,7 +678,7 @@ export const skillItems: SkillItem[] = [
   {
     category: 'skill',
     name: 'Way of Lydusa',
-    imagePath: '/skill/way-of-lydusa-placeholder1.png', // TODO
+    imagePath: '/skill/way-of-lydusa-placeholder2.png', // TODO
     id: 'T2xA6c',
     dlc: 'dlc2',
     tags: [],
@@ -688,7 +688,7 @@ export const skillItems: SkillItem[] = [
     
     BRITTLE: Increases incoming Critical Chance by 5% and Critical Damage by 15%.`,
     cooldown: 112.8,
-    wikiLinks: [],
+    wikiLinks: ['https://remnant.wiki/Way_of_Lydusa'],
     linkedItems: {
       archetype: {
         name: 'Invoker',

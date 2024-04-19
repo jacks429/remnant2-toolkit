@@ -53,7 +53,7 @@ export const ringItems: RingItem[] = [
     imagePath: '/ring/alumni_ring.png',
     id: 'll1vsx',
     tags: ['Elemental Damage'],
-    description: `Increases all Elemental damage dealt by 10%.`,
+    description: `Increases all Elemental Damage dealt by 10%.`,
     wikiLinks: [`https://remnant.wiki/Alumni_Ring`],
   },
   {
@@ -331,7 +331,7 @@ export const ringItems: RingItem[] = [
     id: 'z169p0',
     tags: ['Reduce Skill Cooldown', 'Relic Use Speed'],
     description: `Reduces Skill Cooldowns by 15% but decreases Relic Use Speed by 25%.`,
-    wikiLinks: [`hhttps://remnant.wiki/Burden_Of_The_Rebel`],
+    wikiLinks: [`https://remnant.wiki/Burden_Of_The_Rebel`],
   },
   {
     category: 'ring',
@@ -1380,8 +1380,8 @@ export const ringItems: RingItem[] = [
     imagePath: '/ring/stone_of_malevolence.png',
     id: 'kx65km',
     tags: ['Status Effect', 'Mod Power'],
-    description: `Elemental Status damage generates 15% additional Mod Power.`,
-    wikiLinks: [`Stone of Malevolence`],
+    description: `Elemental Damage generates 15% additional Mod Power.`,
+    wikiLinks: [`https://remnant.wiki/Stone_Of_Malevolence`],
   },
   {
     category: 'ring',

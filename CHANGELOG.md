@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## 2024-04-19
+
+### Added
+
+- Added Elemental Damage tag.
+
+### Fixed
+
+- Fixed typos in all three medic skills - percentages were slightly off. (Thanks, Vash!)
+
 ## 2024-04-18
 
 ### Added
@@ -14,6 +24,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - World Save for The Nightweaver, Skullcracker/Vicious
 - World Save for Venom, Skullcracker/Vicious
 - Added Invoker archetype, skills, perks, and trait to the builder and item lookup pages!
+- Added note to trait points display about missing Invoker intrinsic trait points.
+
+### Fixed
+
+- Unequipping the archetype will now also unequip the skill.
 
 ## 2024-04-15
 
