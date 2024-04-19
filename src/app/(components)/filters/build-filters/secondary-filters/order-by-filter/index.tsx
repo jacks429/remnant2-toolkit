@@ -3,7 +3,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { useOrderByFilter } from '@/app/(components)/filters/build-filters/order-by-filter/use-order-by-filter'
+import { useOrderByFilter } from '@/app/(components)/filters/build-filters/secondary-filters/order-by-filter/use-order-by-filter'
 
 interface Props {
   value: string

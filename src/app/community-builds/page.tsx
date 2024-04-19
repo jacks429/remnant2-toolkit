@@ -8,7 +8,7 @@ import { CommunityBuilds } from './community-builds'
 export default async function Page() {
   return (
     <>
-      <div className="mb-6 flex w-full items-center justify-center">
+      <div className="flex w-full items-center justify-center sm:mb-6">
         <BuildFilters key="community-build-filters" />
       </div>
 

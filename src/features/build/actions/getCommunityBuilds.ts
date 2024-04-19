@@ -2,8 +2,8 @@
 
 import { Prisma } from '@prisma/client'
 
-import { OrderBy } from '@/app/(components)/filters/build-filters/order-by-filter/use-order-by-filter'
-import { TimeRange } from '@/app/(components)/filters/build-filters/time-range-filter/use-time-range-filter'
+import { OrderBy } from '@/app/(components)/filters/build-filters/secondary-filters/order-by-filter/use-order-by-filter'
+import { TimeRange } from '@/app/(components)/filters/build-filters/secondary-filters/time-range-filter/use-time-range-filter'
 import { BuildListFilters } from '@/app/(components)/filters/build-filters/types'
 import {
   communityBuildsCountQuery,
@@ -72,6 +72,7 @@ export async function getCommunityBuilds({
     withVideo,
     withReference,
   } = buildListFilters
+
   if (releases.length === 0) return { items: [], totalItemCount: 0 }
 
   const archetypeIds = archetypeFiltersToIds({ archetypes })

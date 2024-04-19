@@ -5,13 +5,13 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { Link } from '@/app/(components)/_base/link'
-import { useOrderByFilter } from '@/app/(components)/filters/build-filters/order-by-filter/use-order-by-filter'
-import { useTimeRangeFilter } from '@/app/(components)/filters/build-filters/time-range-filter/use-time-range-filter'
+import { BuildSecondaryFilters } from '@/app/(components)/filters/build-filters/secondary-filters'
+import { useOrderByFilter } from '@/app/(components)/filters/build-filters/secondary-filters/order-by-filter/use-order-by-filter'
+import { useTimeRangeFilter } from '@/app/(components)/filters/build-filters/secondary-filters/time-range-filter/use-time-range-filter'
 import { parseUrlFilters } from '@/app/(components)/filters/build-filters/utils'
 import { getCommunityBuilds } from '@/features/build/actions/getCommunityBuilds'
 import { BuildCard } from '@/features/build/components/build-card/BuildCard'
 import { BuildList } from '@/features/build/components/BuildList'
-import { BuildListSecondaryFilters } from '@/features/build/filters/BuildListSecondaryFilters'
 import { useBuildListState } from '@/features/build/hooks/useBuildListState'
 import { usePagination } from '@/features/pagination/usePagination'
 import { Skeleton } from '@/features/ui/Skeleton'
@@ -97,7 +97,7 @@ export function CommunityBuilds({ itemsPerPage = 8 }: Props) {
         onNextPage={handleNextPageClick}
         onSpecificPage={handleSpecificPageClick}
         headerActions={
-          <BuildListSecondaryFilters
+          <BuildSecondaryFilters
             orderBy={orderBy}
             onOrderByChange={handleOrderByChange}
             timeRange={timeRange}

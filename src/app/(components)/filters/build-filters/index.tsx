@@ -319,12 +319,8 @@ export function BuildFilters({}: Props) {
   return (
     <Disclosure defaultOpen={true}>
       {({ open }) => (
-        <div className="mb-4 w-full">
-          <div
-            className={cn(
-              'mb-2 flex w-full flex-row items-end justify-end border-b border-b-primary-500 py-2',
-            )}
-          >
+        <div className="w-full">
+          <div className="flex w-full flex-row items-end justify-end border-b border-b-primary-500 py-2">
             <h2 className="flex w-full items-center justify-start text-xl">
               Build Filters
             </h2>

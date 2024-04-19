@@ -3,18 +3,18 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { BuildVisibilityFilter } from '@/app/(components)/form-fields/selects/build-visibility-filter'
-import { useBuildVisibilityFilter } from '@/app/(components)/form-fields/selects/build-visibility-filter/use-build-visibility-filter'
-import { OrderByFilter } from '@/app/(components)/form-fields/selects/order-by-filter'
-import { useOrderByFilter } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
-import { TimeRangeFilter } from '@/app/(components)/form-fields/selects/time-range-filter'
-import { useTimeRangeFilter } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
+import { BuildVisibilityFilter } from '@/app/(components)/filters/build-filters/secondary-filters/build-visibility-filter'
+import { useBuildVisibilityFilter } from '@/app/(components)/filters/build-filters/secondary-filters/build-visibility-filter/use-build-visibility-filter'
+import { OrderByFilter } from '@/app/(components)/filters/build-filters/secondary-filters/order-by-filter'
+import { useOrderByFilter } from '@/app/(components)/filters/build-filters/secondary-filters/order-by-filter/use-order-by-filter'
+import { TimeRangeFilter } from '@/app/(components)/filters/build-filters/secondary-filters/time-range-filter'
+import { useTimeRangeFilter } from '@/app/(components)/filters/build-filters/secondary-filters/time-range-filter/use-time-range-filter'
+import { parseUrlFilters } from '@/app/(components)/filters/build-filters/utils'
 import { CreatedBuildCardActions } from '@/app/profile/[userId]/(components)/CreatedBuildCardActions'
 import { getCreatedBuilds } from '@/app/profile/[userId]/created-builds/getCreatedBuilds'
 import { BuildCard } from '@/features/build/components/build-card/BuildCard'
 import { CreateBuildCard } from '@/features/build/components/build-card/CreateBuildCard'
 import { BuildList } from '@/features/build/components/BuildList'
-import { parseBuildListFilters } from '@/features/build/filters/lib/parseBuildListFilters'
 import { useBuildListState } from '@/features/build/hooks/useBuildListState'
 import { usePagination } from '@/features/pagination/usePagination'
 
@@ -26,10 +26,10 @@ interface Props {
 export function CreatedBuilds({ isEditable, userId }: Props) {
   const searchParams = useSearchParams()
   const [buildListFilters, setBuildListFilters] = useState(
-    parseBuildListFilters(searchParams),
+    parseUrlFilters(searchParams),
   )
   useEffect(() => {
-    setBuildListFilters(parseBuildListFilters(searchParams))
+    setBuildListFilters(parseUrlFilters(searchParams))
   }, [searchParams])
 
   const { buildListState, setBuildListState } = useBuildListState()

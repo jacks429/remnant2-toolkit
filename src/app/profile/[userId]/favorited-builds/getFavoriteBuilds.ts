@@ -2,41 +2,41 @@
 
 import { Prisma } from '@prisma/client'
 
-import { OrderBy } from '@/app/(components)/form-fields/selects/order-by-filter/use-order-by-filter'
-import { TimeRange } from '@/app/(components)/form-fields/selects/time-range-filter/use-time-range-filter'
-import { getOrderBySegment } from '@/app/(queries)/build-filters/getOrderBySegment'
-import {
-  amuletFilterToId,
-  limitByAmuletSegment,
-} from '@/app/(queries)/build-filters/limitByAmulet'
-import {
-  archetypeFiltersToIds,
-  limitByArchetypesSegment,
-} from '@/app/(queries)/build-filters/limitByArchtypes'
-import {
-  buildTagsFilterToValues,
-  limitByBuildTagsSegment,
-} from '@/app/(queries)/build-filters/limitByBuildTags'
-import { limitByFavorited } from '@/app/(queries)/build-filters/limitByFavorited'
-import { limitByPatchAffected } from '@/app/(queries)/build-filters/limitByPatchAffected'
-import { limitByReleasesSegment } from '@/app/(queries)/build-filters/limitByRelease'
-import {
-  limitByRingsSegment,
-  ringsFilterToIds,
-} from '@/app/(queries)/build-filters/limitByRings'
-import { limitByTimeConditionSegment } from '@/app/(queries)/build-filters/limitByTimeCondition'
-import {
-  limitByWeaponsSegment,
-  weaponFiltersToIds,
-} from '@/app/(queries)/build-filters/limitByWeapons'
-import { limitToBuildsWithReferenceLink } from '@/app/(queries)/build-filters/limitToBuildsWithReferenceLink'
-import { limitToBuildsWithVideo } from '@/app/(queries)/build-filters/limitToBuildsWithVideo'
-import { BuildListFilters } from '@/app/(types)/build-list-filters'
-import { getServerSession } from '@/features/auth/lib'
+import { OrderBy } from '@/app/(components)/filters/build-filters/secondary-filters/order-by-filter/use-order-by-filter'
+import { TimeRange } from '@/app/(components)/filters/build-filters/secondary-filters/time-range-filter/use-time-range-filter'
+import { BuildListFilters } from '@/app/(components)/filters/build-filters/types'
 import {
   communityBuildsCountQuery,
   communityBuildsQuery,
 } from '@/app/(queries)/build-filters/community-builds'
+import { getOrderBySegment } from '@/app/(queries)/build-filters/segments/get-order-by'
+import {
+  amuletFilterToId,
+  limitByAmuletSegment,
+} from '@/app/(queries)/build-filters/segments/limit-by-amulet'
+import {
+  archetypeFiltersToIds,
+  limitByArchetypesSegment,
+} from '@/app/(queries)/build-filters/segments/limit-by-archetypes'
+import {
+  buildTagsFilterToValues,
+  limitByBuildTagsSegment,
+} from '@/app/(queries)/build-filters/segments/limit-by-build-tags'
+import { limitByFavorited } from '@/app/(queries)/build-filters/segments/limit-by-favorited'
+import { limitByPatchAffected } from '@/app/(queries)/build-filters/segments/limit-by-patch-affected'
+import { limitByReferenceLink } from '@/app/(queries)/build-filters/segments/limit-by-reference-link'
+import { limitByReleasesSegment } from '@/app/(queries)/build-filters/segments/limit-by-release'
+import {
+  limitByRingsSegment,
+  ringsFilterToIds,
+} from '@/app/(queries)/build-filters/segments/limit-by-rings'
+import { limitByTimeConditionSegment } from '@/app/(queries)/build-filters/segments/limit-by-time-condition'
+import { limitToBuildsWithVideo } from '@/app/(queries)/build-filters/segments/limit-by-video'
+import {
+  limitByWeaponsSegment,
+  weaponFiltersToIds,
+} from '@/app/(queries)/build-filters/segments/limit-by-weapons'
+import { getServerSession } from '@/features/auth/lib'
 import { DBBuild } from '@/features/build/types'
 import { prisma } from '@/features/db'
 import { PaginationResponse } from '@/features/pagination/usePagination'
@@ -65,18 +65,15 @@ export async function getFavoritedBuilds({
     handGun,
     longGun,
     melee,
-    ring1,
-    ring2,
-    ring3,
-    ring4,
+    rings,
     searchText,
-    selectedReleases,
-    includePatchAffectedBuilds,
-    limitToBuildsWithReferenceLink: onlyBuildsWithReferenceLink,
-    limitToBuildsWithVideo: onlyBuildsWithVideo,
+    releases,
+    patchAffected,
+    withVideo,
+    withReference,
   } = buildListFilters
 
-  if (selectedReleases.length === 0) return { items: [], totalItemCount: 0 }
+  if (releases.length === 0) return { items: [], totalItemCount: 0 }
 
   const archetypeIds = archetypeFiltersToIds({ archetypes })
   const weaponIds = weaponFiltersToIds({
@@ -86,22 +83,22 @@ export async function getFavoritedBuilds({
   })
   const tagValues = buildTagsFilterToValues(buildTags)
   const amuletId = amuletFilterToId({ amulet })
-  const ringIds = ringsFilterToIds({ rings: [ring1, ring2, ring3, ring4] })
+  const ringIds = ringsFilterToIds({ rings })
 
   const whereConditions = Prisma.sql`
 WHERE Build.isPublic = true
 AND Build.createdById != ${userId}
-${limitByPatchAffected(includePatchAffectedBuilds)}
-${limitToBuildsWithVideo(onlyBuildsWithVideo)}
-${limitToBuildsWithReferenceLink(onlyBuildsWithReferenceLink)}
-${limitByFavorited(userId)}
-${limitByArchetypesSegment(archetypeIds)}
-${limitByWeaponsSegment(weaponIds)}
 ${limitByAmuletSegment(amuletId)}
-${limitByRingsSegment(ringIds)}
-${limitByReleasesSegment(selectedReleases)}
+${limitByArchetypesSegment(archetypeIds)}
 ${limitByBuildTagsSegment(tagValues)}
+${limitByReleasesSegment(releases)}
+${limitByRingsSegment(ringIds)}
 ${limitByTimeConditionSegment(timeRange)}
+${limitByWeaponsSegment(weaponIds)}
+${limitByReferenceLink(withReference)}
+${limitToBuildsWithVideo(withVideo)}
+${limitByPatchAffected(patchAffected)}
+${limitByFavorited(userId)}
 `
 
   const orderBySegment = getOrderBySegment(orderBy)

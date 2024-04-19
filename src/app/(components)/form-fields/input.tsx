@@ -9,6 +9,7 @@ export function Input({
   onKeyDown,
   value,
   placeholder = 'Search',
+  ...props
 }: BaseInputProps & { onClear: () => void }) {
   return (
     <div className="relative flex w-full flex-row items-center">
@@ -17,6 +18,7 @@ export function Input({
         onKeyDown={onKeyDown}
         placeholder={placeholder}
         value={value}
+        {...props}
       />
       <div className="absolute inset-y-0 right-0 flex items-center">
         {value && (

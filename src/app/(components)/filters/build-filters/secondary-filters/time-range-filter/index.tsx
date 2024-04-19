@@ -3,7 +3,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { useTimeRangeFilter } from '@/app/(components)/filters/build-filters/time-range-filter/use-time-range-filter'
+import { useTimeRangeFilter } from '@/app/(components)/filters/build-filters/secondary-filters/time-range-filter/use-time-range-filter'
 
 interface Props {
   value: string
