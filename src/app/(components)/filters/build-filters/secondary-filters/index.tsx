@@ -1,7 +1,7 @@
-import { OrderByFilter } from '@/app/(components)/filters/build-filters/order-by-filter'
-import { OrderBy } from '@/app/(components)/filters/build-filters/order-by-filter/use-order-by-filter'
-import { TimeRangeFilter } from '@/app/(components)/filters/build-filters/time-range-filter'
-import { TimeRange } from '@/app/(components)/filters/build-filters/time-range-filter/use-time-range-filter'
+import { OrderByFilter } from '@/app/(components)/filters/build-filters/secondary-filters/order-by-filter'
+import { OrderBy } from '@/app/(components)/filters/build-filters/secondary-filters/order-by-filter/use-order-by-filter'
+import { TimeRangeFilter } from '@/app/(components)/filters/build-filters/secondary-filters/time-range-filter'
+import { TimeRange } from '@/app/(components)/filters/build-filters/secondary-filters/time-range-filter/use-time-range-filter'
 
 interface Props {
   orderBy: OrderBy
@@ -10,7 +10,7 @@ interface Props {
   onTimeRangeChange: (timeRange: string) => void
 }
 
-export function BuildListSecondaryFilters({
+export function BuildSecondaryFilters({
   orderBy,
   timeRange,
   onOrderByChange,
