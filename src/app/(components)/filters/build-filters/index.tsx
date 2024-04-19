@@ -48,6 +48,8 @@ const DEFAULT_FILTERS = {
 
 interface Props {}
 
+// #region Component
+
 export function BuildFilters({}: Props) {
   const searchParams = useSearchParams()
   const filters = parseUrlFilters(searchParams)
@@ -59,54 +61,56 @@ export function BuildFilters({}: Props) {
     applyUrlFilters(DEFAULT_FILTERS)
   }
 
+  // #region Apply Filters Handler
+
   const pathname = usePathname()
   const router = useRouter()
   function applyUrlFilters(filtersToApply: BuildListFilters) {
     let url = `${pathname}?t=${Date.now()}&`
 
     // Add the amulet filter
-    if (filtersToApply.amulet !== 'All') {
+    if (filtersToApply.amulet !== DEFAULT_FILTER) {
       url += `${BUILD_FILTER_KEYS.AMULET}=${filtersToApply.amulet}&`
     }
 
     // Add the archetype filter
-    if (filtersToApply.archetypes[0] !== 'All') {
+    if (filtersToApply.archetypes[0] !== DEFAULT_FILTER) {
       url += `${BUILD_FILTER_KEYS.ARCHETYPES}=${filtersToApply.archetypes.join(
         ',',
       )}&`
     }
 
     // Add the build tag filters
-    if (filtersToApply.buildTags[0] !== 'All') {
+    if (filtersToApply.buildTags[0] !== DEFAULT_FILTER) {
       url += `${BUILD_FILTER_KEYS.BUILDTAGS}=${filtersToApply.buildTags.join(
         ',',
       )}&`
     }
 
     // Add the long gun filters
-    if (filtersToApply.longGun !== 'All') {
+    if (filtersToApply.longGun !== DEFAULT_FILTER) {
       url += `${BUILD_FILTER_KEYS.LONGGUN}=${filtersToApply.longGun}&`
     }
 
     // Add the hand gun filters
-    if (filtersToApply.handGun !== 'All') {
+    if (filtersToApply.handGun !== DEFAULT_FILTER) {
       url += `${BUILD_FILTER_KEYS.HANDGUN}=${filtersToApply.handGun}&`
     }
 
     // Add the melee filters
-    if (filtersToApply.melee !== 'All') {
+    if (filtersToApply.melee !== DEFAULT_FILTER) {
       url += `${BUILD_FILTER_KEYS.MELEE}=${filtersToApply.melee}&`
     }
 
     // Add the releases filters
-    if (filtersToApply.releases[0] !== 'All') {
+    if (filtersToApply.releases[0] !== DEFAULT_FILTER) {
       url += `${BUILD_FILTER_KEYS.RELEASES}=${filtersToApply.releases.join(
         ',',
       )}&`
     }
 
     // Add the ring filters
-    if (filtersToApply.rings[0] !== 'All') {
+    if (filtersToApply.rings[0] !== DEFAULT_FILTER) {
       url += `${BUILD_FILTER_KEYS.RINGS}=${filtersToApply.rings.join(',')}&`
     }
 
@@ -134,6 +138,8 @@ export function BuildFilters({}: Props) {
     router.push(url, { scroll: false })
   }
 
+  // #region Filter Change Handlers
+
   function handleSearchTextChange(newSearchText: string) {
     setUnappliedFilters((prev) => ({ ...prev, searchText: newSearchText }))
   }
@@ -144,16 +150,26 @@ export function BuildFilters({}: Props) {
   }
 
   function handleArchetypeChange(newArchetypes: string[]) {
-    // if the archetypes length is 0, set the rings to the default value
+    // if the archetypes length is 0, set the archetypes to the default value
     if (newArchetypes.length === 0) {
-      const newFilters = { ...unappliedFilters, archetypes: ['All'] }
+      const newFilters = { ...unappliedFilters, archetypes: [DEFAULT_FILTER] }
       setUnappliedFilters(newFilters)
       return
     }
 
-    // If the only selection is the default value ("All"), just apply the filters
-    if (newArchetypes.length === 1 && newArchetypes[0] === 'All') {
-      const newFilters = { ...unappliedFilters, archetypes: newArchetypes }
+    // If the first item is the default value ("All"), apply the filters after removing the default value
+    if (newArchetypes[0] === DEFAULT_FILTER) {
+      const newFilters = {
+        ...unappliedFilters,
+        archetypes: newArchetypes.filter((i) => i !== DEFAULT_FILTER),
+      }
+      setUnappliedFilters(newFilters)
+      return
+    }
+
+    // If any of the filters contain the default value of "All", just apply the filters
+    if (newArchetypes.includes(DEFAULT_FILTER)) {
+      const newFilters = { ...unappliedFilters, archetypes: [DEFAULT_FILTER] }
       setUnappliedFilters(newFilters)
       return
     }
@@ -161,7 +177,9 @@ export function BuildFilters({}: Props) {
     // If we got here, remove the default value from the list
     const newFilters = {
       ...unappliedFilters,
-      archetypes: newArchetypes.filter((archetype) => archetype !== 'All'),
+      archetypes: newArchetypes.filter(
+        (archetype) => archetype !== DEFAULT_FILTER,
+      ),
     }
     setUnappliedFilters(newFilters)
   }
@@ -169,14 +187,24 @@ export function BuildFilters({}: Props) {
   function handleBuildTagChange(newBuildTags: string[]) {
     // if the newBuildTags length is 0, set the rings to the default value
     if (newBuildTags.length === 0) {
-      const newFilters = { ...unappliedFilters, buildTags: ['All'] }
+      const newFilters = { ...unappliedFilters, buildTags: [DEFAULT_FILTER] }
       setUnappliedFilters(newFilters)
       return
     }
 
-    // If the only selection is the default value ("All"), just apply the filters
-    if (newBuildTags.length === 1 && newBuildTags[0] === 'All') {
-      const newFilters = { ...unappliedFilters, buildTags: newBuildTags }
+    // If the first item is the default value ("All"), apply the filters after removing the default value
+    if (newBuildTags[0] === DEFAULT_FILTER) {
+      const newFilters = {
+        ...unappliedFilters,
+        buildTags: newBuildTags.filter((i) => i !== DEFAULT_FILTER),
+      }
+      setUnappliedFilters(newFilters)
+      return
+    }
+
+    // If any of the filters contain the default value of "All", just apply the filters
+    if (newBuildTags.includes(DEFAULT_FILTER)) {
+      const newFilters = { ...unappliedFilters, buildTags: [DEFAULT_FILTER] }
       setUnappliedFilters(newFilters)
       return
     }
@@ -184,7 +212,7 @@ export function BuildFilters({}: Props) {
     // If we got here, remove the default value from the list
     const newFilters = {
       ...unappliedFilters,
-      buildTags: newBuildTags.filter((buildTag) => buildTag !== 'All'),
+      buildTags: newBuildTags.filter((buildTag) => buildTag !== DEFAULT_FILTER),
     }
     setUnappliedFilters(newFilters)
   }
@@ -207,14 +235,24 @@ export function BuildFilters({}: Props) {
   function handleReleaseChange(newReleases: string[]) {
     // if the newReleases length is 0, set the rings to the default value
     if (newReleases.length === 0) {
-      const newFilters = { ...unappliedFilters, releases: ['All'] }
+      const newFilters = { ...unappliedFilters, releases: [DEFAULT_FILTER] }
       setUnappliedFilters(newFilters)
       return
     }
 
-    // If the only selection is the default value ("All"), just apply the filters
-    if (newReleases.length === 1 && newReleases[0] === 'All') {
-      const newFilters = { ...unappliedFilters, releases: newReleases }
+    // If the first item is the default value ("All"), apply the filters after removing the default value
+    if (newReleases[0] === DEFAULT_FILTER) {
+      const newFilters = {
+        ...unappliedFilters,
+        releases: newReleases.filter((i) => i !== DEFAULT_FILTER),
+      }
+      setUnappliedFilters(newFilters)
+      return
+    }
+
+    // If any of the filters contain the default value of "All", just apply the filters
+    if (newReleases.includes(DEFAULT_FILTER)) {
+      const newFilters = { ...unappliedFilters, releases: [DEFAULT_FILTER] }
       setUnappliedFilters(newFilters)
       return
     }
@@ -222,33 +260,43 @@ export function BuildFilters({}: Props) {
     // If we got here, remove the default value from the list
     const newFilters = {
       ...unappliedFilters,
-      releases: newReleases.filter((release) => release !== 'All'),
+      releases: newReleases.filter((release) => release !== DEFAULT_FILTER),
     }
     setUnappliedFilters(newFilters)
   }
 
   function handleRingChange(newRings: string[]) {
-    // if the newRings length is more than the max rings, return
-    if (newRings.length > MAX_RINGS) return
-
     // if the newRings length is 0, set the rings to the default value
     if (newRings.length === 0) {
-      const newFilters = { ...unappliedFilters, rings: ['All'] }
+      const newFilters = { ...unappliedFilters, rings: [DEFAULT_FILTER] }
       setUnappliedFilters(newFilters)
       return
     }
 
-    // If the only selection is the default value ("All"), just apply the filters
-    if (newRings.length === 1 && newRings[0] === 'All') {
-      const newFilters = { ...unappliedFilters, rings: newRings }
+    // If the first item is the default value ("All"), apply the filters after removing the default value
+    if (newRings[0] === DEFAULT_FILTER) {
+      const newFilters = {
+        ...unappliedFilters,
+        rings: newRings.filter((i) => i !== DEFAULT_FILTER),
+      }
       setUnappliedFilters(newFilters)
       return
     }
+
+    // If any of the filters contain the default value of "All", just apply the filters
+    if (newRings.includes(DEFAULT_FILTER)) {
+      const newFilters = { ...unappliedFilters, rings: [DEFAULT_FILTER] }
+      setUnappliedFilters(newFilters)
+      return
+    }
+
+    // if the newRings length is more than the max rings, return
+    if (newRings.length > MAX_RINGS) return
 
     // If we got here, remove the default value from the list
     const newFilters = {
       ...unappliedFilters,
-      rings: newRings.filter((ring) => ring !== 'All'),
+      rings: newRings.filter((ring) => ring !== DEFAULT_FILTER),
     }
     setUnappliedFilters(newFilters)
   }
@@ -265,6 +313,8 @@ export function BuildFilters({}: Props) {
       withReference,
     }))
   }
+
+  // #region Render
 
   return (
     <Disclosure defaultOpen={true}>
@@ -286,8 +336,8 @@ export function BuildFilters({}: Props) {
           <Disclosure.Panel className="w-full border border-cyan-500 bg-gray-950 p-4">
             <BaseFieldset>
               <BaseFieldGroup>
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
-                  <BaseField className="col-span-full md:col-span-2">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-4">
+                  <BaseField className="col-span-full sm:col-span-2">
                     <BaseLabel>Search</BaseLabel>
                     <div className="mt-3">
                       <Input
@@ -312,6 +362,19 @@ export function BuildFilters({}: Props) {
                       />
                     </div>
                   </BaseField>
+
+                  <div className="col-span-full sm:col-span-1">
+                    <AmuletFilter
+                      value={unappliedFilters.amulet}
+                      onChange={handleAmuletChange}
+                    />
+                  </div>
+                  <div className="col-span-full sm:col-span-1">
+                    <RingFilter
+                      value={unappliedFilters.rings}
+                      onChange={handleRingChange}
+                    />
+                  </div>
                   <div className="col-span-full sm:col-span-1">
                     <ArchetypeFilter
                       value={unappliedFilters.archetypes}
@@ -334,18 +397,6 @@ export function BuildFilters({}: Props) {
                     <HandGunFilter
                       value={unappliedFilters.handGun}
                       onChange={handleHandGunChange}
-                    />
-                  </div>
-                  <div className="col-span-full sm:col-span-1">
-                    <AmuletFilter
-                      value={unappliedFilters.amulet}
-                      onChange={handleAmuletChange}
-                    />
-                  </div>
-                  <div className="col-span-full sm:col-span-1">
-                    <RingFilter
-                      value={unappliedFilters.rings}
-                      onChange={handleRingChange}
                     />
                   </div>
                   <div className="col-span-full sm:col-span-1">
