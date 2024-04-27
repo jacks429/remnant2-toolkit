@@ -79,7 +79,7 @@ export type ItemTag =
   | 'Grey Health'
   | 'Hardcore Reward'
   | 'Heal'
-  | 'Healing Effectivness'
+  | 'Healing Effectiveness'
   | 'Health'
   | 'Heat Generation'
   | 'Lifesteal'

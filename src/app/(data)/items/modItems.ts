@@ -3,6 +3,29 @@ import { ModItem } from './types/ModItem'
 export const modItems: ModItem[] = [
   {
     category: 'mod',
+    name: 'Abrasive Rounds',
+    imagePath: '/mod/abrasive_rounds.png',
+    id: 'h9k5pd',
+    dlc: 'dlc2',
+    description: `Imbues ammunition with BLEED and increases Lifesteal by 5% for 20s. Shots also apply BLEEDING, dealing 200 damage over 10s.`,
+    wikiLinks: [`https://remnant.wiki/Abrasive_Rounds`],
+  },
+  {
+    category: 'mod',
+    name: '77 79 68',
+    imagePath: '/mod/polygun.png',
+    dlc: 'dlc2',
+    id: '777968',
+    description: `84 79 71 71 76 69 32 67 79 77 66 65 84 32 70 73 82 73 78 71 32 77 79 68 69 83`,
+    wikiLinks: [`https://remnant.wiki/77_79_68`],
+    linkedItems: {
+      weapon: {
+        name: 'Polygun',
+      },
+    },
+  },
+  {
+    category: 'mod',
     name: 'Accelerator',
     imagePath: '/mod/accelerator.png',
     id: 'h9k5pl',
@@ -207,7 +230,7 @@ export const modItems: ModItem[] = [
     name: 'Concussive Shot',
     imagePath: '/mod/concussive_shot.png',
     id: 'an140h',
-    description: `Fires a focused blast of air through all targets within 8m [R], dealing 155 damage and 4x impact.`,
+    description: `Fires a focused blast of air through all targets within 8m [A], dealing 155 damage and 4x impact.`,
     wikiLinks: [`https://remnant.wiki/Concussive_Shot`],
   },
   {
@@ -257,6 +280,20 @@ export const modItems: ModItem[] = [
   },
   {
     category: 'mod',
+    name: 'Cyclone',
+    imagePath: '/mod/cyclone.png',
+    id: '1bfadq',
+    dlc: 'dlc2',
+    description: `Maintaining an overhead Charged Melee forms a 5m sand cyclone, dealing 55 - 168 damage per second and pulls enemies towards the wielder. Each Cyclone hit applies EXPOSED for 3s. Max 15s.`,
+    wikiLinks: [`https://remnant.wiki/Cyclone`],
+    linkedItems: {
+      weapon: {
+        name: 'Mirage',
+      },
+    },
+  },
+  {
+    category: 'mod',
     name: 'Deadpoint',
     imagePath: '/mod/deadpoint.png',
     id: 'ysz4fw',
@@ -270,10 +307,26 @@ export const modItems: ModItem[] = [
   },
   {
     category: 'mod',
+    name: 'Deadwood',
+    imagePath: '/mod/deadwood.png',
+    id: 'k7z7rz',
+    dlc: 'dlc2',
+    description: `Disables automatic BLOWBACK, while increasing Thorn's Reload Speed by 25%, and Fire Rate by 15%.
+
+    Reactivating the Mod will trigger an EMPOWERED BLOWBACK, which detonates all needles at once for 100% additional damage. Lasts 20s.`,
+    wikiLinks: [`https://remnant.wiki/Deadwood`],
+    linkedItems: {
+      weapon: {
+        name: 'Thorn',
+      },
+    },
+  },
+  {
+    category: 'mod',
     name: 'Death Brand',
     imagePath: '/mod/death_brand1.png',
     id: 'd3q99g',
-    description: `Applies Death Brand to all enemies within 25m. [R] increasing incoming damage by 10%. Enemies killed while bearing the Death Brand leave behind an Echo which lasts 10s before returning to the Nightmare Realm. Echoes are drawn to any survivor who walks within 3m. increasing Weakspot Damage dealt by 10% for 10s.`,
+    description: `Applies Death Brand to all enemies within 25m. [A] increasing incoming damage by 10%. Enemies killed while bearing the Death Brand leave behind an Echo which lasts 10s before returning to the Nightmare Realm. Echoes are drawn to any survivor who walks within 3m. increasing Weakspot Damage dealt by 10% for 10s.`,
     wikiLinks: [`https://remnant.wiki/Death_Brand`],
     linkedItems: {
       weapon: {
@@ -301,7 +354,7 @@ export const modItems: ModItem[] = [
     id: '3hqdob',
     description: `Infects weapon with Malware for 30s, causing shots to apply FRAGMENTED for 15s. When a FRAGMENTED enemy dies, they create a Glitch that lasts 5s. 
     Picking up a Glitch increases All damage by 20% for 5s. 
-    Destroying a Glitch causes it to destabilize, creating a 5m [R] Virus Pool which deals 25 damage per second and applies the FRAGMENTED debuff to enemies inside. Virus Pools last 15s.`,
+    Destroying a Glitch causes it to destabilize, creating a 5m [A] Virus Pool which deals 25 damage per second and applies the FRAGMENTED debuff to enemies inside. Virus Pools last 15s.`,
     wikiLinks: [`https://remnant.wiki/Defrag`],
   },
   {
@@ -323,7 +376,8 @@ export const modItems: ModItem[] = [
     name: 'Dreamwave',
     imagePath: '/mod/dreamwave.png',
     id: 'dwmc70',
-    description: `After dealing 250 damage, Charge Attack will release a Dreamwave, flowing outwards 20m [R] and returning to caster. Dreamwave applies SLOW to all enemies for 10s and grants a Stack of REVERIE for each enemy affected. Each Stack grants +2% to All Damage and +2% Movement Speed, which lasts 15s.`,
+    tags: ['Status Effect'],
+    description: `After dealing 250 damage, Charge Attack will release a Dreamwave, flowing outwards 20m [A] and returning to caster. Dreamwave applies SLOW to all enemies for 10s and grants a Stack of REVERIE for each enemy affected. Each Stack grants +2% to All Damage and +2% Movement Speed, which lasts 15s.`,
     wikiLinks: [`https://remnant.wiki/Dreamwave`],
     linkedItems: {
       weapon: {
@@ -336,7 +390,7 @@ export const modItems: ModItem[] = [
     name: 'Dying Breath',
     imagePath: '/mod/dying_breath.png',
     id: '22nk8x',
-    description: `When infused, Neural Backdash Charge Attack explodes in a 3m. [R] AOE and leaves an ACID Cloud which last for 15s.`,
+    description: `When infused, Neural Backdash Charge Attack explodes in a 3m. [A] AOE and leaves an ACID Cloud which last for 15s.`,
     wikiLinks: [`https://remnant.wiki/Dying_Breath`],
     linkedItems: {
       weapon: {
@@ -383,7 +437,7 @@ export const modItems: ModItem[] = [
     name: 'Explosive Shot',
     imagePath: '/mod/explosive_shot.png',
     id: 'hpfdzp',
-    description: `Fires an explosive round [E] that deals up to 465 FIRE damage within 9m [A] and applies BURNING, dealing 300 FIRE damage over 5s.`,
+    description: `Fires an explosive round [E] that deals up to 175 FIRE damage within 9m [A] and applies BURNING, dealing 250 FIRE damage over 5s.`,
     wikiLinks: [`https://remnant.wiki/Explosive_Shot`],
     linkedItems: {
       weapon: {
@@ -396,7 +450,7 @@ export const modItems: ModItem[] = [
     name: 'Familiar',
     imagePath: '/mod/familiar.png',
     id: 'sccdmt',
-    description: `Summons Faerie Familiar to aid in combat. The Familiar selects a random enemy within 10m [R] and slashes through them for 25 damage each attack. Familiar will select a new target when the previous one dies. Lasts 15s.`,
+    description: `Summons Faerie Familiar to aid in combat. The Familiar selects a random enemy within 10m [A] and slashes through them for 25 damage each attack. Familiar will select a new target when the previous one dies. Lasts 15s.`,
     wikiLinks: [`https://remnant.wiki/Familiar`],
   },
   {
@@ -454,6 +508,19 @@ export const modItems: ModItem[] = [
         name: 'Atom Splitter',
       },
     },
+  },
+  {
+    category: 'mod',
+    name: 'Flying Bomb Trap',
+    imagePath: '/mod/flying_bomb_trap.png',
+    id: '2GWpcL',
+    dlc: 'dlc2',
+    description: `Fires a projectile that deploys up to 5 traps after contacting the ground.
+
+    Each trap can launch a flask of deadly liquid up to 15m when an enemy travels above and will rearm once every 1.5s. Flask detonations release a 7m shockwave which deals 50 Damage and splashes targets within 4m of the center for 100 ACID Damage, applying CORRODED for 100 damage over 10s.
+    
+    Lasts 20s or 10 total flask launches.`,
+    wikiLinks: [`https://remnant.wiki/Flying_Bomb_Trap`],
   },
   {
     category: 'mod',
@@ -521,6 +588,15 @@ export const modItems: ModItem[] = [
         name: 'Corrupted Arbalest',
       },
     },
+  },
+  {
+    category: 'mod',
+    name: 'Heatwave',
+    imagePath: '/mod/heatwave.png',
+    dlc: 'dlc2',
+    id: 'vc3s1n',
+    description: `Activates a 15m aura of sweltering heat, causing enemies inside the aura for 3s to begin BURNING for 50 FIRE Damage per second for 5s. Lasts 30s.`,
+    wikiLinks: [`https://remnant.wiki/Heatwave`],
   },
   {
     category: 'mod',
@@ -666,7 +742,7 @@ export const modItems: ModItem[] = [
     name: 'Nano Swarm',
     imagePath: '/mod/nano_swarm.png',
     id: '8ko9zz',
-    description: `Unleash a swarm of Nanomachines that seek after enemies within 20 meters and repeatedly attack dealing 6 ACID damage per hit and applying CORRODED dealing 100 ACID damage over 10s. Lasts 15 seconds`,
+    description: `Unleash a swarm of Nanomachines that seek after enemies within 20 meters and repeatedly attack dealing 6 ACID damage per hit. Lasts 15 seconds.`,
     wikiLinks: [`https://remnant.wiki/Nano_Swarm`],
     linkedItems: {
       weapon: {
@@ -679,7 +755,9 @@ export const modItems: ModItem[] = [
     name: 'Ouroboros',
     imagePath: '/mod/ouroboros.png',
     id: 'czgb8w',
-    description: `Conjures 6 sword fragments that encircle the wielder for 20s. Performing a Melee Attacks lets loose a Fragment which taints the blood of targets, causing all attacks from Deceit to register as Weakspot hits for a short period of time. Charge Melee attack fires all remaining Fragments at once.`,
+    description: `Conjures 3 sword fragments that encircle the wielder for 30s. Performing a Melee Attack lets loose a Fragment which taints the blood of targets, causing all attacks from Deceit to register as Weakspot hits for a short period of time.
+
+    Charge Melee Attacks fire all remaining Fragments at once.`,
     wikiLinks: [`https://remnant.wiki/Ouroboros`],
     linkedItems: {
       weapon: {
@@ -694,6 +772,23 @@ export const modItems: ModItem[] = [
     id: 'tya9an',
     description: `Imbues ammunition with SHOCK and increases Fire Rate by 15% and Reload Speed by 15% for 20 seconds. Shots also apply OVERLOADED, dealing 35 SHOCK Damage every 5s for 15s.`,
     wikiLinks: [`https://remnant.wiki/Overflow`],
+  },
+  {
+    category: 'mod',
+    name: 'Power Stone',
+    imagePath: '/mod/power_stone.png',
+    id: '2JimAt',
+    dlc: 'dlc2',
+    tags: ['Status Effect'],
+    description: `Charged Melee empowers the staff for 10s, causing Melee Attacks to launch an energy bolt that seeks enemies within 30m [A], dealing 50 SHOCK Damage and grants 1 stack of POWER STONE. Max 10 stacks.
+    
+    While empowered, Charged Melee calls 9m [A] shockwave dealing 75 SHOCK Damage and ends POWER STONE. For each POWER STONE stack built when ended, release 1 energy bolt that seeks a random enemy and applies OVERLOADED for 40s.`,
+    wikiLinks: [`https://remnant.wiki/Power_Stone`],
+    linkedItems: {
+      weapon: {
+        name: 'Crystal Staff',
+      },
+    },
   },
   {
     category: 'mod',
@@ -723,7 +818,7 @@ export const modItems: ModItem[] = [
     imagePath: '/mod/ring_of_spears.png',
     dlc: 'dlc1',
     id: '4rdl8r',
-    description: `Calls forth 7 phantom spears to encircle the wielder [R] for 25 seconds. This ring will deal up to 35 damage per second to nearby enemies, based on the number of spears remaining in the ring. While the mod is active, these spears can be thrown by tapping the mod button, dealing 100 damage to the first enemy hit. Spears will remain at their impact point for the duration of the mod or until recalled by holding the mod button. When recalled, spears will return to the wielder, dealing 50 damage to enemies along their path. When all recalled spears have reached the wielder, they cause an explosion dealing up to 350 damage based on the number of spears recalled.`,
+    description: `Calls forth 7 phantom spears to encircle the wielder [A] for 25 seconds. This ring will deal up to 35 damage per second to nearby enemies, based on the number of spears remaining in the ring. While the mod is active, these spears can be thrown by tapping the mod button, dealing 100 damage to the first enemy hit. Spears will remain at their impact point for the duration of the mod or until recalled by holding the mod button. When recalled, spears will return to the wielder, dealing 50 damage to enemies along their path. When all recalled spears have reached the wielder, they cause an explosion dealing up to 350 damage [E] based on the number of spears recalled.`,
     wikiLinks: [`https://remnant.wiki/Ring_of_Spears`],
   },
   {
@@ -739,15 +834,31 @@ export const modItems: ModItem[] = [
     name: 'Rotted Arrow',
     imagePath: '/mod/rotted_arrow.png',
     id: 'vgin4w',
-    description: `Fires a rotten arrow that deals 19.8 damage and detonates for another 60 damage [E] within 4m. [A] A deadly gas cloud is left behind that deals 200 damage over 5s.`,
+    description: `Fires a rotten arrow that deals 75 damage and detonates for another 100 damage [E] within 1.5m [A].`,
     wikiLinks: [`https://remnant.wiki/Rotted_Arrow`],
+  },
+  {
+    category: 'mod',
+    name: 'Sandstorm',
+    imagePath: '/mod/sandstorm.png',
+    dlc: 'dlc2',
+    id: 'ozNPv9',
+    tags: [],
+    description: `Launch a sphere of loam. Impact creates a 5m [A] swirling storm of sand which seeks to center itself on an enemy and deals x Elemental damage per second. When Sandstorm's focused target dies, it will seek a new enemy within 10m [A]. Lasts 15s.`,
+    wikiLinks: [`https://remnant.wiki/Sandstorm`],
+    linkedItems: {
+      weapon: {
+        name: 'Monolith',
+      },
+    },
   },
   {
     category: 'mod',
     name: 'Scrap Shot',
     imagePath: '/mod/scrap_shot.png',
     id: 'hcv400',
-    description: `Fires a caltrops grenade that explodes to cover an area of 6m. [R] Caltrops deal 20 damage per second and SLOW to enemies that walk over them. Lasts 10s.`,
+    tags: ['Status Effect'],
+    description: `Fires a caltrops grenade that explodes to cover an area of 6m. [A] Caltrops deal 20 damage per second and SLOW to enemies that walk over them. Lasts 10s.`,
     wikiLinks: [`https://remnant.wiki/Scrap_Shot`],
   },
   {
@@ -770,7 +881,7 @@ export const modItems: ModItem[] = [
     id: 'z9e8qq',
     description: `Imbues shots with White hot FIRE. Hits apply BURNING, dealing 250 FIRE damage over 10 seconds. Lasts 20s.
 
-    Weakspot Hits and Kills cause shots to fragment, automatically targeting nearby enemies. Fragments strike for 30% of the initial damage dealt and apply BURNING.`,
+    Shots fragment, automatically targeting nearby enemies. Fragments strike for 30% of the initial damage dealt and apply BURNING.`,
     wikiLinks: [`https://remnant.wiki/Shatterstar`],
     linkedItems: {
       weapon: {
@@ -791,8 +902,9 @@ export const modItems: ModItem[] = [
     name: 'Song of Eafir',
     imagePath: '/mod/song_of_eafir.png',
     id: 'edm644',
+    tags: ['Status Effect', 'Damage Reduction'],
     description: `Fires a shot infused with the binding power of the Song of Eafir. Staggers most ground enemies within 10m [A] and deals 150 damage [E] to Flying enemies within the same range.
-    The song continues for 15s, afflicting targets within 15m [A] with SLOW, and a 15% decrease to damage dealt.`,
+    The song continues for 15s, afflicting targets within 15m [A] with SLOW, and a 10% decrease to damage.`,
     wikiLinks: [`https://remnant.wiki/Song_of_Eafir`],
   },
   {
@@ -800,7 +912,7 @@ export const modItems: ModItem[] = [
     name: 'Soul Brand',
     imagePath: '/mod/soul_brand.png',
     id: 'imk8xh',
-    description: `Applies a Soul Brand to all enemies within 25m [R] which lasts 25s. Enemies killed while bearing the Soul Brand leave behind an Echo which lasts 10s before returning to the Nightmare Realm. Echoes are drawn to any survivor who walks within 3m, granting 10% of Max Health on contact.`,
+    description: `Applies a Soul Brand to all enemies within 25m [A] which lasts 25s. Enemies killed while bearing the Soul Brand leave behind an Echo which lasts 10s before returning to the Nightmare Realm. Echoes are drawn to any survivor who walks within 3m, granting 10% of Max Health on contact.`,
     wikiLinks: [`https://remnant.wiki/Soul_Brand`],
     linkedItems: {
       weapon: {
@@ -813,7 +925,7 @@ export const modItems: ModItem[] = [
     name: 'Soulbinder',
     imagePath: '/mod/soulbinder.png',
     id: '5bb0mv',
-    description: `Fires a projectile that attaches to the enemy dealing 40 damage. Enemies within 7m [R] become bound to the primary target after impact and share 60% of damage dealt to them. Lasts 15s.`,
+    description: `Fires a projectile that attaches to the enemy dealing 40 damage. Enemies within 7m [A] become bound to the primary target after impact and share 60% of damage dealt to them. Lasts 15s.`,
     wikiLinks: [`https://remnant.wiki/Soulbinder`],
   },
   {
@@ -829,7 +941,8 @@ export const modItems: ModItem[] = [
     name: 'Spore Shot',
     imagePath: '/mod/spore_shot1.png',
     id: '9fi67v',
-    description: `Fires a rotten spore that explodes dealing 125 damage [E] within 6m and leaves a deadly gas cloud that applies SLOW [R] while dealing 15 damage per second for 7s.`,
+    tags: ['Status Effect'],
+    description: `Fires a rotten spore that leaves a deadly gas cloud that applies SLOW to while dealing 15 - 45 damage per second for 7s to enemies, and gives allies HASTE.`,
     wikiLinks: [`https://remnant.wiki/Spore_Shot`],
     linkedItems: {
       weapon: {
@@ -855,6 +968,7 @@ export const modItems: ModItem[] = [
     name: 'Stasis Beam',
     imagePath: '/mod/stasis_beam.png',
     id: 'rer73h',
+    tags: ['Status Effect'],
     description: `Fires a beam which deals 15 damage per second, and applies SLOW Debuff. After 2s of application to a target, SLOW becomes STASIS, freezing the target in place for 10s.`,
     wikiLinks: [`https://remnant.wiki/Stasis_Beam`],
   },
@@ -863,6 +977,7 @@ export const modItems: ModItem[] = [
     name: 'Supernova',
     imagePath: '/mod/supernova.png',
     id: '9rxk65',
+    tags: ['Status Effect'],
     description: `Fires the compressed remains of a dying star. On contact or hit wit the primary fire, causes Supernova to explode for 150 FIRE Damage, and 350 BURNING Damage over 10s to all targets within 4m [A].
 
     Striking the Supernova with Aphelion's primary fire increases its explosion radius by 25% and damage by 50%, and spawns a massive shockwave that deals 300 FIRE damage and also applies the initial BURNING amount.`,
@@ -878,7 +993,8 @@ export const modItems: ModItem[] = [
     name: 'Time Lapse',
     imagePath: '/mod/time_lapse.png',
     id: 'nn1q6k',
-    description: `Creates a 6m [R] blast which freezes all standard enemies for 7s. 
+    tags: ['Status Effect'],
+    description: `Creates a 6m [A] blast which freezes all standard enemies for 7s. 
     Dealing damage to frozen enemies immediately breaks the Time Lapse effect, applying SLOW for the remaining duration.`,
     wikiLinks: [`https://remnant.wiki/Time_Lapse`],
   },
@@ -895,7 +1011,8 @@ export const modItems: ModItem[] = [
     name: 'Voltaic Rondure',
     imagePath: '/mod/voltaic_rondure.png',
     id: 'wjopwy',
-    description: `Launches a slow-moving orb that pulses every 0.5s, striking enemies within 3m [R] for 20 SHOCK damage and applying OVERLOADED for 15s. The orb lasts 20s. The orb can be overcharged by striking it with additional damage.`,
+    tags: ['Status Effect'],
+    description: `Launches a slow-moving orb that pulses every 0.5s, striking enemies within 3m [A] for 20 SHOCK damage and applying OVERLOADED for 15s. The orb lasts 20s. The orb can be overcharged by striking it with additional damage.`,
     wikiLinks: [`https://remnant.wiki/Voltaic_Rondure`],
   },
   {
@@ -928,7 +1045,9 @@ export const modItems: ModItem[] = [
     name: 'Windfall',
     imagePath: '/mod/windfall1.png',
     id: '82v8kz',
-    description: `Fires a ring of spinning blades which penetrates targets as it travels up to 20m before returning to the weapon. While traveling, activating Windfall again causes the projectile to spin in place for up to 3s. Activating it once more will recall it. Enemies struck by the Windfall obtain Tainted Blood for 3s causing all attacks from Deceit to trigger as Weakspot hits.`,
+    description: `Fires a ring of spinning blades which penetrates targets as it travels up to 20m before returning to the weapon. While traveling, activating Windfall again causes the projectile to spin in place for up to 3s. Activating it once more will recall it.
+
+    Enemies struck by the Windfall obtain Tainted Blood for 3s causing all attacks from Deceit to trigger as Weakspot hits.`,
     wikiLinks: [`https://remnant.wiki/Windfall`],
     linkedItems: {
       weapon: {

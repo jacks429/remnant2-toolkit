@@ -26,6 +26,23 @@ import { capitalize } from '@/lib/capitalize'
 
 import { parseSaveFile } from './(lib)/actions'
 
+function getCategoryProgressLabel({
+  filteredItems,
+  discoveredItemIds,
+}: {
+  filteredItems: Item[]
+  discoveredItemIds: string[]
+}) {
+  const discoveredCount = filteredItems.reduce((acc, item) => {
+    if (discoveredItemIds.includes(item.id)) return acc + 1
+    return acc
+  }, 0)
+  const selectedCategoryProgress = parseFloat(
+    ((discoveredCount / filteredItems.length) * 100).toFixed(2),
+  )
+  return selectedCategoryProgress
+}
+
 /**
  * ----------------------------------------------
  * Get the item categories
@@ -147,13 +164,13 @@ export default function Page() {
 
           results.data.forEach(
             (value: any, index: number, array: unknown[]) => {
-              const itemName = value[0]
+              const itemId = value[0]
               const discovered =
                 value[value.length - 1].toLowerCase() === 'true'
 
               if (!discovered) return
 
-              const item = allItems.find((item) => item.name === itemName)
+              const item = allItems.find((item) => item.id === itemId)
               if (!item) return
 
               if (skippedItemCategories.includes(item.category)) return
@@ -210,9 +227,11 @@ export default function Page() {
   // generate the build urls, but that's not a priority right now.
   const csvItems = useMemo(() => {
     return (
-      filteredItems
-        // Modify the data for use. Adds a discovered flag,
-        // modifies the description for mutators
+      allItems
+        .map((item) => ({
+          ...item,
+          discovered: discoveredItemIds.includes(item.id),
+        }))
         .map((item) => {
           let csvItem = itemToCsvItem(item)
 
@@ -241,7 +260,7 @@ export default function Page() {
           return 0
         })
     )
-  }, [filteredItems])
+  }, [discoveredItemIds])
 
   function getSelectedCategory() {
     let item = filteredItems[0]
@@ -263,10 +282,12 @@ export default function Page() {
 
   const selectedCategory = getSelectedCategory()
 
-  const selectedItemProgress = getProgressLabel({
-    items: filteredItems,
+  const selectedItemProgress = getCategoryProgressLabel({
+    filteredItems,
     discoveredItemIds,
   })
+
+  // #region Render
 
   return (
     <>
@@ -311,45 +332,51 @@ export default function Page() {
               !isClient
                 ? []
                 : itemCategories.map((category) => ({
-                    label: `${category as string} - ${getProgressLabel({
-                      items: allTrackerItems.filter((item) => {
-                        if (category === 'Long Gun') {
+                    label: `${category as string} - ${getCategoryProgressLabel({
+                      filteredItems: allTrackerItems
+                        .filter((item) => {
+                          if (category === 'Long Gun') {
+                            return (
+                              WeaponItem.isWeaponItem(item) &&
+                              item.type === 'long gun'
+                            )
+                          }
+                          if (category === 'Hand Gun') {
+                            return (
+                              WeaponItem.isWeaponItem(item) &&
+                              item.type === 'hand gun'
+                            )
+                          }
+                          if (category === 'Melee') {
+                            return (
+                              WeaponItem.isWeaponItem(item) &&
+                              item.type === 'melee'
+                            )
+                          }
+                          if (category === 'Mutator (Gun)') {
+                            return (
+                              MutatorItem.isMutatorItem(item) &&
+                              item.type === 'gun'
+                            )
+                          }
+                          if (category === 'Mutator (Melee)') {
+                            return (
+                              MutatorItem.isMutatorItem(item) &&
+                              item.type === 'melee'
+                            )
+                          }
                           return (
-                            WeaponItem.isWeaponItem(item) &&
-                            item.type === 'long gun'
+                            item.category.toLowerCase() ===
+                            category.toLowerCase()
                           )
-                        }
-                        if (category === 'Hand Gun') {
-                          return (
-                            WeaponItem.isWeaponItem(item) &&
-                            item.type === 'hand gun'
-                          )
-                        }
-                        if (category === 'Melee') {
-                          return (
-                            WeaponItem.isWeaponItem(item) &&
-                            item.type === 'melee'
-                          )
-                        }
-                        if (category === 'Mutator (Gun)') {
-                          return (
-                            MutatorItem.isMutatorItem(item) &&
-                            item.type === 'gun'
-                          )
-                        }
-                        if (category === 'Mutator (Melee)') {
-                          return (
-                            MutatorItem.isMutatorItem(item) &&
-                            item.type === 'melee'
-                          )
-                        }
-                        return (
-                          item.category.toLowerCase() === category.toLowerCase()
-                        )
-                      }),
+                        })
+                        .sort((a, b) => {
+                          if (a.name < b.name) return -1
+                          if (a.name > b.name) return 1
+                          return 0
+                        }),
                       discoveredItemIds,
-                      percentOnly: true,
-                    })}`,
+                    })}%`,
                     value: category.toLowerCase() as string,
                   }))
             }
@@ -385,22 +412,28 @@ export default function Page() {
                 {selectedCategory} Items
               </h2>
               <div className="mb-4 flex w-full items-center justify-center gap-x-4 text-lg font-semibold">
-                {selectedItemProgress}
+                {selectedItemProgress}%
               </div>
               <div className="flex w-full flex-wrap items-center justify-center gap-2">
-                {filteredItems.map((item) => (
-                  <ItemButton
-                    key={item.id}
-                    item={item}
-                    isEditable={false}
-                    isToggled={item.discovered}
-                    onClick={() => handleItemClicked(item.id)}
-                    onItemInfoClick={() => handleShowItemInfo(item.id)}
-                    size="lg"
-                    tooltipDisabled={isShowItemInfoOpen}
-                    loadingType="lazy"
-                  />
-                ))}
+                {filteredItems
+                  .sort((a, b) => {
+                    if (a.name < b.name) return -1
+                    if (a.name > b.name) return 1
+                    return 0
+                  })
+                  .map((item) => (
+                    <ItemButton
+                      key={item.id}
+                      item={item}
+                      isEditable={false}
+                      isToggled={item.discovered}
+                      onClick={() => handleItemClicked(item.id)}
+                      onItemInfoClick={() => handleShowItemInfo(item.id)}
+                      size="lg"
+                      tooltipDisabled={isShowItemInfoOpen}
+                      loadingType="lazy"
+                    />
+                  ))}
               </div>
             </>
           )}

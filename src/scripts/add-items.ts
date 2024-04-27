@@ -1,28 +1,23 @@
 import { prisma } from '../features/db'
 import { Item } from '../features/items/types'
 
-const invokerItems = [
+const items = [
   {
-    category: 'perk',
-    name: 'Soothsayer',
-    imagePath: '/perk/soothsayer-placeholder.png',
-    type: 'relic',
-    id: 'j7e5Bb',
+    category: 'amulet',
+    name: 'Cervine Keepsake',
+    imagePath: '/amulet/cervine_keepsake.png',
+    id: '5sfzsd',
     dlc: 'dlc2',
-    tags: [],
-    description:
-      'On Relic use, extend the duration of active Invoker skills by 20% of the base duration. Cannot exceed base duration. Relic Use Speed increased by 25% while an Invoker Skill is active.',
-    wikiLinks: [],
-    linkedItems: {
-      archetype: {
-        name: 'Invoker',
-      },
-    },
+    tags: ['Movement Speed'],
+    description: `On Relic Use, gain a stack of CALL OF THE DOE for 30s. Max 5 stacks.
+
+    CALL OF THE DOE: Increases Movement Speed by 4% per stack. When CALL OF THE DOE expires, regain 1 Relic Charge per stack.`,
+    wikiLinks: [`https://remnant.wiki/Cervine_Keepsake`],
   },
 ] as const satisfies Item[]
 
 async function main() {
-  for (const item of invokerItems) {
+  for (const item of items) {
     const dlc = item.dlc ?? 'base'
 
     await prisma.item.upsert({

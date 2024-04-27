@@ -4,11 +4,118 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## 2024-04-27
+
+### Fixed
+
+- Updated Burden of the Mesmer to the correct in-game image.
+- Fixed issue where items in the Item Tracker were not sorting alphabetically.
+- Fixed an issue where the `t` URL parameter was affecting the item name when sharing a build as an unauthenticated user.
+- Fixed issue where Battle Slacks were called Battle Trousers in the Toolkit.
+
+## 2024-04-26
+
+### Added
+
+- Added final items from DLC2?
+- Added a new note to the World Save Archive warning that Cass progress could be lost, and possibly not recovered by a backup save restore.
+- Added note to README under FEATURED BUILDS about users needing to update the build as new content is released.
+- Added image for the Polygun mod.
+
+### Fixed
+
+- Removed broken world save for The Red Prince - Spiteful, Vicious combo.
+- Changed Summoner/Archon combo name from `Augur` to `Invoker` to match the in-game name.
+
+## 2024-04-25
+
+### Added
+
+- Added many more items from the latest DLC.
+
+### Changed
+
+- Removed build protection feature to prevent data loss on page refresh. This was creating bugs and needs to be tested more thoroughly.
+
+### Fixed
+
+- Fixed issue with Item Tracker percentages being insane.
+- Updated Sanguine Vapor description.
+
+## 2024-04-24
+
+### Added
+
+- Added many more newly discovered items from the latest DLC.
+- Added a new featured build!
+- Added new bosses, world boss, and aberrations to Boss Tracker and profile avatars. (Thanks ConRaven!)
+
+### Fixed
+
+- Fixed an issue where you couldn't sync your tracked items on your profile.
+
+## 2024-04-23
+
+### Added
+
+- Added many newly discovered items from the latest DLC.
+
+### Changed
+
+- Added an autosave mechanism when creating and editing builds. This should help preserve a build when the page reloads.
+- Removed `bum` from bad word list.
+
+### Fixed
+
+- Updated incorrect Bulletweaver description.
+- Fixed missing E in Healing Effectiveness tag.
+
+## 2024-04-22
+
+### Added
+
+- Shovel weapon has been added.
+
+### Fixed
+
+- Fixed issue where Invoker items were not showing in the Item Tracker.
+
+### Changed
+
+- Loads of values updated for all items, too many to enumerate.
+- Removed Resonance trait from the database and from all builds that used it.
+- Removed Wayfarer trait from the database and from all builds that used it.
+- Updated Amplitude vs Resonance guide to only reference Amplitude.
+- Replaced all [R] tokens with [A] tokens.
+- Engineer intrinsic trait loadout changed, -1 Expertise, +1 Endurance
+- Ritualist intrinsic trait loadout changed, -1 Endurance, +1 Spirit
+
+## 2024-04-21
+
+### Fixed
+
+- Fixed bug where the CSV Export on the Item Tracker would only export items for the selected category rather than all items.
+- Fixed a bug in the Item Tracker where CSV Import was not including some items. Why did I do this by item name instead of id? This oversight has been corrected!
+
+## 2024-04-20
+
+### Changed
+
+- Updated ⁠code-of-conduct to include "Overusing discord's @ feature" under examples of unacceptable behavior.
+
+### Fixed
+
+- Invoker archetype combo names now include the word "Spirit" in the name.
+- Fixed Twisting Wounds description, should have indicated 200 Bleed Damage over 10s.
+- Added better quality image for Soul Shard ring.
+- Added better quality image for A'Taerii Booster ring.
+
 ## 2024-04-19
 
 ### Added
 
 - Added Elemental Damage tag.
+- Added Invoker intrinsic trait points.
 
 ### Fixed
 
@@ -24,7 +131,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - World Save for The Nightweaver, Skullcracker/Vicious
 - World Save for Venom, Skullcracker/Vicious
 - Added Invoker archetype, skills, perks, and trait to the builder and item lookup pages!
-- Added note to trait points display about missing Invoker intrinsic trait points.
 
 ### Fixed
 

@@ -20,8 +20,10 @@ import { DetailedBuildDialog } from '@/app/(components)/dialogs/detailed-build-d
 import { ImageDownloadInfoDialog } from '@/app/(components)/dialogs/image-download-info-dialog'
 import { LoadoutDialog } from '@/app/(components)/dialogs/loadout-dialog'
 import { useBuildActions } from '@/app/(hooks)/use-build-actions'
+import { urlNoCache } from '@/app/(utils)/url-no-cache'
 import { BuilderContainer } from '@/features/build/components/builder/BuilderContainer'
 import { buildStateToCsvData } from '@/features/build/lib/buildStateToCsvData'
+import { cleanUpBuildState } from '@/features/build/lib/cleanUpBuildState'
 import { dbBuildToBuildState } from '@/features/build/lib/dbBuildToBuildState'
 import { DBBuild } from '@/features/build/types'
 
@@ -52,7 +54,7 @@ interface Props {
 }
 
 export function BuildPage({ build }: Props) {
-  const buildState = dbBuildToBuildState(build)
+  const buildState = cleanUpBuildState(dbBuildToBuildState(build))
 
   const [detailedBuildDialogOpen, setDetailedBuildDialogOpen] = useState(false)
   const [loadoutDialogOpen, setLoadoutDialogOpen] = useState(false)
@@ -151,14 +153,9 @@ export function BuildPage({ build }: Props) {
 
               <ShareBuildButton
                 onClick={() => {
-                  const url = window.location.href
-                  if (!url) {
-                    toast.error('Could not copy build url. Try again.')
-                    return
-                  }
-                  const message = 'Copied Build URL to clipboard.'
-                  copy(`${url}?t=${Date.now()}`)
-                  toast.success(message)
+                  const url = urlNoCache(window.location.href)
+                  copy(url)
+                  toast.success('Copied Build URL to clipboard.')
                 }}
               />
 

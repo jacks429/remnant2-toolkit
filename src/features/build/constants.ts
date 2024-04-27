@@ -89,22 +89,22 @@ export const BUILD_REVALIDATE_PATHS = [
  * Referenced from https://www.reddit.com/r/remnantgame/comments/158vs4k/all_class_names/
  * by u/Arkavien
  */
-export const ARCHETYPE_BUILD_NAMES: Array<{
+export const ARCHETYPE_COMBO_NAMES: Array<{
   archetypes: Archetype[]
   name: string
 }> = [
-  { archetypes: ['invoker', 'summoner'], name: 'of Darkness' },
-  { archetypes: ['invoker', 'handler'], name: 'of Friendship' },
-  { archetypes: ['invoker', 'medic'], name: 'of Healing' },
-  { archetypes: ['invoker', 'explorer'], name: 'of Wonder' },
-  { archetypes: ['invoker', 'gunslinger'], name: 'of Frenzy' },
-  { archetypes: ['invoker', 'challenger'], name: 'of Combat' },
-  { archetypes: ['invoker', 'hunter'], name: 'of Stalking' },
-  { archetypes: ['invoker', 'invader'], name: 'of Violence' },
-  { archetypes: ['invoker', 'alchemist'], name: 'of Alchemy' },
-  { archetypes: ['invoker', 'archon'], name: 'of Power' },
-  { archetypes: ['invoker', 'ritualist'], name: 'of Pain' },
-  { archetypes: ['invoker', 'engineer'], name: 'of Creation' },
+  { archetypes: ['invoker', 'summoner'], name: 'Spirit of Darkness' },
+  { archetypes: ['invoker', 'handler'], name: 'Spirit of Friendship' },
+  { archetypes: ['invoker', 'medic'], name: 'Spirit of Healing' },
+  { archetypes: ['invoker', 'explorer'], name: 'Spirit of Wonder' },
+  { archetypes: ['invoker', 'gunslinger'], name: 'Spirit of Frenzy' },
+  { archetypes: ['invoker', 'challenger'], name: 'Spirit of Combat' },
+  { archetypes: ['invoker', 'hunter'], name: 'Spirit of Stalking' },
+  { archetypes: ['invoker', 'invader'], name: 'Spirit of Violence' },
+  { archetypes: ['invoker', 'alchemist'], name: 'Spirit of Alchemy' },
+  { archetypes: ['invoker', 'archon'], name: 'Spirit of Power' },
+  { archetypes: ['invoker', 'ritualist'], name: 'Spirit of Pain' },
+  { archetypes: ['invoker', 'engineer'], name: 'Spirit of Creation' },
   { archetypes: ['engineer', 'summoner'], name: 'Mastermind' },
   { archetypes: ['engineer', 'handler'], name: 'Roughneck' },
   { archetypes: ['engineer', 'medic'], name: 'Specialist' },
@@ -150,7 +150,7 @@ export const ARCHETYPE_BUILD_NAMES: Array<{
   { archetypes: ['hunter', 'alchemist'], name: 'Isolator' },
   { archetypes: ['invader', 'alchemist'], name: 'Trickster' },
   { archetypes: ['archon', 'medic'], name: 'Virtuoso' },
-  { archetypes: ['archon', 'summoner'], name: 'Augur' },
+  { archetypes: ['archon', 'summoner'], name: 'Invoker' },
   { archetypes: ['archon', 'handler'], name: 'Harrier' },
   { archetypes: ['archon', 'engineer'], name: 'Luminary' },
   { archetypes: ['archon', 'explorer'], name: 'Trailblazer' },

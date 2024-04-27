@@ -99,8 +99,7 @@ export const archetypeItems: ArchetypeItem[] = [
       traits: [
         { name: 'Fortify', amount: 10 },
         { name: 'Vigor', amount: 2 },
-        { name: 'Endurance', amount: 2 },
-        { name: 'Expertise', amount: 1 },
+        { name: 'Endurance', amount: 3 },
       ],
       skills: [
         { name: 'Heavy Weapon: Vulcan' },
@@ -262,13 +261,18 @@ export const archetypeItems: ArchetypeItem[] = [
   {
     category: 'archetype',
     name: 'Invoker',
-    imagePath: '/archtype/invoker-placeholder2.png', // TODO
+    imagePath: '/archtype/invoker.png',
+    saveFileSlug: 'Engram_Invoker',
     id: 'Y2NhrX',
     dlc: 'dlc2',
-    description: 'NO DESCRIPTION YET', // TODO
+    description: 'The INVOKER specializes in Skill Effectiveness and Buffs.',
     wikiLinks: ['https://remnant.wiki/Invoker'],
     linkedItems: {
-      traits: [{ name: 'Gifted', amount: 10 }],
+      traits: [
+        { name: 'Gifted', amount: 10 },
+        { name: 'Vigor', amount: 2 },
+        { name: 'Expertise', amount: 3 },
+      ],
       skills: [
         { name: 'Way of Kaeula' },
         { name: 'Way of Meidra' },
@@ -324,15 +328,10 @@ export const archetypeItems: ArchetypeItem[] = [
     linkedItems: {
       traits: [
         { name: 'Affliction', amount: 10 },
-        { name: 'Spirit', amount: 2 },
+        { name: 'Spirit', amount: 3 },
         { name: 'Expertise', amount: 2 },
-        { name: 'Endurance', amount: 1 },
       ],
-      skills: [
-        { name: 'Eruption' },
-        { name: 'Miasma' },
-        { name: 'Death Wish' },
-      ],
+      skills: [{ name: 'Eruption' }, { name: 'Miasma' }, { name: 'Deathwish' }],
       perks: [
         { name: 'Vile' }, // * First perk should be prime perk
         { name: 'Wrath' },

@@ -173,6 +173,12 @@ export const DESCRIPTION_TAGS = [
     description: undefined,
   },
   {
+    type: 'Call of the Doe',
+    token: 'CALL OF THE DOE',
+    color: 'text-[#fff1bc]',
+    description: undefined,
+  },
+  {
     type: 'Contamination',
     token: 'CONTAMINATION',
     color: 'text-[#800080]',
@@ -255,6 +261,12 @@ export const DESCRIPTION_TAGS = [
     description: 'Counts as Explosive Damage.',
   },
   {
+    type: 'EXPOSED',
+    token: 'EXPOSED',
+    color: 'text-yellow-100',
+    description: 'Target receives up to 15% additional damage from all sources.',
+  },
+  {
     type: 'Fire',
     token: 'FIRE',
     color: 'text-[#cc5500]',
@@ -304,6 +316,12 @@ export const DESCRIPTION_TAGS = [
     description: undefined,
   },
   {
+    type: 'Lifesteal',
+    token: 'Lifesteal',
+    color: 'text-rose-500',
+    description: "Unupgraded Base Damage only. Doesn't work with Healing Effectiveness.",
+  },
+  {
     type: 'Madness',
     token: 'MADNESS',
     color: 'text-[#ede6e6]',
@@ -343,12 +361,6 @@ export const DESCRIPTION_TAGS = [
       'Deals elemental SHOCK area damage every 5 seconds. Damage increases by 10% for every overloaded enemy nerby. ', // TODO What's the range and what's the max damage increase for secondary effect?
   },
   {
-    type: 'Resonance',
-    token: '[R]',
-    color: 'text-[#00ffcc]',
-    description: 'This effect benefits from Resonance trait.',
-  },
-  {
     type: 'Ritualist',
     token: 'RITUALIST',
     color: ARCHTYPE_COLORS.RITUALIST.text,
@@ -378,7 +390,7 @@ export const DESCRIPTION_TAGS = [
     token: 'SLOW',
     color: 'text-[#f1f1cf]',
     description:
-      'Reduces target speed. Ineffective against Bosses and Aberrations.',
+      'Reduces target speed. 99% reduced effect against Bosses and Aberrations.',
   },
   {
     type: 'Summoner',
@@ -409,19 +421,19 @@ export const DESCRIPTION_TAGS = [
     type: 'Negative Status Effects',
     token: 'Negative Status Effects',
     color: 'text-purple-400',
-    description: `Bleeding, Burning, Corroded, Overloaded.`,
+    description: `Bleeding, Burning, Corroded, Overloaded, Slow.`,
   },
   {
     type: 'Negative Status Effect',
     token: 'Negative Status Effect',
     color: 'text-purple-400',
-    description: `Bleeding, Burning, Corroded, Overloaded.`,
+    description: `Bleeding, Burning, Corroded, Overloaded, Slow.`,
   },
   {
     type: 'Negative Status',
     token: 'Negative Status',
     color: 'text-purple-400',
-    description: `Bleeding, Burning, Corroded, Overloaded.`,
+    description: `Bleeding, Burning, Corroded, Overloaded, Slow.`,
   },
   {
     type: 'Elemental Status Effects',
@@ -445,13 +457,13 @@ export const DESCRIPTION_TAGS = [
     type: 'Status Effects',
     token: 'Status Effects',
     color: 'text-purple-400',
-    description: `Bleeding, Burning, Corroded, Overloaded.`,
+    description: `Bleeding, Burning, Corroded, Overloaded, Slow.`,
   },
   {
     type: 'Status Effect',
     token: 'Status Effect',
     color: 'text-purple-400',
-    description: `Bleeding, Burning, Corroded, Overloaded.`,
+    description: `Bleeding, Burning, Corroded, Overloaded, Slow.`,
   },
 ] as const satisfies {
   type: string
@@ -479,7 +491,7 @@ export const ITEM_TAGS: ItemTag[] = [
   'Grey Health',
   'Hardcore Reward',
   'Heal',
-  'Healing Effectivness',
+  'Healing Effectiveness',
   'Health',
   'Heat Generation',
   'Lifesteal',
