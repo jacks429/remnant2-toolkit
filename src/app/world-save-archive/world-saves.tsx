@@ -105,11 +105,11 @@ export function WorldSaves({}: Props) {
       {!areFiltersApplied && (
         <div className="flex flex-col items-center justify-center gap-y-2">
           <h2 className="text-center text-2xl font-bold text-primary-500">
-            Apply a filter to search the {worldSaves.length} world saves
+            Apply a filter to search the {worldSaves.length} world saves, or...
           </h2>
 
           <BaseButton onClick={() => setAreFiltersApplied(true)}>
-            Show All
+            Show All World Saves
           </BaseButton>
         </div>
       )}

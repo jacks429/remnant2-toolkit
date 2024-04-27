@@ -3,7 +3,7 @@
 import isEqual from 'lodash.isequal'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { useLocalStorage } from 'usehooks-ts'
+import { useIsClient, useLocalStorage } from 'usehooks-ts'
 import { v4 as uuidv4 } from 'uuid'
 
 import { BaseButton } from '@/app/(components)/_base/button'
@@ -166,35 +166,25 @@ export function ItemList({}: Props) {
 
   let filteredItems = getFilteredItems(filters, discoveredItemIds)
 
+  const isClient = useIsClient()
+
   // #region Render
 
-  return (
-    <div className="flex w-full flex-col items-center justify-center overflow-auto p-4">
-      {!areFiltersApplied && (
-        <div className="flex flex-col items-center justify-center gap-y-2">
-          <h2 className="text-center text-2xl font-bold text-primary-500">
-            Apply a filter to see the items.
-          </h2>
-
-          <BaseButton onClick={() => setAreFiltersApplied(true)}>
-            Show All
-          </BaseButton>
-        </div>
-      )}
-      {filteredItems.length === 0 && (
-        <h2 className="text-center text-2xl font-bold text-primary-500">
-          No items found
-        </h2>
-      )}
-
-      {areFiltersApplied ? (
-        <MasonryItemList
-          key={uuidv4()}
-          label={`Items (${filteredItems.length} Total)`}
-          items={filteredItems}
-          allowItemCompare={true}
-        />
-      ) : null}
+  return !areFiltersApplied || !isClient ? (
+    <div className="flex flex-col items-center justify-center gap-y-2">
+      <h2 className="mt-4 text-center text-2xl font-bold text-primary-500">
+        Apply a filter, or...
+      </h2>
+      <BaseButton onClick={() => setAreFiltersApplied(true)}>
+        Show All Items
+      </BaseButton>
     </div>
+  ) : (
+    <MasonryItemList
+      key={uuidv4()}
+      label={`Items (${filteredItems.length} Total)`}
+      items={filteredItems}
+      allowItemCompare={true}
+    />
   )
 }

@@ -1,15 +1,16 @@
 'use client'
 
 import { Disclosure } from '@headlessui/react'
-import { FunnelIcon } from '@heroicons/react/24/solid'
+import { FunnelIcon, TrashIcon } from '@heroicons/react/24/solid'
 import isEqual from 'lodash.isequal'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
 import { BaseFieldGroup, BaseFieldset } from '@/app/(components)/_base/fieldset'
 import { CategoriesFilter } from '@/app/(components)/filters/item-lookup-filters/categories-filter'
 import { CollectionssFilter } from '@/app/(components)/filters/item-lookup-filters/collections-filter'
+import { ItemSearchText } from '@/app/(components)/filters/item-lookup-filters/item-search-text'
 import {
   ITEM_FILTER_KEYS,
   ItemLookupFilters as Filters,
@@ -17,8 +18,35 @@ import {
 import { parseUrlFilters } from '@/app/(components)/filters/item-lookup-filters/utils'
 import { ReleasesFilter } from '@/app/(components)/filters/releases-filter'
 import { DEFAULT_FILTER } from '@/app/(components)/filters/types'
-import { Input } from '@/app/(components)/form-fields/input'
+import { allItems } from '@/app/(data)/items/all-items'
+import { ITEM_TAGS } from '@/features/items/constants'
 import { cn } from '@/lib/classnames'
+
+function buildItemSearchTextItems() {
+  {
+    let items = allItems
+      .filter((item) => item.category !== 'relicfragment')
+      .map((item) => ({
+        id: item.id,
+        name: item.name,
+      }))
+
+    items = ITEM_TAGS.map((tag) => ({
+      id: tag as string,
+      name: tag as string,
+    })).concat(items)
+
+    items = items.sort((a, b) => a.name.localeCompare(b.name))
+
+    // remove duplicates
+    items = items.filter(
+      (item, index, self) =>
+        index === self.findIndex((i) => i.name === item.name),
+    )
+
+    return items
+  }
+}
 
 export const DEFAULT_ITEM_LOOKUP_FILTERS = {
   categories: [DEFAULT_FILTER],
@@ -34,11 +62,15 @@ export function ItemLookupFilters({}: Props) {
   const searchParams = useSearchParams()
   const filters = parseUrlFilters(searchParams)
 
+  /** Used to clear the SearchTextAutocomplete field when clear filters is pressed */
+  const searchTextFieldKey = useRef(new Date().getTime())
+
   const [unappliedFilters, setUnappliedFilters] = useState(filters)
 
   function clearFilters() {
     setUnappliedFilters(DEFAULT_ITEM_LOOKUP_FILTERS)
     applyUrlFilters(DEFAULT_ITEM_LOOKUP_FILTERS)
+    searchTextFieldKey.current = new Date().getTime()
   }
 
   const areAnyFiltersActive = useMemo(() => {
@@ -50,7 +82,7 @@ export function ItemLookupFilters({}: Props) {
   const pathname = usePathname()
   const router = useRouter()
   function applyUrlFilters(filtersToApply: Filters) {
-    let url = `${pathname}?t=${Date.now()}&`
+    let url = `${pathname}?`
 
     // Add the categories filter
     if (!filtersToApply.categories.some((i) => i === DEFAULT_FILTER)) {
@@ -210,27 +242,37 @@ export function ItemLookupFilters({}: Props) {
       {({ open }) => (
         <div className="w-full">
           <div className="flex w-full flex-row items-end justify-end border-b border-b-primary-500 py-2">
-            <div className="w-full pr-4">
-              <Input
-                type="text"
-                value={unappliedFilters.searchText}
-                placeholder="Build name, description, or creator"
-                onClear={() => {
-                  const newFilters = {
-                    ...unappliedFilters,
-                    searchText: '',
+            <div className="flex w-full flex-row items-start justify-start pr-4">
+              <div className="mr-1 w-full">
+                <ItemSearchText
+                  key={searchTextFieldKey.current}
+                  items={buildItemSearchTextItems()}
+                  onChange={(newSearchText: string) =>
+                    handleSearchTextChange(newSearchText)
                   }
-                  setUnappliedFilters(newFilters)
-                  applyUrlFilters(newFilters)
-                }}
-                onChange={(e) => handleSearchTextChange(e.target.value)}
-                onKeyDown={(e) => {
-                  // If the user presses enter, apply the filters
-                  if (e.key === 'Enter') {
-                    applyUrlFilters(unappliedFilters)
-                  }
-                }}
-              />
+                  onKeyDown={() => applyUrlFilters(unappliedFilters)}
+                  value={unappliedFilters.searchText}
+                  autoFocus={true}
+                />
+              </div>
+              {unappliedFilters.searchText !== '' ? (
+                <BaseButton
+                  color="red"
+                  onClick={() => {
+                    handleSearchTextChange('')
+                    applyUrlFilters({
+                      ...unappliedFilters,
+                      searchText: '',
+                    })
+                    searchTextFieldKey.current = new Date().getTime()
+                  }}
+                  className="mt-2"
+                >
+                  <TrashIcon className="h-6 w-6" />
+                </BaseButton>
+              ) : (
+                <div className="w-[48px]" />
+              )}
             </div>
             <Disclosure.Button as={BaseButton}>
               <FunnelIcon className="h-4 w-4" />

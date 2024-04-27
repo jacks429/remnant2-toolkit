@@ -5,6 +5,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid'
 import React, { useEffect, useState } from 'react'
 import { useIsClient, useMediaQuery } from 'usehooks-ts'
 
+import { BaseInput } from '@/app/(components)/_base/input'
 import { Skeleton } from '@/features/ui/Skeleton'
 import { cn } from '@/lib/classnames'
 
@@ -17,12 +18,12 @@ interface Props {
   autoFocus?: boolean
   onChange: (value: string) => void
   onKeyDown?: () => void
-  items: Item[]
+  items: Array<{ id: string; name: String }>
   value: string
   showLabel?: boolean
 }
 
-export function SearchTextAutocomplete({
+export function ItemSearchText({
   autoFocus = false,
   onChange,
   onKeyDown,
@@ -85,11 +86,11 @@ export function SearchTextAutocomplete({
 
       <div className="relative mt-2">
         <Combobox.Input
-          className="text-md w-full rounded-md border-2 border-secondary-700 bg-black py-1.5 pl-3 pr-10 text-gray-300 shadow-sm ring-1 ring-secondary-700 focus:border-secondary-500 focus:outline-none focus:ring-1 focus:ring-secondary-500"
           onChange={(event) => onChange(event.target.value)}
           displayValue={(item: Item) => item?.name}
           placeholder="Search for an item or tag"
           autoFocus={autoFocus && isLargeScreen}
+          as={BaseInput}
         />
         <Combobox.Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
           <ChevronUpDownIcon

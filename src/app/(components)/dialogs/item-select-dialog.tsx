@@ -9,7 +9,7 @@ import {
   BaseDialogTitle,
 } from '@/app/(components)/_base/dialog'
 import { ItemInfoDialog } from '@/app/(components)/dialogs/item-info-dialog'
-import { SearchTextAutocomplete } from '@/features/build/filters/parts/SearchTextAutocomplete'
+import { ItemSearchText } from '@/app/(components)/filters/item-lookup-filters/item-search-text'
 import { ItemCategory } from '@/features/build/types'
 import { ItemButton } from '@/features/items/components/ItemButton'
 import { ITEM_TAGS } from '@/features/items/constants'
@@ -143,7 +143,7 @@ export function ItemSelectDialog({
                 buildSlot === 'trait' ? 'col-span-2' : 'col-span-full',
               )}
             >
-              <SearchTextAutocomplete
+              <ItemSearchText
                 items={searchTextOptions}
                 onChange={(newValue: string) => setFilter(newValue)}
                 value={filter}
@@ -174,12 +174,14 @@ export function ItemSelectDialog({
           {buildSlot !== 'trait' && (
             <li id="clear-item" className="min-h-[70px] w-[100px]">
               <ItemButton
-                item={{
-                  name: 'Clear',
-                  category: buildSlot,
-                  imagePath: '/cancel-icon.png',
-                  id: '',
-                }}
+                item={
+                  {
+                    name: 'Clear',
+                    category: buildSlot,
+                    imagePath: '/cancel-icon.png',
+                    id: '',
+                  } as Item
+                }
                 size="lg"
                 onClick={() => onSelectItem(null)}
                 tooltipDisabled={isItemInfoOpen}
