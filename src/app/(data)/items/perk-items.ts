@@ -7,8 +7,9 @@ export const perkItems: PerkItem[] = [
     imagePath: '/perk/dead_to_rights.png',
     type: 'prime',
     id: 's8eytq',
+    dlc: 'base',
     tags: ['Weakspot Damage'],
-     description: `
+    description: `
     Dealing 65 Base Ranged or Melee Weakspot Damage extends the duration of active HUNTER Skills by 2.5s. Can extend timer beyond its initial duration
 
     Upgraded at Level 5
@@ -29,6 +30,7 @@ export const perkItems: PerkItem[] = [
     imagePath: '/perk/deadeye.png',
     type: 'damage',
     id: 'c4fx8u',
+    dlc: 'base',
     tags: ['Ranged Damage', 'Weakspot Damage', 'Critical Chance'],
     description: `
     Unlocked at level 1
@@ -52,6 +54,7 @@ export const perkItems: PerkItem[] = [
     imagePath: '/perk/return_to_sender.png',
     type: 'team',
     id: 'oyjp3t',
+    dlc: 'base',
     tags: ['Critical Hit', 'Weakspot Hit'],
     description: `
     Unlocked at level 2
@@ -73,6 +76,7 @@ Kills due to Weakspot and Critical Hits increase Ammo drops by 50% and double th
     imagePath: '/perk/urgency.png',
     type: 'utility',
     id: '98yqyq',
+    dlc: 'base',
     tags: ['Reload Speed', 'Movement Speed'],
     description: `
     Unlocked at level 3
@@ -93,6 +97,7 @@ Firearms gain 15% Reload Speed and 15% Increased Movement Speed after a Kill. La
     name: 'Intuition',
     imagePath: '/perk/intuition.png',
     id: '8d4diq',
+    dlc: 'base',
     type: 'relic',
     tags: ['Relic Use Speed'],
     description: `
@@ -114,6 +119,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     name: 'Bonded',
     imagePath: '/perk/bonded.png',
     id: 'd58t4k',
+    dlc: 'base',
     type: 'prime',
     description: `
     When HANDLER is downed, their Companion will attempt to revive them at 50% Max Health. Can be used to revive allies with Command. Downed ally must have a Relic charge. 
@@ -139,6 +145,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     imagePath: '/perk/pack_hunter.png',
     type: 'damage',
     id: '485uc9',
+    dlc: 'base',
     tags: ['Ranged Damage', 'Skill Damage', 'Critical Chance'],
     description: `
     Gain 3% Ranged, Melee, and Skill Damage while Companion is within 40m [A] of the HANDLER. Damage increases with HANDLER Level.
@@ -162,6 +169,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     imagePath: '/perk/spirit_of_the_wolf.png',
     type: 'team',
     id: 'z3sz58',
+    dlc: 'base',
     tags: ['Movement Speed', 'Stamina'],
     description: `
     Increases Movement Speed by 10%. All allies within 10m [A] of the HANDLER gain the HANDLER's Movement Speed (if faster).
@@ -181,6 +189,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     imagePath: '/perk/teamwork.png',
     type: 'utility',
     id: 'y36q6p',
+    dlc: 'base',
     tags: ['Damage Reduction'],
     description: `
     HANDLER and Companion gain 15% increased Revive Speed.
@@ -200,6 +209,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     imagePath: '/perk/best_friend.png',
     type: 'relic',
     id: '8vh7yq',
+    dlc: 'base',
     tags: ['Damage Reduction', 'All Damage'],
     description: `
     Using a Relic fully restores the Companion's health.
@@ -219,6 +229,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     imagePath: '/perk/regenerator.png',
     type: 'prime',
     id: 'io3m7t',
+    dlc: 'base',
     description: `
     After restoring 350 Total Health to allies, regain a spent Relic charge. 
     Resting or Respawning at a Worldstone resets healing accumulation. Each additional player increases the healing requirement by 50%.
@@ -243,6 +254,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     imagePath: '/perk/invigorated.png',
     type: 'damage',
     id: 'errks7',
+    dlc: 'base',
     tags: ['All Damage', 'Critical Chance'],
     description: `
     Grants a 2.5% increase to All Damage. Damage increases with MEDIC Level.
@@ -264,6 +276,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     imagePath: '/perk/benevolence.png',
     type: 'team',
     id: 't2fc7j',
+    dlc: 'base',
     description: `
     Increases Relic Efficacy by 15% and heals nearby allies for 30% of the total healing value.
 
@@ -282,6 +295,7 @@ Using a Relic extends the duration of any active HUNTER Skill by 10s. Effect deg
     imagePath: '/perk/backbone.png',
     type: 'utility',
     id: 'z2xo76',
+    dlc: 'base',
     tags: ['Grey Health'],
     description: `
 Increases the hits MEDIC can take before losing Grey Health by 1
@@ -301,6 +315,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/benefactor.png',
     type: 'relic',
     id: 'bp9pr7',
+    dlc: 'base',
     tags: ['Relic Use Speed', 'Stagger'],
     description: `
     Increases Relic Use Speed by 20%
@@ -320,6 +335,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/loaded.png',
     type: 'prime',
     id: 'm6pvhd',
+    dlc: 'base',
     tags: ['Reload Speed', 'Ammo Reserves'],
     description: `
     When activating any GUNSLINGER Skill, both weapons are instantly reloaded, and gain infinite reserve ammo on all weapons for 5s.
@@ -342,6 +358,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/swift_shot.png',
     type: 'damage',
     id: '7mbvc3',
+    dlc: 'base',
     tags: ['Fire Rate', 'Ranged Damage', 'Critical Chance'],
     description: `
     Gain 1.5% Fire Rate and 2.5% Ranged Damage. Fire Rate and Damage increases with GUNSLINGER Level.
@@ -363,6 +380,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/posse_up.png',
     type: 'team',
     id: 'ajobx6',
+    dlc: 'base',
     tags: ['Ammo Reserves'],
     description: `
     Ammo pickups award 20% additional Ammo per player with the bonus split equally among teammates.
@@ -382,6 +400,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/quick_hands.png',
     type: 'utility',
     id: '496x8y',
+    dlc: 'base',
     tags: ['Reload Speed'],
     description: `
     Firearms gain 10% Reload Speed
@@ -401,6 +420,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/sleight_of_hand.png',
     type: 'relic',
     id: 'fspt8u',
+    dlc: 'base',
     tags: ['Reload Speed', 'Ranged Damage'],
     description: `
     Using a Relic reloads equipped Firearm.
@@ -420,6 +440,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/die_hard.png',
     type: 'prime',
     id: 'je27uv',
+    dlc: 'base',
     tags: ['Heal'],
     description: `
     When receiving fatal damage, the CHALLENGER becomes invulnerable for 3s and regenerates 50% of Max Health.
@@ -445,6 +466,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/close_quarters.png',
     type: 'damage',
     id: 'f4jx9k',
+    dlc: 'base',
     tags: ['All Damage', 'Critical Chance'],
     description: `
     Grants a 3.5% increase to All Damage to enemies within 10m. Damage bonus tapers off until 20m. Increases with CHALLENGER Level. 
@@ -466,6 +488,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/intimidating_presence.png',
     type: 'team',
     id: 'c92847',
+    dlc: 'base',
     tags: ['Damage Reduction'],
     description: `
     After activating a CHALLENGER Skill, enemies within 10m deal 10% less damage for 15s. 
@@ -485,6 +508,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/powerlifter.png',
     type: 'utility',
     id: '8p55rw',
+    dlc: 'base',
     tags: ['Stamina', 'Encumbrance'],
     description: `
     The Stamina Cost increases for each weight bracket is reduced by 50%.
@@ -504,6 +528,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/face_of_danger.png',
     type: 'relic',
     id: '7dvm5a',
+    dlc: 'base',
     tags: ['Damage Reduction', 'All Damage'],
     description: `
     Using a Relic within 10m of an enemy grants 2 stacks of BULWARK for 10s.
@@ -523,6 +548,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/spirited.png',
     type: 'prime',
     id: 'rx6e2w',
+    dlc: 'base',
     tags: ['Concoction'],
     description: `
     ALCHEMIST can have 1 additional Concotion buff active.
@@ -545,6 +571,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/liquid_courage.png',
     type: 'damage',
     id: '5exhee',
+    dlc: 'base',
     tags: ['All Damage', 'Critical Chance'],
     description: `Unlocked at level 1
     Gain 2.5%  increase to All Damage.
@@ -566,6 +593,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/panacea.png',
     type: 'team',
     id: '49i5jm',
+    dlc: 'base',
     tags: ['Damage Reduction'],
     description: `
     Curative effects apply to all allies within 15m and grant 15 additional Resistance.
@@ -590,6 +618,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/gold_to_lead.png',
     type: 'utility',
     id: '3a9dd2',
+    dlc: 'base',
     tags: ['Ammo Reserves'],
     description: `
     Picking up Scrap has a 15% chance to also award Ammo to the ALCHEMIST.
@@ -610,6 +639,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/experimentalist.png',
     type: 'relic',
     id: 'cxnnz9',
+    dlc: 'base',
     description: `
     Using a Relic applies a random buff on the ALCHEMIST for 30s. Cannot be overridden.                 
 
@@ -628,6 +658,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/tempest.png',
     type: 'prime',
     id: 'dh2wih',
+    dlc: 'base',
     tags: ['Mod Power'],
     description: `
     Automatically generate 15 Mod Power per second.
@@ -650,6 +681,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/amplify.png',
     type: 'damage',
     id: 'yro37y',
+    dlc: 'base',
     tags: ['Mod Damage', 'Critical Chance'],
     description: `
     Increases Mod Damage by +5%.
@@ -672,6 +704,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/power_creep.png',
     type: 'team',
     id: '7ay3kh',
+    dlc: 'base',
     tags: ['Mod Power'],
     description: `
     After casting a Mod, 5% of the Mod Power spent will be regenerated by all allies over 10s. 
@@ -691,6 +724,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/spirit_within.png',
     type: 'utility',
     id: '5fz7xr',
+    dlc: 'base',
     tags: ['Mod Power'],
     description: `
     Reduces the Mod Power requirement for all Mods by 5%.
@@ -710,6 +744,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/power_leak.png',
     type: 'relic',
     id: 'h42e2n',
+    dlc: 'base',
     tags: ['Mod Power'],
     description: `
     Using a Relic grants 100 Mod Power for both equipped Mods.
@@ -729,6 +764,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/high_tech.png',
     type: 'prime',
     id: '98qnpc',
+    dlc: 'base',
     description: `
     Holding the SKILL button will Overclock a Carried or Deployed Heavy Weapon. Overclocking grants infinite Ammo, increased Fire Rate, and a 25% damage increase for 15s.
     
@@ -756,6 +792,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/metalworker.png',
     type: 'damage',
     id: '2hcif5',
+    dlc: 'base',
     tags: ['Skill Damage', 'Critical Chance'],
     description: `
     Increases Skill Damage by 5% and Ranged Damage by 2.5%.
@@ -783,6 +820,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/magnetic_field.png',
     type: 'team',
     id: 'w6v2o6',
+    dlc: 'base',
     tags: ['Damage Reduction', 'Ammo Reserves'],
     description: `
     Heavy Weapons grant 15% Damage Reduction to all allies within 2.5m.
@@ -802,6 +840,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/heavy_mobility.png',
     type: 'utility',
     id: 'htf7h4',
+    dlc: 'base',
     tags: ['Movement Speed'],
     description: `
     Movement Speed while Carrying a Heavy Weapon is increased by 35%.
@@ -821,6 +860,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/surplus.png',
     type: 'relic',
     id: '2k4yzk',
+    dlc: 'base',
     description: `
     Using a Relic refills 15% of Heavy Weapon Ammo. Bonus is doubled when Heavy Weapon is stowed. If the Stowed Heavy Weapon is overfilled, the ENGINEER will drop additional Ammo based on the surplus.
     
@@ -839,6 +879,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/lucky.png',
     type: 'prime',
     id: '82y94m',
+    dlc: 'base',
     description: `
     Grants a 10% chance to spawn additional items and rarer drops when defeating stronger enemies.
 
@@ -860,6 +901,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/scavenger.png',
     type: 'damage',
     id: 'y6x5dr',
+    dlc: 'base',
     tags: ['All Damage', 'Critical Chance'],
     description: `
     Pickups increase All Damage Dealt by 0.5% per stack for 20s. Additional Stacks increase Duration, up to 60s. Max 5 Stacks. Damage increases with EXPLORER Level
@@ -881,6 +923,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/metal_detector.png',
     type: 'team',
     id: 'w838yg',
+    dlc: 'base',
     description: `
     Increase Ammo, Currency, and Metal Drop Rate Chance for entire party by 10%.
     
@@ -899,6 +942,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/prospector.png',
     type: 'utility',
     id: 'o5q3p9',
+    dlc: 'base',
     description: `
     Relic Fragments discovered by EXPLORER drop at a higher quality.
 
@@ -917,6 +961,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/self_discovery.png',
     type: 'relic',
     id: 'rvb63g',
+    dlc: 'base',
     description: `
     Using a Relic instantly fills Scavenger Stacks and prevents Stack Decay for 15s.
     
@@ -935,6 +980,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/shadow.png',
     type: 'prime',
     id: 'yg77rq',
+    dlc: 'base',
     tags: ['All Damage'],
     description: `
     Casting an INVADER Skill leaves a Decoy for 3s which draws enemy fire. Deal +5% additional damage to enemies not targeting INVADER.
@@ -957,6 +1003,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/shark.png',
     type: 'damage',
     id: '59swqq',
+    dlc: 'base',
     tags: [
       'Ranged Damage',
       'Melee Damage',
@@ -984,6 +1031,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/loophole.png',
     type: 'team',
     id: 'd5qedi',
+    dlc: 'base',
     tags: ['Lifesteal'],
     description: `
     All ally Ranged and Melee damage against enemies distracted by the INVADER's Decoy grants 5% as Lifesteal
@@ -1003,6 +1051,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/circumvent.png',
     type: 'utility',
     id: 'i9tjgk',
+    dlc: 'base',
     tags: [
       'Perfect Neutral Evade',
       'Neutral Dodge',
@@ -1027,6 +1076,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/override.png',
     type: 'relic',
     id: 'decoy8',
+    dlc: 'base',
     description: `
     Using a Relic reduces Threat Generation by 25% for 10s. While Override is active, the next Evade leaves a Empowered Decoy which lasts 4s.
     
@@ -1045,6 +1095,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/ruthless.png',
     type: 'prime',
     id: 'tmc2tk',
+    dlc: 'base',
     tags: ['Summon'],
     description: `
     When the SUMMONER deals damage to their Minion, it causes them to ENRAGE. Minions gain 10% Attack Speed along with 30% increased Damage and Movement Speed. Lasts 20s.
@@ -1067,6 +1118,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/dominator.png',
     type: 'damage',
     id: 'tu8pcp',
+    dlc: 'base',
     tags: [
       'Mod Damage',
       'Skill Damage',
@@ -1097,6 +1149,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/residue.png',
     type: 'team',
     id: 'fzywc2',
+    dlc: 'base',
     tags: ['Heal', 'Healing Effectiveness'],
     description: `
     Minions that expire leave a 3m Aura which heals 2.5% Health per second. Lasts 10s.
@@ -1116,6 +1169,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/outrage.png',
     type: 'utility',
     id: 't8bb9k',
+    dlc: 'base',
     tags: ['Lifesteal', 'Movement Speed'],
     description: `
     Sacrifice grants 3% Lifesteal for each Minion Sacrificed. Lasts 10s.
@@ -1135,6 +1189,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/incite.png',
     type: 'relic',
     id: 'd82mwz',
+    dlc: 'base',
     description: `Using a Relic grants Minions 5% Max HP per second, and increases their damage dealt by 15%. Lasts 30s.
 
     Upgrade unlocked at level 9
@@ -1152,6 +1207,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/vile.png',
     type: 'prime',
     id: 'qewh6t',
+    dlc: 'base',
     tags: ['Status Effect'],
     description: `
     Negative Status Effects applied by RITUALIST inflict Infected.
@@ -1177,6 +1233,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/wrath.png',
     type: 'damage',
     id: '6wc56t',
+    dlc: 'base',
     tags: ['All Damage', 'Critical Chance', 'Status Effect'],
     description: `
     Increases all damage to enemies affected by a Negative Status Effect by 2%. Damage increases with RITUALIST Level.
@@ -1198,6 +1255,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/terrify.png',
     type: 'team',
     id: 'h3ag53',
+    dlc: 'base',
     tags: ['Damage Reduction', 'Ammo Reserves'],
     description: `
     Killing an entity applies TERRIFIED to all enemies within 5m of killed entity for 20s. TERRIFIED enemies deal 5% less damage.
@@ -1217,6 +1275,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/dark_blood.png',
     type: 'utility',
     id: 'qqhkw9',
+    dlc: 'base',
     tags: ['Damage Reduction'],
     description: `
     Reduces damage received from Negative Status Effects by 25%.
@@ -1237,6 +1296,7 @@ Increases the hits MEDIC can take before losing Grey Health by 2`,
     imagePath: '/perk/purge.png',
     type: 'relic',
     id: 'tr5r38',
+    dlc: 'base',
     tags: ['Status Effect'],
     description: `
     On Relic Use, cleanses all Negative Status Effects.

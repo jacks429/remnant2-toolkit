@@ -6,6 +6,7 @@ export const skillItems: SkillItem[] = [
     name: 'War Stomp',
     imagePath: '/skill/war_stomp.png',
     id: 'qnz5iw',
+    dlc: 'base',
     description: `Creates a high impact tremor that deals 150 damage [E] and additional stagger in a forward cone up to 7.5m. [A] Deals damage in all directions at point blank range. `,
     cooldown: 50,
     wikiLinks: [`https://remnant.wiki/War_Stomp`],
@@ -20,6 +21,7 @@ export const skillItems: SkillItem[] = [
     name: 'Juggernaut',
     imagePath: '/skill/juggernaut.png',
     id: 'p7x9pq',
+    dlc: 'base',
     description: `Become nearly unstoppable, gaining 3 Stack of BULWARK, 15% increased Movement, Melee Speed, and Reduces Stamina Cost. Increases Melee damage by 50%. Stagger Level reduced by 1. Lasts 25s.`,
     cooldown: 60,
     wikiLinks: [`https://remnant.wiki/Juggernaut`],
@@ -34,6 +36,7 @@ export const skillItems: SkillItem[] = [
     name: 'Rampage',
     imagePath: '/skill/rampage.png',
     id: 'wyw9r4',
+    dlc: 'base',
     // TODO Check this; reduced Fire Rate from 15% -> 10%
     // TODO Check this; `adjusted melee window after berserk activation (sooner)` not sure if that is reflected in description
     description: `Enters a heightened state of battle which increases Fire Rate by 10%, Reload Speed by 25%, and Movement Speed by 15%. Lasts 10s. 
@@ -52,6 +55,7 @@ export const skillItems: SkillItem[] = [
     name: 'Guard Dog',
     imagePath: '/skill/guard_dog.png',
     id: 'gpr2fw',
+    dlc: 'base',
     description: `Companion [BLEEDING] will follow the HANDLER and generate 15% increased Threat while attacking. All damage to them is reduced by 20%. 
 
     SINGLE PRESS: Companion engages enemies near the targeted location.
@@ -72,6 +76,7 @@ export const skillItems: SkillItem[] = [
     name: 'Support Dog',
     imagePath: '/skill/support_dog.png',
     id: 'jz6x2w',
+    dlc: 'base',
     description: `Companion [BLEEDING] will follow the HANDLER and continuously heal allies within 3.5m for 0.25% of Max Health per second. 
 
     SINGLE PRESS: Companion engages enemies near the targeted location. 
@@ -92,6 +97,7 @@ export const skillItems: SkillItem[] = [
     name: 'Attack Dog',
     imagePath: '/skill/attack_dog.png',
     id: '8trtzh',
+    dlc: 'base',
     description: `Companion [BLEEDING] will follow the HANDLER and deal 20% additional damage. 
 
     SINGLE PRESS: Companion engages enemies near the targeted location. 
@@ -112,6 +118,7 @@ export const skillItems: SkillItem[] = [
     name: 'Wellspring',
     imagePath: '/skill/wellspring.png',
     id: '7vtxrx',
+    dlc: 'base',
     description: `The MEDIC channels healing energy into their fist, punching a hole in the ground [E] to create a 3m [A] Healing Spring AOE which restores 10.5 Health per second and greatly increases Blight Decay Rate. Lasts 15s.`,
     cooldown: 60,
     wikiLinks: [`https://remnant.wiki/Wellspring`],
@@ -126,6 +133,7 @@ export const skillItems: SkillItem[] = [
     name: 'Healing Shield',
     imagePath: '/skill/healing_shield.png',
     id: '8pu6y2',
+    dlc: 'base',
     description: `The MEDIC Quickly expels healing energy to SHIELD all allies within 25m [A] for 100% of their Max Health for 10s. While shielded, allies regenerate 21% of their Max Health over the duration.`,
     cooldown: 100,
     wikiLinks: [`https://remnant.wiki/Healing_Shield`],
@@ -140,6 +148,7 @@ export const skillItems: SkillItem[] = [
     name: 'Redemption',
     imagePath: '/skill/redemption.png',
     id: 'zs77cb',
+    dlc: 'base',
     description: `The MEDIC unleashes a 30m [A] shockwave that revives downed allies and restores 52.5% Max Health over 10s. For each additional 1s holding the SKILL button, the heal gains an additional 52.5% (up to 210% max)
     Revived allies will only receive 50% of the healing amount. If revived, allies cannot be revived again by Redemption for another 180s. Resets at Worldstone or on death.`,
     cooldown: 120,
@@ -155,6 +164,7 @@ export const skillItems: SkillItem[] = [
     name: `Hunter's Mark`,
     imagePath: '/skill/hunters_mark.png',
     id: 'jg82hi',
+    dlc: 'base',
     tags: ['Critical Chance', 'Ranged Damage', 'Melee Damage'],
     description: `Increases the HUNTER's spatial awareness by casting an Aura that automatically applies MARK to all enemies within 35m. While senses are heightened, HUNTER also gains 15% increased Ranged and Melee damage. Lasts 25s.
 
@@ -172,6 +182,7 @@ export const skillItems: SkillItem[] = [
     name: `Hunter's Focus`,
     imagePath: '/skill/hunters_focus.png',
     id: '5jh6qr',
+    dlc: 'base',
     tags: [
       'Spread',
       'Ranged Damage',
@@ -206,6 +217,7 @@ export const skillItems: SkillItem[] = [
     name: `Hunter's Shroud`,
     imagePath: '/skill/hunters_shroud.png',
     id: 'ufkx9q',
+    dlc: 'base',
     tags: ['Ranged Damage', 'Melee Damage', 'Critical Chance', 'Melee Hit'],
     description: `Hunter becomes Shrouded, reducing enemy awareness and making them harder to hit while moving. Attacking or activating a Mod or Skill will instantly exit Shroud.
 
@@ -233,6 +245,7 @@ export const skillItems: SkillItem[] = [
     name: 'Vial: Stone Mist',
     imagePath: '/skill/vial_stone_mist.png',
     id: 'y7ia9t',
+    dlc: 'base',
     description: `Creates a mysterious vapor cloud which lasts 10s and applies STONESKIN.
 
     STONESKIN reduces incoming damage by 25%, reduces Stagger by 1, greatly increases Blight Buildup Decay Rate, and makes the target immune to STATUS Effects. Lasts 15s.
@@ -253,6 +266,7 @@ export const skillItems: SkillItem[] = [
     name: 'Vial: Frenzy Dust',
     imagePath: '/skill/vial_frenzy_dust.png',
     id: 'xsniv3',
+    dlc: 'base',
     description: `Creates a mysterious vapor cloud which lasts 10s and applies FRENZIED.
 
     FRENZIED increases Fire Rate, Reload Speed, and Melee Speed by 20%, and Movement Speed by 15%. Lasts 15s.
@@ -273,6 +287,7 @@ export const skillItems: SkillItem[] = [
     name: 'Vial: Elixir of Life',
     imagePath: '/skill/vial_elixir_of_life.png',
     id: '76554i',
+    dlc: 'base',
     description: `Creates a mysterious vapor cloud that lasts 10s and applies LIVING WILL.
 
     LIVING WILL grants 5 Health Regeneration per second, and protects against fatal damage while active. Can revive downed players. Lasts 20s.
@@ -295,6 +310,7 @@ export const skillItems: SkillItem[] = [
     name: 'Reality Rune',
     imagePath: '/skill/reality_rune.png',
     id: 'i3ddi7',
+    dlc: 'base',
     tags: ['Status Effect', 'Damage Reduction'],
     // TODO Check this; `added automatic mod generation while inside Dome` - not sure how that is reflected in description
     description: `Conjures a 7m [A] protective dome which applies SLOW to any enemy or enemy projectiles. Allies inside gain 25% Damage Reduction. Lasts 15s.`,
@@ -311,6 +327,7 @@ export const skillItems: SkillItem[] = [
     name: 'Chaos Gate',
     imagePath: '/skill/chaos_gate.png',
     id: '9w7c5j',
+    dlc: 'base',
     // TODO Check this; `damage dealt/taken debuff grants stacks (up to 50x)` - not sure how that is reflected in description
     // TODO Check this; total damage buff 50% -> 35%
     // TODO Check this; mod generation bonus 20% -> 5% (this was 25% in previous description, so not sure where the 20% is coming from)
@@ -328,6 +345,7 @@ export const skillItems: SkillItem[] = [
     name: 'Havoc Form',
     imagePath: '/skill/havoc_form.png',
     id: 'y72au6',
+    dlc: 'base',
     // TODO Check this; `increased speed of entering/exiting` - not sure how that is reflected in description
     // TODO Check this; `cancelling havoc form refunds some skill cooldown` - not sure how that is reflected in description
     // TODO Check this; `reduced cost of blink` - not sure how that is reflected in description
@@ -356,6 +374,7 @@ export const skillItems: SkillItem[] = [
     name: 'Heavy Weapon: Vulcan',
     imagePath: '/skill/heavy_weapon_vulcan.png',
     id: 'pgmn4v',
+    dlc: 'base',
     // TODO Check this; `all turrets based critical damage` 110% -> 150% - not sure how that is reflected in description
     // TODO Check this; `all turrets increased armor` to 50% DR - not sure how that is reflected in description
     // TODO Check this; `reduced movement speed cap of heavy carry modeds` 200% -> 150% - not sure how that is reflected in description
@@ -379,6 +398,7 @@ export const skillItems: SkillItem[] = [
     name: 'Heavy Weapon: Flamethrower',
     imagePath: '/skill/heavy_weapon_flamethrower.png',
     id: '6fk8ea',
+    dlc: 'base',
     // TODO Check this; `all turrets based critical damage` 110% -> 150% - not sure how that is reflected in description
     // TODO Check this; `all turrets increased armor` to 50% DR - not sure how that is reflected in description
     // TODO Check this; `reduced movement speed cap of heavy carry modeds` 200% -> 150% - not sure how that is reflected in description
@@ -403,6 +423,7 @@ export const skillItems: SkillItem[] = [
     name: 'Heavy Weapon: Impact Cannon',
     imagePath: '/skill/heavy_weapon_impact_cannon.png',
     id: 'ki92op',
+    dlc: 'base',
     // TODO Check this; `all turrets based critical damage` 110% -> 150% - not sure how that is reflected in description
     // TODO Check this; `all turrets increased armor` to 50% DR - not sure how that is reflected in description
     // TODO Check this; `reduced movement speed cap of heavy carry modeds` 200% -> 150% - not sure how that is reflected in description
@@ -425,6 +446,7 @@ export const skillItems: SkillItem[] = [
     name: 'Plainswalker',
     imagePath: '/skill/plainswalker.png',
     id: 'a585sp',
+    dlc: 'base',
     description: `Increases movement speed by 20% and reduces Stamina Cost by 80% for all allies. Lasts 30s.`,
     cooldown: 60,
     wikiLinks: [`https://remnant.wiki/Plainswalker`],
@@ -439,6 +461,7 @@ export const skillItems: SkillItem[] = [
     name: 'Gold Digger',
     imagePath: '/skill/gold_digger.png',
     id: 'a2cik2',
+    dlc: 'base',
     description: `Dig into the ground to spring a fountain which grants a random buff. Fountains last 45s and their buffs last 20s. [A]
 
     Fountains can grant either: 10% increased damage, 15% damage reduction, 2 Health Regeneration per second, or HASTE.`,
@@ -455,6 +478,7 @@ export const skillItems: SkillItem[] = [
     name: 'Fortune Hunter',
     imagePath: '/skill/fortune_hunter.png',
     id: 'dajt58',
+    dlc: 'base',
     description: `Increases the EXPLORER's treasure sense to reveal special items within 40m for all allies. Lasts 60s.`,
     cooldown: 90,
     wikiLinks: [`https://remnant.wiki/Fortune_Hunter`],
@@ -469,6 +493,7 @@ export const skillItems: SkillItem[] = [
     name: 'Quick Draw',
     imagePath: '/skill/quick_draw.png',
     id: 'qdxjt7',
+    dlc: 'base',
     // TODO Check this; `no longer consumes excess Skill cooldown` - not sure how that is reflected in description
     description: `Pull out your trusty side piece and unload up to 6 Critical Shots from the hip. Each shot deals 52 base damage and double stagger value. 
 
@@ -488,6 +513,7 @@ export const skillItems: SkillItem[] = [
     name: 'Sidewinder',
     imagePath: '/skill/sidewinder.png',
     id: 'jn34u8',
+    dlc: 'base',
     // TODO Check this; duration 12s -> 60s
     // TODO Check this; `obtaining ammo reduces duration by 10s` - not sure how that is reflected in description
     // TODO Check this; swap speed 50% -> 35%. The description couples Draw/Swap speed together, so description likely will be different if Draw speed stays 50%.
@@ -506,6 +532,7 @@ export const skillItems: SkillItem[] = [
     name: 'Bulletstorm',
     imagePath: '/skill/bulletstorm.png',
     id: 'xpqq62',
+    dlc: 'base',
     tags: ['Fire Rate', 'Reload Speed', 'Critical Chance', 'Projectile Speed'],
     description: `Unleashes the full power and speed of the GUNSLINGER. Increases Fire Rate 20% and Reload Speed 50% of all ranged weapons. Lasts 20s. 
 
@@ -525,6 +552,7 @@ export const skillItems: SkillItem[] = [
     name: 'Void Cloak',
     imagePath: '/skill/void_cloak.png',
     id: 'hvcxo8',
+    dlc: 'base',
     description: `Automatically Perfect Dodge incoming direct damage for 60s. Each auto-evade reduces timer by 33% - 100% based on damage absorbed and spawns a Decoy for 3s.`,
     cooldown: 75,
     wikiLinks: [`https://remnant.wiki/Void_Cloak`],
@@ -539,6 +567,7 @@ export const skillItems: SkillItem[] = [
     name: 'Worm Hole',
     imagePath: '/skill/worm_hole.png',
     id: 'y9oqq6',
+    dlc: 'base',
     // TODO Check this; `procs 'perfect dodge/evade' bonuses - not sure how that is reflected in description
     description: `Warps the caster forward through space-time. The next Melee or Ranged attack within 5s will deal 300% damage.
 
@@ -556,6 +585,7 @@ export const skillItems: SkillItem[] = [
     name: 'Reboot',
     imagePath: '/skill/reboot.png',
     id: 'xx6sib',
+    dlc: 'base',
     tags: [
       'Stamina',
       'Health',
@@ -581,6 +611,7 @@ export const skillItems: SkillItem[] = [
     name: 'Minion: Hollow',
     imagePath: '/skill/minion_hollow.png',
     id: 'kk4yre',
+    dlc: 'base',
     // TODO Check this; 40% DR now applied to minion - not sure how that is reflected in description
     description: `PRESS: Summons a Root Hollow Minion to fight by your side. Costs 15% of Max Health to summon, but will not kil SUMMONER. Max (2)
 
@@ -599,6 +630,7 @@ export const skillItems: SkillItem[] = [
     name: 'Minion: Flyer',
     imagePath: '/skill/minion_flyer.png',
     id: 'o7pvqx',
+    dlc: 'base',
     // TODO Check this; sacrifice projectiles Skill -> Skill + Explosive. We already tag this, but description may be changed.
     // TODO Check this; flyer projectile speed reduced - not sure how that is reflected in description
     // TODO Check this; 40% DR now applied to minion - not sure how that is reflected in description
@@ -620,6 +652,7 @@ export const skillItems: SkillItem[] = [
     name: 'Minion: Reaver',
     imagePath: '/skill/minion_reaver.png',
     id: 'gs8zdv',
+    dlc: 'base',
     // TODO Check this; 50% DR now applied to minion - not sure how that is reflected in description
     description: `PRESS: Summons a Root Reaver Minion to fight by your side. Costs 35% of Max Health to summon, but will not kill SUMMONER. Max (1).
 
@@ -640,6 +673,7 @@ export const skillItems: SkillItem[] = [
     name: 'Eruption',
     imagePath: '/skill/eruption.png',
     id: 'amqa83',
+    dlc: 'base',
     tags: ['Status Effect'],
     // TODO Check this; `added interaction with slow` - not sure how that is reflected in description
     // TODO Check this; `no longer requires line of sight to spread Vile` - not sure how that is reflected in description
@@ -658,6 +692,7 @@ export const skillItems: SkillItem[] = [
     name: 'Miasma',
     imagePath: '/skill/miasma.png',
     id: '3er3og',
+    dlc: 'base',
     tags: ['Status Effect'],
     // TODO Check this; base damage 500 -> 300
     description: `Casts an AOE burst that applies BLEEDING, BURNING, OVERLOADED, and CORRODED to all enemies within 15m [A], and dealing a total of 300 base damage. Lasts 10s.`,
@@ -674,6 +709,7 @@ export const skillItems: SkillItem[] = [
     name: 'Deathwish',
     imagePath: '/skill/death_wish.png',
     id: 'ux5f9v',
+    dlc: 'base',
     tags: ['All Damage', 'Lifesteal'],
     // TODO Check this; base damage increase 35% -> 50%
     // TODO Check this; `now affected by skill duration bonuses` - not sure how that is reflected in description

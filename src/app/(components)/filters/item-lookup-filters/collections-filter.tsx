@@ -5,28 +5,28 @@ import {
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
 import { DEFAULT_FILTER } from '@/app/(components)/filters/types'
-import {
-  ALL_RELEASE_KEYS,
-  RELEASE_TO_NAME,
-} from '@/app/(data)/releases/constants'
-import { ReleaseKey } from '@/app/(data)/releases/types'
 
 interface Props {
   value: string[]
   onChange: (value: string[]) => void
 }
 
-export function ReleasesFilter({ value, onChange }: Props) {
-  const options = ALL_RELEASE_KEYS.map((release) => ({
-    label: RELEASE_TO_NAME[release as ReleaseKey] as string,
-    value: release,
+export function CollectionssFilter({ value, onChange }: Props) {
+  const options = ['Discovered', 'Undiscovered'].map((value) => ({
+    label: value as string,
+    value: value,
   }))
   options.unshift({ label: DEFAULT_FILTER, value: DEFAULT_FILTER })
 
   return (
     <BaseField>
-      <BaseLabel>Releases</BaseLabel>
-      <BaseListbox multiple name="releases" value={value} onChange={onChange}>
+      <BaseLabel>Collections</BaseLabel>
+      <BaseListbox
+        multiple
+        name="collections"
+        value={value}
+        onChange={onChange}
+      >
         {options.map(({ label, value }) => (
           <BaseListboxOption key={value} value={value}>
             <BaseListboxLabel>{label}</BaseListboxLabel>

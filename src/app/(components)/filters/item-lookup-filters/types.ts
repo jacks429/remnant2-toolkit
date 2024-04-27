@@ -1,5 +1,4 @@
-export const DEFAULT_FILTER = 'All'
-export type DefaultFilter = typeof DEFAULT_FILTER
+import { DefaultFilter } from '@/app/(components)/filters/types'
 
 export interface ItemLookupFilters {
   categories: string[] | [DefaultFilter]
@@ -9,7 +8,7 @@ export interface ItemLookupFilters {
 }
 
 /** The keys used in the URL for the filters */
-export const BUILD_FILTER_KEYS = {
+export const ITEM_FILTER_KEYS = {
   CATEGORIES: 'categories',
   COLLECTIONS: 'collections',
   RELEASES: 'releases',

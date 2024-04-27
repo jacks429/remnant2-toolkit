@@ -4,7 +4,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
+import { DEFAULT_FILTER } from '@/app/(components)/filters/types'
 import { ALL_BOSS_AFFIXES } from '@/app/(data)/world-saves/constants'
 
 interface Props {

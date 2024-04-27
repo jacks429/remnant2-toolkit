@@ -1,5 +1,4 @@
-export const DEFAULT_FILTER = 'All'
-export type DefaultFilter = typeof DEFAULT_FILTER
+import { DefaultFilter } from '@/app/(components)/filters/types'
 
 export interface BuildListFilters {
   amulet: string | DefaultFilter

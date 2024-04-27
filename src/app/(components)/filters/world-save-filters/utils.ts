@@ -1,6 +1,6 @@
 import { ReadonlyURLSearchParams } from 'next/navigation'
 
-import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
+import { DEFAULT_FILTER } from '@/app/(components)/filters/types'
 import {
   WORLD_SAVE_FILTER_KEYS,
   WorldSaveFilters,

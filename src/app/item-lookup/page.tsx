@@ -4,11 +4,10 @@ import { Suspense } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { ToCsvButton } from '@/app/(components)/buttons/to-csv-button'
+import { ItemLookupFilters } from '@/app/(components)/filters/item-lookup-filters'
 import { allItems } from '@/app/(data)/items/all-items'
 import { MutatorItem } from '@/app/(data)/items/types/MutatorItem'
-import { ItemCompareList } from '@/app/item-lookup/(components)/ItemCompareList'
-import { ItemList } from '@/app/item-lookup/(components)/ItemList'
-import { ItemLookupFilters } from '@/app/item-lookup/(components)/ItemLookupFilters'
+import { ItemList } from '@/app/item-lookup/item-list'
 import { getArrayOfLength } from '@/features/build/lib/getArrayOfLength'
 import { itemToCsvItem } from '@/features/items/lib/itemToCsvItem'
 import { PageHeader } from '@/features/ui/PageHeader'
@@ -67,13 +66,13 @@ export default function Page() {
             </Suspense>
           </div>
 
-          {areAnyItemsBeingCompared ? (
+          {/* {areAnyItemsBeingCompared ? (
             <div className="mt-2 flex w-full items-center justify-center">
               <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
                 <ItemCompareList />
               </Suspense>
             </div>
-          ) : null}
+          ) : null} */}
 
           <div className="mt-2 flex w-full items-center justify-center">
             <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>

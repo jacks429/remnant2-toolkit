@@ -6,6 +6,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Alchemist',
     imagePath: '/archtype/alchemist.png',
     id: '67pme7',
+    dlc: 'base',
     description:
       'The ALCHEMIST specializes in powerful buffing Vials and consumable potency.',
     wikiLinks: [`https://remnant.wiki/Alchemist`],
@@ -35,6 +36,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Archon',
     imagePath: '/archtype/archon.png',
     id: 'og1fvq',
+    dlc: 'base',
     description:
       'The ARCHON is the master of Weapon Mods and Mod Power generation.',
     wikiLinks: [`https://remnant.wiki/Archon`],
@@ -64,6 +66,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Challenger',
     imagePath: '/archtype/challenger.png',
     id: 'wm2xsy',
+    dlc: 'base',
     description:
       'The CHALLENGER specializes in close range combat and heightened survivability.',
     wikiLinks: [`https://remnant.wiki/Challenger`],
@@ -92,6 +95,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Engineer',
     imagePath: '/archtype/engineer.png',
     id: '98i1ka',
+    dlc: 'base',
     description:
       'The ENGINEER specializes in Heavy Weaponry which can be carried or placed in turret mode.',
     wikiLinks: [`https://remnant.wiki/Engineer`],
@@ -120,6 +124,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Explorer',
     imagePath: '/archtype/explorer.png',
     id: 'la3vvu',
+    dlc: 'base',
     description:
       'The EXPLORER specializes in finding valuable items and overall team utility.',
     wikiLinks: [`https://remnant.wiki/Explorer`],
@@ -149,6 +154,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Gunslinger',
     imagePath: '/archtype/gunslinger.png',
     id: 'd2qga5',
+    dlc: 'base',
     description:
       'The GUNSLINGER specializes in raw damage, firearm handling, and ammo conservation.',
     wikiLinks: [`https://remnant.wiki/Gunslinger`],
@@ -178,6 +184,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Handler',
     imagePath: '/archtype/handler.png',
     id: 'aazlxe',
+    dlc: 'base',
     description:
       'The HANDLER specializes in teamwork in both solo and cooperative scenarios.',
     wikiLinks: [`https://remnant.wiki/Handler`],
@@ -207,6 +214,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Hunter',
     imagePath: '/archtype/hunter.png',
     id: '5tkqdz',
+    dlc: 'base',
     description:
       'The HUNTER specializes in ranged damage, precision shots and marking enemies.',
     wikiLinks: [`https://remnant.wiki/Hunter`],
@@ -236,6 +244,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Invader',
     imagePath: '/archtype/invader.png',
     id: '0ipjpk',
+    dlc: 'base',
     description: `The INVADER specializes elusiveness and misdirecting the enemy's focus.`,
     wikiLinks: [`https://remnant.wiki/Invader`],
     linkedItems: {
@@ -292,6 +301,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Medic',
     imagePath: '/archtype/medic.png',
     id: 'd6fvmc',
+    dlc: 'base',
     description:
       'The MEDIC specializes in survivability with enhanced healing and Relic effectiveness.',
     wikiLinks: [`https://remnant.wiki/Medic`],
@@ -346,6 +356,7 @@ export const archetypeItems: ArchetypeItem[] = [
     name: 'Summoner',
     imagePath: '/archtype/summoner.png',
     id: 'og0bwx',
+    dlc: 'base',
     description:
       'The SUMMONER specializes in using Minions to do their bidding and sacrificing them.',
     wikiLinks: [`https://remnant.wiki/Summoner`],

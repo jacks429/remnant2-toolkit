@@ -1,6 +1,6 @@
 import { ItemCategory } from '@/features/build/types'
 
-export interface LocalStorage {
+export interface ItemTrackerLocalStorage {
   discoveredItemIds: string[]
   collapsedCategories: Array<ItemCategory>
 }

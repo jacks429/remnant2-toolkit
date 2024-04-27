@@ -1,11 +1,9 @@
+import { DefaultFilter } from '@/app/(components)/filters/types'
 import { ReleaseKey } from '@/app/(data)/releases/types'
 import {
   ALL_BOSS_AFFIXES,
   ALL_BOSSES,
 } from '@/app/(data)/world-saves/constants'
-
-export const DEFAULT_FILTER = 'All'
-export type DefaultFilter = typeof DEFAULT_FILTER
 
 export interface WorldSaveFilters {
   bossName: string | DefaultFilter

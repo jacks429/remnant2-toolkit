@@ -4,7 +4,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { DEFAULT_FILTER } from '@/app/(components)/filters/world-save-filters/types'
+import { DEFAULT_FILTER } from '@/app/(components)/filters/types'
 import { ALL_BOSSES } from '@/app/(data)/world-saves/constants'
 
 interface Props {

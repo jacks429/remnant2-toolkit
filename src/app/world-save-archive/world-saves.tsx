@@ -1,12 +1,14 @@
 'use client'
 
+import isEqual from 'lodash.isequal'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
 import { WorldSaveCard } from '@/app/(components)/cards/world-save-card'
+import { DEFAULT_FILTER } from '@/app/(components)/filters/types'
+import { DEFAULT_WORLD_SAVE_FILTERS } from '@/app/(components)/filters/world-save-filters'
 import {
-  DEFAULT_FILTER,
   FilteredWorldSave,
   WorldSaveFilters,
 } from '@/app/(components)/filters/world-save-filters/types'
@@ -62,33 +64,53 @@ function getFilteredSaves(filters: WorldSaveFilters): FilteredWorldSave[] {
     )
   }
 
+  // sort by boss name, then by affixes
+  filteredSaves = filteredSaves.sort((a, b) => {
+    if (a.bossName < b.bossName) return -1
+    if (a.bossName > b.bossName) return 1
+    if (a.bossAffixes.join('') < b.bossAffixes.join('')) return -1
+    if (a.bossAffixes.join('') > b.bossAffixes.join('')) return 1
+    return 0
+  })
+
   return filteredSaves
 }
 
 interface Props {}
 
 export function WorldSaves({}: Props) {
-  const [showAll, setShowAll] = useState(false)
-
   const searchParams = useSearchParams()
   const [filters, setFilters] = useState(parseUrlFilters(searchParams))
+
+  const [areFiltersApplied, setAreFiltersApplied] = useState(
+    !isEqual(filters, DEFAULT_WORLD_SAVE_FILTERS),
+  )
 
   useEffect(() => {
     setFilters(parseUrlFilters(searchParams))
   }, [searchParams])
 
+  useEffect(() => {
+    if (!isEqual(filters, DEFAULT_WORLD_SAVE_FILTERS)) {
+      setAreFiltersApplied(true)
+    }
+  }, [filters])
+
   let filteredSaves = getFilteredSaves(filters)
+
+  // #region Render
 
   return (
     <div className="flex w-full flex-col items-center justify-center overflow-auto p-4">
-      {filteredSaves.length === worldSaves.length && (
+      {!areFiltersApplied && (
         <div className="flex flex-col items-center justify-center gap-y-2">
           <h2 className="text-center text-2xl font-bold text-primary-500">
             Apply a filter to search the {worldSaves.length} world saves
           </h2>
-          {!showAll && (
-            <BaseButton onClick={() => setShowAll(true)}>Show All</BaseButton>
-          )}
+
+          <BaseButton onClick={() => setAreFiltersApplied(true)}>
+            Show All
+          </BaseButton>
         </div>
       )}
       {filteredSaves.length === 0 && (
@@ -97,14 +119,13 @@ export function WorldSaves({}: Props) {
         </h2>
       )}
 
-      {filteredSaves.length > 0 &&
-        filteredSaves.length !== worldSaves.length && (
-          <h2 className="my-4 text-2xl font-bold text-primary-500">
-            World Saves ({filteredSaves.length} Results)
-          </h2>
-        )}
+      {filteredSaves.length > 0 && areFiltersApplied && (
+        <h2 className="my-4 text-2xl font-bold text-primary-500">
+          World Saves ({filteredSaves.length} Results)
+        </h2>
+      )}
 
-      {filteredSaves.length !== worldSaves.length || showAll ? (
+      {areFiltersApplied ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {filteredSaves.map((save) => (
             <WorldSaveCard

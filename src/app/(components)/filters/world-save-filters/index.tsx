@@ -11,15 +11,16 @@ import { BaseFieldGroup, BaseFieldset } from '@/app/(components)/_base/fieldset'
 import { BaseText, BaseTextLink } from '@/app/(components)/_base/text'
 import { BossNameFilter } from '@/app/(components)/filters/boss-name-filter'
 import { ReleasesFilter } from '@/app/(components)/filters/releases-filter'
+import { DEFAULT_FILTER } from '@/app/(components)/filters/types'
 import { BossAffixFilter } from '@/app/(components)/filters/world-save-filters/boss-affix-filter'
 import {
-  DEFAULT_FILTER,
+  WORLD_SAVE_FILTER_KEYS,
   WorldSaveFilters as Filters,
 } from '@/app/(components)/filters/world-save-filters/types'
 import { parseUrlFilters } from '@/app/(components)/filters/world-save-filters/utils'
 import { cn } from '@/lib/classnames'
 
-const DEFAULT_FILTERS = {
+export const DEFAULT_WORLD_SAVE_FILTERS = {
   bossName: DEFAULT_FILTER,
   bossAffixes: [DEFAULT_FILTER],
   releases: [DEFAULT_FILTER],
@@ -36,12 +37,12 @@ export function WorldSaveFilters({}: Props) {
   const [unappliedFilters, setUnappliedFilters] = useState(filters)
 
   function clearFilters() {
-    setUnappliedFilters(DEFAULT_FILTERS)
-    applyUrlFilters(DEFAULT_FILTERS)
+    setUnappliedFilters(DEFAULT_WORLD_SAVE_FILTERS)
+    applyUrlFilters(DEFAULT_WORLD_SAVE_FILTERS)
   }
 
   const areAnyFiltersActive = useMemo(() => {
-    if (isEqual(filters, DEFAULT_FILTERS)) return false
+    if (isEqual(filters, DEFAULT_WORLD_SAVE_FILTERS)) return false
     return true
   }, [filters])
 
@@ -53,17 +54,21 @@ export function WorldSaveFilters({}: Props) {
 
     // Add the boss name filter
     if (filtersToApply.bossName !== DEFAULT_FILTER) {
-      url += `bossName=${filtersToApply.bossName}&`
+      url += `${WORLD_SAVE_FILTER_KEYS.BOSSNAME}=${filtersToApply.bossName}&`
     }
 
     // Add the boss affixes filter
-    if (filtersToApply.bossAffixes[0] !== DEFAULT_FILTER) {
-      url += `bossAffixes=${filtersToApply.bossAffixes.join(',')}&`
+    if (!filtersToApply.bossAffixes.some((i) => i === DEFAULT_FILTER)) {
+      url += `${
+        WORLD_SAVE_FILTER_KEYS.BOSSAFFIXES
+      }=${filtersToApply.bossAffixes.join(',')}&`
     }
 
     // Add the releases filter
-    if (filtersToApply.releases[0] !== DEFAULT_FILTER) {
-      url += `releases=${filtersToApply.releases.join(',')}&`
+    if (!filtersToApply.releases.some((i) => i === DEFAULT_FILTER)) {
+      url += `${WORLD_SAVE_FILTER_KEYS.RELEASES}=${filtersToApply.releases.join(
+        ',',
+      )}&`
     }
 
     // trim the final &
