@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react'
 import { useIsClient, useLocalStorage } from 'usehooks-ts'
 
-import { remnantEnemies } from '@/app/(data)/enemies/remnantEnemies'
+import { remnantEnemies } from '@/app/(data)/enemies/remnant-enemies'
 import { BossCategory } from '@/app/(data)/enemies/types'
 import {
   BossTrackerFilters,

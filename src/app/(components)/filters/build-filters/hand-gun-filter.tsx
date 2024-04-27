@@ -4,7 +4,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { weaponItems } from '@/app/(data)/items/weaponItems'
+import { weaponItems } from '@/app/(data)/items/weapon-items'
 
 interface Props {
   value: string

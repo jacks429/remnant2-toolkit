@@ -1,4 +1,4 @@
-import { traitItems } from '@/app/(data)/items/traitItems'
+import { traitItems } from '@/app/(data)/items/trait-items'
 import { TraitItem } from '@/app/(data)/items/types/TraitItem'
 
 import { DEFAULT_TRAIT_AMOUNT } from '../constants'

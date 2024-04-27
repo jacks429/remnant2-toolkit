@@ -2,7 +2,7 @@ import { useSearchParams } from 'next/navigation'
 import { useIsClient, useLocalStorage } from 'usehooks-ts'
 import { v4 as uuidv4 } from 'uuid'
 
-import { allItems } from '@/app/(data)/items/allItems'
+import { allItems } from '@/app/(data)/items/all-items'
 import { MutatorItem } from '@/app/(data)/items/types/MutatorItem'
 import { WeaponItem } from '@/app/(data)/items/types/WeaponItem'
 import { parseItemLookupFilters } from '@/app/item-lookup/(lib)/parseItemLookupFilters'

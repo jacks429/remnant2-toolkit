@@ -8,7 +8,6 @@ import {
 } from '@/app/(components)/_base/dialog'
 import { BaseField, BaseLabel } from '@/app/(components)/_base/fieldset'
 import { BaseInput } from '@/app/(components)/_base/input'
-import { BaseText } from '@/app/(components)/_base/text'
 import { ToCsvButton } from '@/app/(components)/buttons/to-csv-button'
 import { CsvItem } from '@/app/(types)/csv'
 

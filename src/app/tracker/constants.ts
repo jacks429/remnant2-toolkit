@@ -1,4 +1,4 @@
-import { allItems } from '@/app/(data)/items/allItems'
+import { allItems } from '@/app/(data)/items/all-items'
 import { ItemCategory } from '@/features/build/types'
 import { Item } from '@/features/items/types'
 

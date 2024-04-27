@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client'
 
 import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
-import { ringItems } from '@/app/(data)/items/ringItems'
+import { ringItems } from '@/app/(data)/items/ring-items'
 
 export function limitByRingsSegment(ringIds: string[]) {
   if (ringIds.length === 0) return Prisma.empty

@@ -16,7 +16,7 @@ interface Props {
   onChange: (value: string[]) => void
 }
 
-export function ReleaseFilter({ value, onChange }: Props) {
+export function ReleasesFilter({ value, onChange }: Props) {
   const options = ALL_RELEASE_KEYS.map((release) => ({
     label: RELEASE_TO_NAME[release as ReleaseKey] as string,
     value: release,

@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { ToCsvButton } from '@/app/(components)/buttons/to-csv-button'
-import { allItems } from '@/app/(data)/items/allItems'
+import { allItems } from '@/app/(data)/items/all-items'
 import { MutatorItem } from '@/app/(data)/items/types/MutatorItem'
 import { ItemCompareList } from '@/app/item-lookup/(components)/ItemCompareList'
 import { ItemList } from '@/app/item-lookup/(components)/ItemList'

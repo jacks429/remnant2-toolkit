@@ -6,7 +6,7 @@ import { useMemo, useRef, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
 import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
-import { allItems } from '@/app/(data)/items/allItems'
+import { allItems } from '@/app/(data)/items/all-items'
 import { parseItemLookupFilters } from '@/app/item-lookup/(lib)/parseItemLookupFilters'
 import { CollectedItemFilters } from '@/features/build/filters/parts/CollectedItemFilters'
 import { ItemCategoryFilters } from '@/features/build/filters/parts/ItemCategoryFilters'
@@ -269,7 +269,7 @@ export function ItemLookupFilters({}: Props) {
               onClearFilters={handleClearFilters}
             >
               <div className="col-span-full flex w-full border-b border-b-primary-800 pb-2 sm:col-span-3">
-                <ReleaseFilters
+                <ReleasesFilters
                   selectedReleases={unappliedFilters.selectedReleases}
                   onChange={(release: ReleaseKey) =>
                     handleReleaseChange(release)

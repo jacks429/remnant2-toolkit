@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { ItemInfoDialog } from '@/app/(components)/dialogs/item-info-dialog'
-import { allItems } from '@/app/(data)/items/allItems'
+import { allItems } from '@/app/(data)/items/all-items'
 import { getArrayOfLength } from '@/features/build/lib/getArrayOfLength'
 import { ItemCard } from '@/features/items/components/ItemCard'
 import { Item } from '@/features/items/types'

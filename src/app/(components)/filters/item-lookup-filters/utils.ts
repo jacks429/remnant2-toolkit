@@ -1,7 +1,7 @@
 import { ReadonlyURLSearchParams } from 'next/navigation'
 
 import { ItemLookupFilters } from '@/app/(components)/filters/item-lookup-filters/types'
-import { allItems } from '@/app/(data)/items/allItems'
+import { allItems } from '@/app/(data)/items/all-items'
 import { ITEM_TAGS } from '@/features/items/constants'
 
 export function buildAutoCompleteSuggestions(): Array<{

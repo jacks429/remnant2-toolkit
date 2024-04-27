@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client'
 
-import { weaponItems } from '@/app/(data)/items/weaponItems'
+import { weaponItems } from '@/app/(data)/items/weapon-items'
 
 export function limitByWeaponsSegment(weaponIds: string[]) {
   if (weaponIds.length === 0) return Prisma.empty

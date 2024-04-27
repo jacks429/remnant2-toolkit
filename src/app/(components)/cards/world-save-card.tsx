@@ -3,14 +3,14 @@ import Image from 'next/image'
 import { v4 as uuidv4 } from 'uuid'
 
 import { BaseButton } from '@/app/(components)/_base/button'
-import { getDownloadUrl } from '@/app/world-save-archive/(lib)/getDownloadUrl'
-import { BOSS_AFFIXES } from '@/app/world-save-archive/constants'
-import { FilteredSave } from '@/app/world-save-archive/types'
-import { RELEASE_TO_NAME } from '@/features/items/constants'
+import { FilteredWorldSave } from '@/app/(components)/filters/world-save-filters/types'
+import { getDownloadUrl } from '@/app/(components)/filters/world-save-filters/utils'
+import { RELEASE_TO_NAME } from '@/app/(data)/releases/constants'
+import { BOSS_AFFIXES } from '@/app/(data)/world-saves/constants'
 import { Tooltip } from '@/features/ui/Tooltip'
 
 interface Props {
-  saveItem: FilteredSave
+  saveItem: FilteredWorldSave
 }
 
 export function SaveCard({ saveItem }: Props) {

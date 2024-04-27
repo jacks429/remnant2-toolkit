@@ -20,7 +20,6 @@ import { BuildTagFilter } from '@/app/(components)/filters/build-filters/build-t
 import { HandGunFilter } from '@/app/(components)/filters/build-filters/hand-gun-filter'
 import { LongGunFilter } from '@/app/(components)/filters/build-filters/long-gun-filter'
 import { MeleeFilter } from '@/app/(components)/filters/build-filters/melee-filter'
-import { ReleaseFilter } from '@/app/(components)/filters/build-filters/release-filter'
 import { RingFilter } from '@/app/(components)/filters/build-filters/ring-filter'
 import {
   BUILD_FILTER_KEYS,
@@ -29,6 +28,7 @@ import {
   MAX_RINGS,
 } from '@/app/(components)/filters/build-filters/types'
 import { parseUrlFilters } from '@/app/(components)/filters/build-filters/utils'
+import { ReleasesFilter } from '@/app/(components)/filters/releases-filter'
 import { Input } from '@/app/(components)/form-fields/input'
 import { cn } from '@/lib/classnames'
 
@@ -196,7 +196,7 @@ export function BuildFilters({}: Props) {
   }
 
   function handleBuildTagChange(newBuildTags: string[]) {
-    // if the newBuildTags length is 0, set the rings to the default value
+    // if the newBuildTags length is 0, set to the default value
     if (newBuildTags.length === 0) {
       const newFilters = { ...unappliedFilters, buildTags: [DEFAULT_FILTER] }
       setUnappliedFilters(newFilters)
@@ -413,7 +413,7 @@ export function BuildFilters({}: Props) {
                     />
                   </div>
                   <div className="col-span-full sm:col-span-1">
-                    <ReleaseFilter
+                    <ReleasesFilter
                       value={unappliedFilters.releases}
                       onChange={handleReleaseChange}
                     />

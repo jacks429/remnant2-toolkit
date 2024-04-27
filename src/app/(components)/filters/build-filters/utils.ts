@@ -7,10 +7,10 @@ import {
   DefaultFilter,
   MAX_RINGS,
 } from '@/app/(components)/filters/build-filters/types'
-import { amuletItems } from '@/app/(data)/items/amuletItems'
-import { archetypeItems } from '@/app/(data)/items/archetypeItems'
-import { ringItems } from '@/app/(data)/items/ringItems'
-import { weaponItems } from '@/app/(data)/items/weaponItems'
+import { amuletItems } from '@/app/(data)/items/amulet-items'
+import { archetypeItems } from '@/app/(data)/items/archetype-items'
+import { ringItems } from '@/app/(data)/items/ring-items'
+import { weaponItems } from '@/app/(data)/items/weapon-items'
 import { ALL_RELEASE_KEYS } from '@/app/(data)/releases/constants'
 
 export function parseUrlFilters(

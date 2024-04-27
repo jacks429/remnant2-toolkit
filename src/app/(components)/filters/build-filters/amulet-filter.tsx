@@ -4,7 +4,7 @@ import {
   BaseListboxLabel,
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
-import { amuletItems } from '@/app/(data)/items/amuletItems'
+import { amuletItems } from '@/app/(data)/items/amulet-items'
 
 interface Props {
   value: string

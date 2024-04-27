@@ -10,7 +10,7 @@ import fs from 'fs'
 import path from 'path'
 import zlib from 'zlib'
 
-import { allItems } from '@/app/(data)/items/allItems'
+import { allItems } from '@/app/(data)/items/all-items'
 import { MAX_PROFILE_SAV_SIZE } from '@/features/items/constants'
 
 /**

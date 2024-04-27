@@ -5,7 +5,7 @@ import {
   BaseListboxOption,
 } from '@/app/(components)/_base/listbox'
 import { DEFAULT_FILTER } from '@/app/(components)/filters/build-filters/types'
-import { archetypeItems } from '@/app/(data)/items/archetypeItems'
+import { archetypeItems } from '@/app/(data)/items/archetype-items'
 
 interface Props {
   value: string[]
