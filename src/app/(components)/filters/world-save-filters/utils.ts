@@ -5,7 +5,7 @@ import {
   WORLD_SAVE_FILTER_KEYS,
   WorldSaveFilters,
 } from '@/app/(components)/filters/world-save-filters/types'
-import { BOSSES } from '@/app/(data)/world-saves/constants'
+import { ALL_BOSSES } from '@/app/(data)/world-saves/constants'
 
 export function parseUrlFilters(
   searchParams: ReadonlyURLSearchParams,
@@ -15,7 +15,7 @@ export function parseUrlFilters(
   // Validate the provided boss name
   let bossName = parsedParams.get(WORLD_SAVE_FILTER_KEYS.BOSSNAME) || 'All'
   const bossNameIsValid =
-    bossName === DEFAULT_FILTER || BOSSES.some((b) => b.name === bossName)
+    bossName === DEFAULT_FILTER || ALL_BOSSES.some((b) => b.name === bossName)
   if (!bossNameIsValid) {
     bossName = DEFAULT_FILTER
   }

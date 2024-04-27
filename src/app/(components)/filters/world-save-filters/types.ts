@@ -1,5 +1,8 @@
 import { ReleaseKey } from '@/app/(data)/releases/types'
-import { BOSS_AFFIXES, BOSSES } from '@/app/(data)/world-saves/constants'
+import {
+  ALL_BOSS_AFFIXES,
+  ALL_BOSSES,
+} from '@/app/(data)/world-saves/constants'
 
 export const DEFAULT_FILTER = 'All'
 export type DefaultFilter = typeof DEFAULT_FILTER
@@ -17,10 +20,10 @@ export const WORLD_SAVE_FILTER_KEYS = {
   RELEASES: 'releases',
 } as const satisfies Record<string, keyof WorldSaveFilters>
 
-export type BossAffix = keyof typeof BOSS_AFFIXES
-export type BossAffixName = (typeof BOSS_AFFIXES)[number]['name']
+export type BossAffix = keyof typeof ALL_BOSS_AFFIXES
+export type BossAffixName = (typeof ALL_BOSS_AFFIXES)[number]['name']
 
-export type BossName = (typeof BOSSES)[number]['name']
+export type BossName = (typeof ALL_BOSSES)[number]['name']
 
 export interface WorldSave {
   bossName: BossName

@@ -5,7 +5,7 @@ import {
 
 export const MAX_BOSS_AFFIXES = 2
 
-export const BOSS_AFFIXES = [
+export const ALL_BOSS_AFFIXES = [
   // Limited to aberrations
   // {
   //   name: 'Bursting',
@@ -142,7 +142,7 @@ export const BOSS_AFFIXES = [
   // },
 ] as const satisfies { name: string; description: string }[]
 
-export const BOSS_AFFIX_NAMES = BOSS_AFFIXES.map(({ name }) => name)
+export const BOSS_AFFIX_NAMES = ALL_BOSS_AFFIXES.map(({ name }) => name)
 
 // Consolidate the remnantEnemies data with the world save slug data
 const bossData = [...bossEnemies, ...worldBossEnemies]
@@ -189,7 +189,7 @@ const bossNames = [
  * Combination of the remnantEnemies boss data and the
  * world-save-archive info
  */
-export const BOSSES = bossNames.map((boss) => {
+export const ALL_BOSSES = bossNames.map((boss) => {
   const data = bossData.find(({ name }) => name === boss.name)
   if (data) return { ...boss, imagePath: data.imagePath }
 

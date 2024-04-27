@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import { Link } from '@/app/(components)/_base/link'
 import { WorldSaveFilters } from '@/app/(components)/filters/world-save-filters'
 import { worldSaves } from '@/app/(data)/world-saves/world-saves'
+import { WorldSaves } from '@/app/world-save-archive/world-saves'
 import { PageHeader } from '@/features/ui/PageHeader'
 import { Skeleton } from '@/features/ui/Skeleton'
 
@@ -40,11 +41,11 @@ export default function Page() {
           </Suspense>
         </div>
 
-        {/* <div className="flex w-full items-center justify-center">
+        <div className="flex w-full items-center justify-center">
           <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
-            <SaveItemList />
+            <WorldSaves />
           </Suspense>
-        </div> */}
+        </div>
       </div>
     </>
   )

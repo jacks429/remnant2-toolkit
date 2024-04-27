@@ -8,7 +8,10 @@ import { useMemo, useState } from 'react'
 
 import { BaseButton } from '@/app/(components)/_base/button'
 import { BaseFieldGroup, BaseFieldset } from '@/app/(components)/_base/fieldset'
+import { BaseText, BaseTextLink } from '@/app/(components)/_base/text'
+import { BossNameFilter } from '@/app/(components)/filters/boss-name-filter'
 import { ReleasesFilter } from '@/app/(components)/filters/releases-filter'
+import { BossAffixFilter } from '@/app/(components)/filters/world-save-filters/boss-affix-filter'
 import {
   DEFAULT_FILTER,
   WorldSaveFilters as Filters,
@@ -41,11 +44,6 @@ export function WorldSaveFilters({}: Props) {
     if (isEqual(filters, DEFAULT_FILTERS)) return false
     return true
   }, [filters])
-
-  const areFiltersApplied = useMemo(() => {
-    if (isEqual(filters, unappliedFilters)) return true
-    return false
-  }, [filters, unappliedFilters])
 
   // #region Apply Filters Handler
   const pathname = usePathname()
@@ -165,9 +163,12 @@ export function WorldSaveFilters({}: Props) {
       {({ open }) => (
         <div className="w-full">
           <div className="flex w-full flex-row items-end justify-end border-b border-b-primary-500 py-2">
-            <h2 className="flex w-full items-center justify-start text-xl">
-              World Save Filters
-            </h2>
+            <div className="w-full pr-4">
+              <BossNameFilter
+                value={unappliedFilters.bossName}
+                onChange={handleBossNameChange}
+              />
+            </div>
             <Disclosure.Button as={BaseButton}>
               <FunnelIcon className="h-4 w-4" />
               {open ? 'Hide' : 'Show'}
@@ -183,7 +184,22 @@ export function WorldSaveFilters({}: Props) {
             <BaseFieldset>
               <BaseFieldGroup>
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 md:grid-cols-4">
-                  <div className="col-span-full sm:col-span-1">
+                  <div className="col-span-full sm:col-span-1 md:col-span-2">
+                    <BossAffixFilter
+                      value={unappliedFilters.bossAffixes}
+                      onChange={handleBossAffixesChange}
+                    />
+                    <BaseText className="mt-2 text-sm">
+                      <BaseTextLink
+                        href="https://remnant.wiki/Affix"
+                        target="_blank"
+                      >
+                        For more detailed affix information, visit the Remnant
+                        Wiki
+                      </BaseTextLink>
+                    </BaseText>
+                  </div>
+                  <div className="col-span-full sm:col-span-1 md:col-span-2">
                     <ReleasesFilter
                       value={unappliedFilters.releases}
                       onChange={handleReleasesChange}

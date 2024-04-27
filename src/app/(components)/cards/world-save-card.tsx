@@ -6,14 +6,14 @@ import { BaseButton } from '@/app/(components)/_base/button'
 import { FilteredWorldSave } from '@/app/(components)/filters/world-save-filters/types'
 import { getDownloadUrl } from '@/app/(components)/filters/world-save-filters/utils'
 import { RELEASE_TO_NAME } from '@/app/(data)/releases/constants'
-import { BOSS_AFFIXES } from '@/app/(data)/world-saves/constants'
+import { ALL_BOSS_AFFIXES } from '@/app/(data)/world-saves/constants'
 import { Tooltip } from '@/features/ui/Tooltip'
 
 interface Props {
   saveItem: FilteredWorldSave
 }
 
-export function SaveCard({ saveItem }: Props) {
+export function WorldSaveCard({ saveItem }: Props) {
   return (
     <div className="flex w-[200px] max-w-[200px] flex-col items-center justify-center border-2 border-primary-700">
       <Image
@@ -32,7 +32,7 @@ export function SaveCard({ saveItem }: Props) {
               <Tooltip
                 key={`${uuidv4()}}`}
                 content={
-                  BOSS_AFFIXES.find(
+                  ALL_BOSS_AFFIXES.find(
                     (a) => a.name.toLowerCase() === affix.toLowerCase(),
                   )?.description
                 }
