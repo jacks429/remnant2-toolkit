@@ -1,4 +1,3 @@
-import { DefaultFilter } from '@/app/(components)/filters/build-filters/types'
 import { AmuletItem } from '@/app/(data)/items/types/AmuletItem'
 import { ArchetypeItem } from '@/app/(data)/items/types/ArchetypeItem'
 import { ArmorItem } from '@/app/(data)/items/types/ArmorItem'
@@ -13,7 +12,6 @@ import { RingItem } from '@/app/(data)/items/types/RingItem'
 import { SkillItem } from '@/app/(data)/items/types/SkillItem'
 import { TraitItem } from '@/app/(data)/items/types/TraitItem'
 import { WeaponItem } from '@/app/(data)/items/types/WeaponItem'
-import { ItemCategory } from '@/features/build/types'
 import { DESCRIPTION_TAGS } from '@/features/items/constants'
 
 export type Item =
@@ -129,21 +127,6 @@ export type ItemTag =
   | 'Weapon Damage'
 
 export type DescriptionTag = (typeof DESCRIPTION_TAGS)[number]
-
-export type ItemLookupCategory =
-  | Omit<ItemCategory, 'weapon' | 'mutator'>
-  | 'Long Gun'
-  | 'Hand Gun'
-  | 'Melee'
-  | 'Mutator (Gun)'
-  | 'Mutator (Melee)'
-
-export interface ItemLookupFilterFields {
-  categories: string[] | [DefaultFilter]
-  collections: string[] | [DefaultFilter]
-  releases: string[] | [DefaultFilter]
-  searchText: string
-}
 
 export type WeightClass = {
   challengerDescription: string

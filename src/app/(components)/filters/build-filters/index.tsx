@@ -45,7 +45,7 @@ const DEFAULT_FILTERS = {
   patchAffected: false,
   withVideo: false,
   withReference: false,
-}
+} as const satisfies BuildListFilters
 
 interface Props {}
 
